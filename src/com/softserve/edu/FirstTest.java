@@ -35,7 +35,7 @@ public class FirstTest {
 		//
 		String expected = "The Selenium Server is needed in order to run Remote Selenium WebDriver. Selenium 3.X is no longer capable of running Selenium RC directly, rather it does it through emulation and the WebDriverBackedSelenium interface.";
 		String actual = driver.findElement(By.xpath("//h3[text()='Selenium Standalone Server']/following-sibling::p[1]")).getText();
-		Assert.assertEquals(actual, expected, "My_Error");
+		Assert.assertEquals(actual, expected, "My_Error dev branch");
 		Thread.sleep(4000); // For Presentation Only
 		//
 		driver.quit();
