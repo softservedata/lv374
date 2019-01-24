@@ -5,16 +5,45 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class FirstTest {
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+
+	//@Test
+	public void testApp() {
+		Assert.assertTrue(true);
+	}
 
 	@Test
+	public void testApp1() throws Exception {
+		System.out.println("surefire.reports.directory = " + System.getProperty("surefire.reports.directory"));
+		System.out.println("selenium.version = " + System.getProperty("selenium.version"));
+		System.out.println("System.getenv().database.password = " + System.getenv().get("DATABASE_PASSWORD"));
+	}
+	
+//	@DataProvider(parallel = true)
+//	public Object[][] concurrencyData() {
+//		return new Object[][] {
+//			{ "1" },
+//			{ "2" },
+//		};
+//	}
+
+	@Test//(dataProvider = "concurrencyData")
 	public void checkSeleniumIDE() throws Exception {
+//		System.setProperty("webdriver.chrome.driver",
+//				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+		System.out.println("this.getClass().getResource(\"/chromedriver-windows-32bit.exe\").getPath() = "
+				+ this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//
