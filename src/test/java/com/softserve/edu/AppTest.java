@@ -1,14 +1,13 @@
 package com.softserve.edu;
 
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -39,11 +38,11 @@ public class AppTest {
 	@Test//(dataProvider = "concurrencyData")
 	public void checkSeleniumIDE() throws Exception {
 //		System.setProperty("webdriver.chrome.driver",
-//				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
-		System.out.println("this.getClass().getResource(\"/chromedriver-windows-32bit.exe\").getPath() = "
-				+ this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+//				"usr/bin/chromedriver");
+//		System.out.println("this.getClass().getResource(\"/chromedriver\").getPath() = "
+//				+ this.getClass().getResource("/chromedriver").getPath());
+//		System.setProperty("webdriver.chrome.driver",
+//				this.getClass().getResource("/chromedriver").getPath().substring(1));
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//
