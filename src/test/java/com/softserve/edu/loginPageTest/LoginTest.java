@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 /**
  * The {@code LoginTest} class contains test methods that test login page with
- * legal and illegal logen data
+ * legal and illegal login data
  * 
  * @version 1.0
  * @author Yaroslav
@@ -40,11 +40,13 @@ public class LoginTest {
 		driver.get("http://taqc-opencart.epizy.com");
 	}
 
+	/**
+	 * called before every test method. Get browser to main page
+	 * @throws Exception
+	 */
 	@BeforeMethod
 	public void setUpMethod() throws Exception {
 		driver.get("http://taqc-opencart.epizy.com");
-		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
-		driver.findElement(By.xpath("//a[text()='Login']")).click();
 	}
 
 	/**

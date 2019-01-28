@@ -5,10 +5,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -16,7 +14,7 @@ import org.testng.annotations.Test;
  */
 public class AppTest {
 
-	//@Test
+	// @Test
 	public void testApp() {
 		Assert.assertTrue(true);
 	}
@@ -27,7 +25,7 @@ public class AppTest {
 		System.out.println("selenium.version = " + System.getProperty("selenium.version"));
 		System.out.println("System.getenv().database.password = " + System.getenv().get("DATABASE_PASSWORD"));
 	}
-	
+
 //	@DataProvider(parallel = true)
 //	public Object[][] concurrencyData() {
 //		return new Object[][] {
@@ -36,7 +34,7 @@ public class AppTest {
 //		};
 //	}
 
-	@Test//(dataProvider = "concurrencyData")
+	@Test // (dataProvider = "concurrencyData")
 	public void checkSeleniumIDE() throws Exception {
 //		System.setProperty("webdriver.chrome.driver",
 //				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
@@ -63,7 +61,8 @@ public class AppTest {
 		Thread.sleep(1000); // For Presentation Only
 		//
 		String expected = "The Selenium Server is needed in order to run Remote Selenium WebDriver. Selenium 3.X is no longer capable of running Selenium RC directly, rather it does it through emulation and the WebDriverBackedSelenium interface.";
-		String actual = driver.findElement(By.xpath("//h3[text()='Selenium Standalone Server']/following-sibling::p[1]")).getText();
+		String actual = driver
+				.findElement(By.xpath("//h3[text()='Selenium Standalone Server']/following-sibling::p[1]")).getText();
 		Assert.assertEquals(actual, expected, "My_Error");
 		Thread.sleep(4000); // For Presentation Only
 		//
