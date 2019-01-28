@@ -9,26 +9,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
 
 	//@Test
 	public void testApp() {
 		Assert.assertTrue(true);
-	}
-
-//	@Test
-//	public void testApp1() throws Exception {
-//		System.out.println("surefire.reports.directory = " + System.getProperty("surefire.reports.directory"));
-//		System.out.println("selenium.version = " + System.getProperty("selenium.version"));
-//		System.out.println("System.getenv().database.password = " + System.getenv().get("DATABASE_PASSWORD"));
-//	}
+	}	
 
 	/**
 	 * Positive test.
-	 * User technique: State transition.
+	 * Used technique: State transition.
 	 * This method check if right goods added to wish list.
 	 */
 	@Test//(dataProvider = "concurrencyData")
