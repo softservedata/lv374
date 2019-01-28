@@ -19,8 +19,10 @@ public class HerokuTest {
 
 	@BeforeClass
 	public void beforeClass() {
+//		System.setProperty("webdriver.chrome.driver",
+////				this.getClass().getResource("/chromedriver.exe").getPath().substring(1));
 		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+				"C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}

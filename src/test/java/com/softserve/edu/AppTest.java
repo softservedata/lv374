@@ -38,12 +38,12 @@ public class AppTest {
 
 	@Test//(dataProvider = "concurrencyData")
 	public void checkSeleniumIDE() throws Exception {
-//		System.setProperty("webdriver.chrome.driver",
-//				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
-		System.out.println("this.getClass().getResource(\"/chromedriver-windows-32bit.exe\").getPath() = "
-				+ this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
 		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+				"C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
+//		System.out.println("this.getClass().getResource(\"/chrome.exe\").getPath() = "
+//				+ this.getClass().getResource("/chrome.exe").getPath());
+//		System.setProperty("webdriver.chrome.driver",
+//				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//
