@@ -219,8 +219,8 @@
 							<goal>install-drivers</goal>
 						</goals>
 						<!-- Uncomment for download automatically -->
-						<phase>test-compile</phase>
-						<!-- <phase>test</phase> -->
+						  <phase>test-compile</phase>
+						 <!-- <phase>test</phase> -->
 					</execution>
 				</executions>
 				<configuration>
