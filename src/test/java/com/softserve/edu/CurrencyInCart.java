@@ -4,51 +4,55 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class CurrencyInCart {
 
-    WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
 
-    @BeforeTest
-    public void befoteTest(){
+    @BeforeMethod
+    public void beforeMethod(){
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://taqc-opencart.epizy.com/");
-        driver.findElements(By.tagName("button")).get(7).click();
-        driver.findElement(By.className("list-inline")).findElement(By.xpath("//a[@title='Shopping Cart']/..")).click();
+        driver.findElement(By.cssSelector("a[href*='id=43']")).click();
+        driver.findElement(By.cssSelector("#button-cart")).click();
+        driver.findElement(By.cssSelector("a[title='Shopping Cart']")).click();
+    }
+
+    @AfterMethod
+    public void afterTest(){
+        driver.quit();
     }
 
     @Test
     public void usdInCart() {
-        driver.findElements(By.className("btn-group")).get(0).click();
-        driver.findElements(By.className("dropdown-menu")).get(0).findElements(By.tagName("li")).get(2).click();
-        String price = driver.findElement(By.className("table-responsive")).
-                findElements(By.tagName("tbody")).get(0).findElements(By.tagName("td")).get(4).getText();
-        char usd = price.charAt(0);
+        driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle")).click();
+        driver.findElement(By.cssSelector(".currency-select.btn.btn-link.btn-block[name='USD']")).click();
+        char usd = driver.findElement(By.xpath("//td[@class='text-left']/div[@class='input-group btn-block']/.." +
+                "/following-sibling::td[1]")).getText().charAt(0);
         Assert.assertEquals(usd, '$', "Not Equals");
     }
 
     @Test
     public void euroInCart() {
-        driver.findElements(By.className("btn-group")).get(0).click();
-        driver.findElements(By.className("dropdown-menu")).get(0).findElements(By.tagName("li")).get(0).click();
-        String price1 = driver.findElement(By.className("table-responsive")).
-                findElements(By.tagName("tbody")).get(0).findElements(By.tagName("td")).get(4).getText();
-        char euro = price1.charAt(6);
+        driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle")).click();
+        driver.findElement(By.cssSelector(".currency-select.btn.btn-link.btn-block[name='EUR']")).click();
+        char euro = driver.findElement(By.xpath("//td[@class='text-left']/div[@class='input-group btn-block']/.." +
+                "/following-sibling::td[1]")).getText().charAt(6);
         Assert.assertEquals(euro, '€', "Not Equals");
     }
 
     @Test
     public void pundInCart() {
-        driver.findElements(By.className("btn-group")).get(0).click();
-        driver.findElements(By.className("dropdown-menu")).get(0).findElements(By.tagName("li")).get(1).click();
-        String price2 = driver.findElement(By.className("table-responsive")).
-                findElements(By.tagName("tbody")).get(0).findElements(By.tagName("td")).get(4).getText();
-        char pound = price2.charAt(0);
+        driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle")).click();
+        driver.findElement(By.cssSelector(".currency-select.btn.btn-link.btn-block[name='GBP']")).click();
+        char pound = driver.findElement(By.xpath("//td[@class='text-left']/div[@class='input-group btn-block']/.." +
+                "/following-sibling::td[1]")).getText().charAt(0);
         Assert.assertEquals(pound, '£', "Not Equals");
     }
 
