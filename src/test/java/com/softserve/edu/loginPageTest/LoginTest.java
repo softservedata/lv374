@@ -33,20 +33,22 @@ public class LoginTest {
 	 */
 	@BeforeClass
 	public void setUp() throws Exception {
+		System.out.println("this.getClass().getResource(\"/chromedriver-windows-32bit.exe\").getPath() = "
+				+ this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("http://taqc-opencart.epizy.com");
 	}
 
 	/**
 	 * called before every test method. Get browser to main page
+	 * 
 	 * @throws Exception
 	 */
 	@BeforeMethod
 	public void setUpMethod() throws Exception {
-		driver.get("http://taqc-opencart.epizy.com");
+		driver.get("http://192.168.227.130/opencart/upload/");
 	}
 
 	/**
@@ -56,7 +58,7 @@ public class LoginTest {
 	 */
 	@AfterMethod
 	public void tearDownMethod() throws Exception {
-		driver.get("http://taqc-opencart.epizy.com/index.php?route=account/logout");
+		driver.get("http://192.168.227.130/opencart/upload/index.php?route=account/logout");
 	}
 
 	/**
@@ -74,14 +76,9 @@ public class LoginTest {
 	 */
 	@Test
 	public void checkLogin() {
-		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
-		driver.findElement(By.xpath("//a[text()='Login']")).click();
-		driver.findElement(By.name("email")).click();
-		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys("correct@email.com");
-		driver.findElement(By.name("password")).click();
-		driver.findElement(By.name("password")).clear();
-		driver.findElement(By.name("password")).sendKeys("123" + Keys.ENTER);
+		openLoginPage();
+		sendKeysToField("email", "correct@email.com");
+		sendKeysToField("password", "123" + Keys.ENTER);
 		String expected = "Warning: No match for E-Mail Address and/or Password.";
 		String actual = driver.findElement(By.xpath("//div[contains(@class, 'alert alert-danger')]")).getText();
 		Assert.assertEquals(actual, expected);
@@ -92,14 +89,9 @@ public class LoginTest {
 	 */
 	@Test
 	public void wrongPasswordTest() {
-		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
-		driver.findElement(By.xpath("//a[text()='Login']")).click();
-		driver.findElement(By.name("email")).click();
-		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys("qwerty@mail.com");
-		driver.findElement(By.name("password")).click();
-		driver.findElement(By.name("password")).clear();
-		driver.findElement(By.name("password")).sendKeys("123" + Keys.ENTER);
+		openLoginPage();
+		sendKeysToField("email", "slavik_klymovets@ukr.net");
+		sendKeysToField("password", "123" + Keys.ENTER);
 		String expected = "Warning: No match for E-Mail Address and/or Password.";
 		String actual = driver.findElement(By.xpath("//div[contains(@class, 'alert alert-danger')]")).getText();
 		Assert.assertEquals(actual, expected);
@@ -110,14 +102,22 @@ public class LoginTest {
 	 */
 	@Test
 	public void correctDataTest() {
-		driver.findElement(By.name("email")).click();
-		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys("qwerty@mail.com");
-		driver.findElement(By.name("password")).click();
-		driver.findElement(By.name("password")).clear();
-		driver.findElement(By.name("password")).sendKeys("qwerty" + Keys.ENTER);
+		openLoginPage();
+		sendKeysToField("email", "slavik_klymovets@ukr.net");
+		sendKeysToField("password", "qwerty" + Keys.ENTER);
 		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
 		driver.findElement(By.linkText("Logout")).click();
+	}
+
+	public void sendKeysToField(String field, String keys) {
+		driver.findElement(By.name(field)).click();
+		driver.findElement(By.name(field)).clear();
+		driver.findElement(By.name(field)).sendKeys(keys);
+	}
+
+	public void openLoginPage() {
+		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
+		driver.findElement(By.xpath("//a[text()='Login']")).click();
 	}
 
 }
