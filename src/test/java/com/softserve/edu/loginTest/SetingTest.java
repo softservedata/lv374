@@ -88,6 +88,9 @@ public class SetingTest {
 		return driver.findElement(By.xpath(xpath));
 	}
 
+	/**
+	 * method open login page
+	 */
 	public void openLoginPage() {
 		driver.findElement(By.xpath("//a[contains(@title, 'My Account')]")).click();
 		driver.findElement(By.xpath("//a[text()='Login']")).click();

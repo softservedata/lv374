@@ -23,8 +23,13 @@ public class ForgotPasswordTest extends SetingTest {
 		List<String> tabs = openNewTab("https://mail.ukr.net/");
 		inputData(getField("//input[contains(@id, 'id-l')]"), email);
 		inputData(getField("//input[contains(@id, 'id-p')]"), "Lv374_taqc" + Keys.ENTER);
+		findMail("xpath");
 	}
-	
+
+	private void findMail(String xpath) {
+		// todo
+	}
+
 	/**
 	 * send unexisting email in forgot password field
 	 */

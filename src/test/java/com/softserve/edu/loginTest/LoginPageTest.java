@@ -12,6 +12,10 @@ import org.testng.annotations.Test;
  */
 public class LoginPageTest extends SetingTest {
 
+	
+	/**
+	 * try to login with correct data
+	 */
 	@Test
 	public void correctLoginTest() {
 		openLoginPage();
@@ -22,6 +26,9 @@ public class LoginPageTest extends SetingTest {
 		Assert.assertNotEquals(loginPage, actualPage);
 	}
 
+	/**
+	 * try to log in with incorrect data
+	 */
 	@Test
 	public void incorrectLoginTest() {
 		openLoginPage();
