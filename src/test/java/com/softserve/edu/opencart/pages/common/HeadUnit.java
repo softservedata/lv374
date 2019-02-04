@@ -4,8 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.shop.HomePage;
+import com.softserve.edu.opencart.pages.shop.SearchPage;
+
 public class HeadUnit {
-	
+	protected final String TAG_ATTRIBUTE_VALUE = "value";
+
 	protected WebDriver driver;
 	//
 	private WebElement logo;
@@ -29,7 +33,69 @@ public class HeadUnit {
 
 	// Page Object
 
+	// logo
+	public WebElement getLogo() {
+		return logo;
+	}
+
+	public void clickLogo() {
+		getLogo().click();
+	}
+
+	// searchField
+	public WebElement getSearchField() {
+		return searchField;
+	}
+
+	public String getSearchProductFieldText() {
+		return getSearchField().getAttribute(TAG_ATTRIBUTE_VALUE);
+	}
+
+	public void setSearchProductField(String text) {
+		getSearchField().sendKeys(text);
+	}
+
+	public void clearSearchProductField() {
+		getSearchField().clear();
+	}
+
+	public void clickSearchProductField() {
+		getSearchField().click();
+	}
+
+	// searchButton
+	public WebElement getSearchButton() {
+		return searchButton;
+	}
+
+	public void clickSearchButton() {
+		getSearchButton().click();
+	}
+	
 	// Functional
+	
+	public void searchText(String text) {
+		clickSearchProductField();
+		clearSearchProductField();
+		setSearchProductField(text);
+		clickSearchButton();
+	}
 
 	// Business Logic
+	
+	public SearchPage successfulSearch(String text) {
+		searchText(text);
+		return new SearchPage(driver);
+	}
+
+	public SearchPage unsuccessfulSearch(String text) {
+		searchText(text);
+		return new SearchPage(driver);
+	}
+
+	public HomePage gotoHomePage() {
+		clickLogo();
+		return new HomePage(driver);
+	}
+	
 }
