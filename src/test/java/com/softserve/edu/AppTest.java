@@ -42,7 +42,7 @@ public class AppTest {
 //		System.out.println("this.getClass().getResource(\"/chromedriver\").getPath() = "
 //				+ this.getClass().getResource("/chromedriver").getPath());
 //		System.setProperty("webdriver.chrome.driver",
-//				this.getClass().getResource("/chromedriver").getPath().substring(1));
+//				this.getClass().getResource("/chromedriver").getPath());
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//
