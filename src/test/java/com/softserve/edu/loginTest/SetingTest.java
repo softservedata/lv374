@@ -70,7 +70,7 @@ public class SetingTest {
 	 * @param data data to be inputed
 	 */
 	public void inputData(WebElement element, String data) {
-		element.click();
+//		element.click();
 		element.clear();
 		element.sendKeys(data);
 	}
