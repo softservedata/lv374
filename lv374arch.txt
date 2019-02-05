@@ -21,8 +21,12 @@ com.softserve.edu.opencart.pages.common;
 NavigationUnit
 
 com.softserve.edu.opencart.pages.shop;
-SearchPage
+SearchUnit
+SuccessfulSearchPage
+UnsuccessfulSearchPage
 SearchResultComponent
+ SelectInputSort
+ SelectInputLimit
 
 com.softserve.edu.opencart.pages.shop;
 LeftMenuUnit

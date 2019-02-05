@@ -5,9 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.pages.shop.HomePage;
-import com.softserve.edu.opencart.pages.shop.SearchPage;
+import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
+import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
-public class HeadUnit {
+public abstract class HeadUnit {
 	protected final String TAG_ATTRIBUTE_VALUE = "value";
 
 	protected WebDriver driver;
@@ -83,14 +84,14 @@ public class HeadUnit {
 
 	// Business Logic
 	
-	public SearchPage successfulSearch(String text) {
+	public SuccessfulSearchPage successfulSearch(String text) {
 		searchText(text);
-		return new SearchPage(driver);
+		return new SuccessfulSearchPage(driver);
 	}
 
-	public SearchPage unsuccessfulSearch(String text) {
+	public UnsuccessfulSearchPage unsuccessfulSearch(String text) {
 		searchText(text);
-		return new SearchPage(driver);
+		return new UnsuccessfulSearchPage(driver);
 	}
 
 	public HomePage gotoHomePage() {
