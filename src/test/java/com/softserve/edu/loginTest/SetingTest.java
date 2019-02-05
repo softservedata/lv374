@@ -30,10 +30,6 @@ public class SetingTest {
 	 */
 	@BeforeClass
 	public void setUp() throws Exception {
-		System.out.println("this.getClass().getResource(\"/chromedriver-windows-32bit.exe\").getPath() = "
-				+ this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
-		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
@@ -45,7 +41,7 @@ public class SetingTest {
 	 */
 	@BeforeMethod
 	public void setUpMethod() throws Exception {
-		driver.get("http://192.168.227.131/opencart/upload/");
+		driver.get("http://localhost/opencart/upload/");
 	}
 
 	/**
@@ -55,7 +51,7 @@ public class SetingTest {
 	 */
 	@AfterMethod
 	public void tearDownMethod() throws Exception {
-		driver.get("http://192.168.227.131/opencart/upload/index.php?route=account/logout");
+		driver.get("http://localhost/opencart/upload/index.php?route=account/logout");
 	}
 
 	/**
