@@ -33,6 +33,7 @@ public class ForgotPasswordTest extends SetingTest {
 		driver.close();
 	}
 
+	//check error
 	private void newPass(String password) {
 		inputData(getField("//input[contains(@id, 'input-password')]"), password);
 		inputData(getField("//input[contains(@id, 'input-confirm')]"), password + Keys.ENTER);
