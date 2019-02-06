@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class SearchResultComponent {
 
-	public enum SelectInputSort {
+	public static enum SelectInputSort {
 		DEFAULT("Default"),
 		NAME_AZ("Name (A - Z)"),
 		NAME_ZA("Name (Z - A)"),
@@ -36,7 +36,7 @@ public class SearchResultComponent {
 	
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-	public enum SelectInputLimit {
+	public static enum SelectInputLimit {
 		FIFTEEN("15"),
 		TWENTY_FIVE("25"),
 		FIFTY("50"),

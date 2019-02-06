@@ -17,7 +17,7 @@ public class SearchTest {
 				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get("http://192.168.103.185/opencart/upload/");
+		driver.get("http://192.168.103.181/opencart/upload/");
 		Thread.sleep(1000); // For Presentation Only
 		//
 		// Steps
