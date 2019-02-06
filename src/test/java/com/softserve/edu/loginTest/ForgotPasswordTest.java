@@ -33,28 +33,34 @@ public class ForgotPasswordTest extends SetingTest {
 		driver.close();
 	}
 
-	//check error
+	// check error
 	private void newPass(String password) {
 		inputData(getField("//input[contains(@id, 'input-password')]"), password);
 		inputData(getField("//input[contains(@id, 'input-confirm')]"), password + Keys.ENTER);
 	}
 
+	/**
+	 * find recovery password link in letter
+	 * 
+	 * @param xpath path of link in letter
+	 * @throws Exception
+	 */
 	private void findMail(String xpath) throws Exception {
 		driver.findElement(By.xpath("//span[text()='Спам']")).click();
-		// this should helps
 		WebElement element = null;
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		int counter = 0; // optional, just to cut off infinite waiting
+		int counter = 0;
 		while (element == null && counter != 10) {
 			try {
 				element = wait.until(ExpectedConditions
 						.presenceOfElementLocated(By.xpath("//tr[@class='msglist__row unread icon0  ui-draggable']")));
-				element.findElement(By.xpath("//td[@class='msglist__row-address']")).click();;
+				element.findElement(By.xpath("//td[@class='msglist__row-address']")).click();
+				;
 			} catch (Exception e) {
 				driver.navigate().refresh();
 				counter++;
 			}
-			if(counter >= 10) {
+			if (counter >= 10) {
 				throw new TimeoutException();
 			}
 		}
@@ -62,7 +68,7 @@ public class ForgotPasswordTest extends SetingTest {
 	}
 
 	/**
-	 * send unexisting email in forgot password field
+	 * send un existing email in forgot password field
 	 */
 	@Test
 	public void unexistingEmailTest() {
