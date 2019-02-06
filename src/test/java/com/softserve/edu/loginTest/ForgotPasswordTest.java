@@ -25,37 +25,48 @@ public class ForgotPasswordTest extends SetingTest {
 		forgotPasswordPage();
 		String email = "opencart_test@ukr.net";
 		inputData(getField("//input[contains(@name, 'email')]"), email + Keys.ENTER);
+		Thread.sleep(1000);
 		List<String> tabs = openNewTab("https://mail.ukr.net/");
 		inputData(getField("//input[contains(@id, 'id-l')]"), email);
 		inputData(getField("//input[contains(@id, 'id-p')]"), "Lv374_taqc" + Keys.ENTER);
+		Thread.sleep(1000);
 		findMail("//pre//a");
+		tabs = closeCurrentTab();
+		Thread.sleep(1000);
 		newPass("qwerty");
-		driver.close();
+		Thread.sleep(1000);
 	}
 
-	// check error
 	private void newPass(String password) {
-		inputData(getField("//input[contains(@id, 'input-password')]"), password);
-		inputData(getField("//input[contains(@id, 'input-confirm')]"), password + Keys.ENTER);
+		driver.findElement(By.xpath("//fieldset//input[@id='input-password']")).click();
+		driver.findElement(By.xpath("//fieldset//input[@id='input-password']")).clear();
+		driver.findElement(By.xpath("//fieldset//input[@id='input-password']")).sendKeys(password);
+		driver.findElement(By.xpath("//fieldset//input[@id='input-confirm']")).click();
+		driver.findElement(By.xpath("//fieldset//input[@id='input-confirm']")).clear();
+		driver.findElement(By.xpath("//fieldset//input[@id='input-confirm']")).sendKeys(password + Keys.ENTER);
+//		inputData(getField("//fieldset//input[@id='input-password']"), password);
+//		inputData(getField("//fieldset//input[@id='input-confirm']"), password + Keys.ENTER);
 	}
 
 	/**
 	 * find recovery password link in letter
 	 * 
-	 * @param xpath path of link in letter
+	 * @param xpath path of element in letter
 	 * @throws Exception
 	 */
 	private void findMail(String xpath) throws Exception {
 		driver.findElement(By.xpath("//span[text()='Спам']")).click();
 		WebElement element = null;
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 3);
 		int counter = 0;
 		while (element == null && counter != 10) {
 			try {
-				element = wait.until(ExpectedConditions
+				driver.findElement(By.xpath("//body")).click();;
+				element = (new WebDriverWait(driver, 3)).until(ExpectedConditions
 						.presenceOfElementLocated(By.xpath("//tr[@class='msglist__row unread icon0  ui-draggable']")));
+//				element = wait.until(ExpectedConditions
+//						.presenceOfElementLocated(By.xpath("//tr[@class='msglist__row unread icon0  ui-draggable']")));
 				element.findElement(By.xpath("//td[@class='msglist__row-address']")).click();
-				;
 			} catch (Exception e) {
 				driver.navigate().refresh();
 				counter++;
@@ -65,18 +76,6 @@ public class ForgotPasswordTest extends SetingTest {
 			}
 		}
 		driver.findElement(By.xpath(xpath)).click();
-	}
-
-	/**
-	 * send un existing email in forgot password field
-	 */
-	@Test
-	public void unexistingEmailTest() {
-		forgotPasswordPage();
-		String currentUrl = driver.getCurrentUrl();
-		inputData(getField("//input[contains(@name, 'email')]"), "hugfdgfegper" + Keys.ENTER);
-		String newUrl = driver.getCurrentUrl();
-		Assert.assertEquals(currentUrl, newUrl);
 	}
 
 	/**
@@ -90,6 +89,13 @@ public class ForgotPasswordTest extends SetingTest {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(tabs.size() - 1));
 		driver.get(url);
+		return tabs;
+	}
+
+	public ArrayList<String> closeCurrentTab() {
+		((JavascriptExecutor) driver).executeScript("window.close()");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(tabs.size() - 1));
 		return tabs;
 	}
 
