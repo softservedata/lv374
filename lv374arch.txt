@@ -16,6 +16,8 @@ HeadUnit
 com.softserve.edu.opencart.pages.shop;
 HomePage
 ProductComponent
+ProductComponentsContainer
+//ProductComponentFactory
 
 com.softserve.edu.opencart.pages.common;
 NavigationUnit
@@ -31,3 +33,25 @@ SearchResultComponent
 com.softserve.edu.opencart.pages.shop;
 LeftMenuUnit
 LeftResultPage
+
+--------------------------------------------------
+
+	public WebElement get***() {
+		return ***;
+	}
+
+	public String get***Text() {
+		return get***().getAttribute(TAG_ATTRIBUTE_VALUE);
+	}
+
+	public void set***Field(String text) {
+		get***().sendKeys(text);
+	}
+
+	public void clear***() {
+		get***().clear();
+	}
+
+	public void click***() {
+		get***().click();
+	}

@@ -17,6 +17,19 @@ public final class ProductRepository {
 				"101.00"); 
 	}
 
+	public static Product getIPodNano() {
+		return new Product("iPod", "iPod Nano",
+				"Video in your pocket. Its the small iPod with one very big idea: video. The worlds most..",
+				"100.00"); 
+	}
+
+	public static Product getIPodNanoShortDescription() {
+		return new Product("iPod", "iPod Nano",
+				"Its the small iPod with one very big idea: video. The worlds most",
+				"100.00"); 
+	}
+	
+	
 	public static Product getInvalidProduct() {
 		return new Product("ccc", "aaa",
 				"bebebe",

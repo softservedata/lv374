@@ -1,8 +1,5 @@
 package com.softserve.edu.opencart.pages.shop;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,12 +62,11 @@ public class SearchResultComponent {
 	private Select inputSort;
 	private Select inputLimit;
 	//
-	private List<ProductComponent> productComponents;
+	private ProductComponentsContainer productComponentsContainer;
 	
 	public SearchResultComponent(WebDriver driver) {
 		this.driver = driver;
 		initElements();
-		initProductComponents();
 	}
 
 	private void initElements() {
@@ -79,13 +75,8 @@ public class SearchResultComponent {
 		gridView = driver.findElement(By.id("grid-view"));
 		inputSort = new Select(driver.findElement(By.id("input-sort")));
 		inputLimit = new Select(driver.findElement(By.id("input-limit")));
-	}
-
-	private void initProductComponents() {
-		productComponents = new ArrayList<>();
-		for (WebElement current : driver.findElements(By.cssSelector(".product-layout"))) {
-			productComponents.add(new ProductComponent(current));
-		}
+		//
+		productComponentsContainer = new ProductComponentsContainer(driver);
 	}
 
 	// Page Object
@@ -150,9 +141,9 @@ public class SearchResultComponent {
 		getInputLimitAsSelect().selectByVisibleText(text);
 	}
 	
-	// productComponents
-	public List<ProductComponent> getProductComponents() {
-		return productComponents;
+	// productComponentsContainer
+	public ProductComponentsContainer getProductComponentsContainer() {
+		return productComponentsContainer;
 	}
 
 	// Functional
@@ -165,34 +156,6 @@ public class SearchResultComponent {
 	// inputLimit
 	public void selectInputLimitByVisibleText(SelectInputLimit selectInputLimit) {
 		selectInputLimitByVisibleText(selectInputLimit.toString());
-	}
-	
-	// productComponents
-	public ProductComponent getProductComponentByName(String productName) {
-		ProductComponent result = null;
-		for (ProductComponent current : getProductComponents()) {
-			if (current.getNameText().toLowerCase()
-					.equals(productName.toLowerCase())) {
-				result = current;
-			}
-		}
-		if (result == null) {
-			// TODO Develop Custom Exception 
-			throw new RuntimeException("ProductName: " + productName + " not Found.");
-		}
-		return result;
-	}
-	
-	public String getProductComponentPriceByName(String productName) {
-		return getProductComponentByName(productName).getPriceText();
-	}
-
-	public void clickProductComponentAddToCartButtonByName(String productName) {
-		getProductComponentByName(productName).clickAddToCartButton();
-	}
-
-	public void clickProductComponentAddToWishButtonByName(String productName) {
-		getProductComponentByName(productName).clickAddToWishButton();
 	}
 
 	// Business Logic

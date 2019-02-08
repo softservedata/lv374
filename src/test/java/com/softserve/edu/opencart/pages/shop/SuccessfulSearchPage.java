@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.shop;
 
 import org.openqa.selenium.WebDriver;
 
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.shop.SearchResultComponent.SelectInputLimit;
 import com.softserve.edu.opencart.pages.shop.SearchResultComponent.SelectInputSort;
 
@@ -44,6 +45,18 @@ public class SuccessfulSearchPage extends SearchUnit {
 	public SuccessfulSearchPage chooseInputLimitByVisibleText(SelectInputLimit selectInputLimit) {
 		getSearchResultComponent().selectInputLimitByVisibleText(selectInputLimit);
 		return new SuccessfulSearchPage(driver);
+	}
+
+	public String getProductComponentPrice(Product product) {
+		return getSearchResultComponent()
+					.getProductComponentsContainer()
+					.getProductComponentPriceByProduct(product);
+	}
+
+	public String getProductComponentDescription(Product product) {
+		return getSearchResultComponent()
+					.getProductComponentsContainer()
+					.getProductComponentDescriptionByProduct(product);
 	}
 
 }

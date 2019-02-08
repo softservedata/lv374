@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
 public abstract class HeadUnit {
 	protected final String TAG_ATTRIBUTE_VALUE = "value";
+	protected final String TAG_ATTRIBUTE_SRC = "src";
 
 	protected WebDriver driver;
 	//
@@ -37,6 +39,14 @@ public abstract class HeadUnit {
 	// logo
 	public WebElement getLogo() {
 		return logo;
+	}
+
+	public String getLogoAttributeText(String attribute) {
+		return getLogo().getAttribute(attribute).trim();
+	}
+
+	public String getLogoAttributeSrcText() {
+		return getLogoAttributeText(TAG_ATTRIBUTE_SRC);
 	}
 
 	public void clickLogo() {
@@ -89,9 +99,17 @@ public abstract class HeadUnit {
 		return new SuccessfulSearchPage(driver);
 	}
 
+	public SuccessfulSearchPage successfulSearch(Product validProduct) {
+		return successfulSearch(validProduct.getSearchText());
+	}
+
 	public UnsuccessfulSearchPage unsuccessfulSearch(String text) {
 		searchText(text);
 		return new UnsuccessfulSearchPage(driver);
+	}
+
+	public UnsuccessfulSearchPage unsuccessfulSearch(Product invalidProduct) {
+		return unsuccessfulSearch(invalidProduct.getSearchText());
 	}
 
 	public HomePage gotoHomePage() {

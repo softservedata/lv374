@@ -56,7 +56,8 @@ public class ProductComponent {
     }
     
     public String getPartialDescriptionText() {
-        return getPartialDescription().getText();
+    	// TODO Develop Filter, Remove Spaces, Tabs, etc.
+        return getPartialDescription().getText().trim();
     }
 
     // price;
