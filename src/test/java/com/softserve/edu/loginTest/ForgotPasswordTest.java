@@ -16,13 +16,14 @@ import org.testng.annotations.Test;
 public class ForgotPasswordTest extends SetingTest {
 
 	/**
-	 * send existing email in forgot password field
+	 * Positive test State Transition send existing email in forgot password field
 	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void existingEmailTest() throws Exception {
 		forgotPasswordPage();
+		Thread.sleep(1000);
 		String email = "opencart_test@ukr.net";
 		inputData(getField("//input[contains(@name, 'email')]"), email + Keys.ENTER);
 		Thread.sleep(1000);
@@ -37,6 +38,11 @@ public class ForgotPasswordTest extends SetingTest {
 		Thread.sleep(1000);
 	}
 
+	/**
+	 * Set new password
+	 * 
+	 * @param password password to be set
+	 */
 	private void newPass(String password) {
 		driver.findElement(By.xpath("//fieldset//input[@id='input-password']")).click();
 		driver.findElement(By.xpath("//fieldset//input[@id='input-password']")).clear();
@@ -61,7 +67,7 @@ public class ForgotPasswordTest extends SetingTest {
 		int counter = 0;
 		while (element == null && counter != 10) {
 			try {
-				driver.findElement(By.xpath("//body")).click();;
+				driver.findElement(By.xpath("//body")).click();
 				element = (new WebDriverWait(driver, 3)).until(ExpectedConditions
 						.presenceOfElementLocated(By.xpath("//tr[@class='msglist__row unread icon0  ui-draggable']")));
 //				element = wait.until(ExpectedConditions
@@ -92,6 +98,11 @@ public class ForgotPasswordTest extends SetingTest {
 		return tabs;
 	}
 
+	/**
+	 * close current tab and switch to previous
+	 * 
+	 * @return list of all opened tabs
+	 */
 	public ArrayList<String> closeCurrentTab() {
 		((JavascriptExecutor) driver).executeScript("window.close()");
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());

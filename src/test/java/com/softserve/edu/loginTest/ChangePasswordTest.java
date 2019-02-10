@@ -9,34 +9,45 @@ import org.testng.annotations.Test;
 public class ChangePasswordTest extends SetingTest {
 
 	/**
+	 * Negative test equivalence partition
 	 * change too long password
+	 * @throws InterruptedException 
 	 */
 	@Test
-	public void changePasswordTest3() {
+	public void changePasswordTest3() throws InterruptedException {
 		openLoginPage();
+		Thread.sleep(1000);
 		login("opencart_test@ukr.net", "qwerty");
+		Thread.sleep(1000);
 		changePasswordPage().click();
 		String url = driver.getCurrentUrl();
 		newPass("qwertyuiopasdfghjklzxcvbnm");
+		Thread.sleep(1000);
 		String newUrl = driver.getCurrentUrl();
 		Assert.assertEquals(url, newUrl);
 	}
 	
 	/**
+	 * negative test boundary value
 	 * change too short password
+	 * @throws InterruptedException 
 	 */
 	@Test
-	public void changePasswordTest2() {
+	public void changePasswordTest2() throws InterruptedException {
 		openLoginPage();
+		Thread.sleep(1000);
 		login("opencart_test@ukr.net", "qwerty");
+		Thread.sleep(1000);
 		changePasswordPage().click();
 		String url = driver.getCurrentUrl();
 		newPass("qwe");
+		Thread.sleep(1000);
 		String newUrl = driver.getCurrentUrl();
 		Assert.assertEquals(url, newUrl);
 	}
 
 	/**
+	 * Positive test equivalence partition
 	 * change the same password
 	 * 
 	 * @throws InterruptedException
@@ -44,10 +55,13 @@ public class ChangePasswordTest extends SetingTest {
 	@Test
 	public void changePasswordTest1() throws InterruptedException {
 		openLoginPage();
+		Thread.sleep(1000);
 		login("opencart_test@ukr.net", "qwerty");
+		Thread.sleep(1000);
 		changePasswordPage().click();
 		String url = driver.getCurrentUrl();
 		newPass("qwerty");
+		Thread.sleep(1000);
 		String newUrl = driver.getCurrentUrl();
 		Assert.assertNotEquals(url, newUrl);
 	}
