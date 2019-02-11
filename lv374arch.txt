@@ -140,7 +140,7 @@ Tasks:
 		RightLogoutUnit/ForgottenPasswordPage
 
 
-//- Product Comparison, add to comparation, check table
+//- Product Comparison, add to comparation, check table // for Maksym
 
 - Feedback. Goto Product Details (click name item), add review comments, View comments
   *Confirm from Admin pannel, review all comments
