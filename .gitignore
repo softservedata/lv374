@@ -50,6 +50,7 @@ hs_err_pid*
 /reports/
 /.idea/
 *.iml
+*.ucls
 
 # Multi Modules Project
 /**/.externalToolBuilders/
@@ -69,6 +70,7 @@ hs_err_pid*
 /**/af.reporting
 /**/.idea/
 /**/*.iml
+/**/*.ucls
 
 # Ignore binary
 /.allure/
