@@ -1,0 +1,175 @@
+com.softserve.edu.opencart.pages;
+com.softserve.edu.opencart.pages.common;
+com.softserve.edu.opencart.pages.account;
+com.softserve.edu.opencart.pages.shop;
+
+Naming
+Page
+Component
+Unit Part (Element, Block)
+
+--------------------------------------------------
+
+com.softserve.edu.opencart.pages.common;
+HeadUnit
+DropDownComponent
+MainMenuComponent
+CartProductComponent
+CartProductsContainer
+CartEmptyComponent
+
+com.softserve.edu.opencart.pages.shop;
+HomePage
+ProductComponent
+ProductComponentsContainer
+//ProductComponentFactory
+ShoppingCartComponent
+ShoppingCartPage
+
+com.softserve.edu.opencart.pages.common;
+NavigationUnit
+ProductComparisonComponent
+ProductComparisonPage
+
+com.softserve.edu.opencart.pages.shop;
+SearchUnit
+SuccessfulSearchPage
+UnsuccessfulSearchPage
+SearchResultComponent
+ SelectInputSort
+ SelectInputLimit
+
+com.softserve.edu.opencart.pages.shop;
+LeftMenuUnit
+LeftResultPage
+
+com.softserve.edu.opencart.pages.account
+RightMenuUnit
+ MyAccountPage
+ AddressBookPage
+ WishListPage
+ OrderHistoryPage
+ DownloadsPage
+ RecurringPaymentsPage
+ RewardPointsPage
+ ReturnsPage
+ TransactionPage
+ NewsletterPage
+
+RightLoginUnit
+ SuccessRegisterPage
+ PasswordPage
+
+RightLogoutUnit
+ LoginPage
+ RegisterPage
+ ForgottenPasswordPage
+ RegisterAccountPage
+ AccountLogoutPage
+
+--------------------------------------------------
+
+Tasks:
+
+- Search items (textbox, button, etc.)
+  Search Criteria,  choose category, sort by, show items
+  Search in product descriptions, Search in subcategories
+  Button List/Grid
+- Product Comparison, add to comparation, check table
+	Maksym Kondratiuk
+		ProductComparisonComponent
+		ProductComparisonPage
+
+- Check horizontal and vertical menu (content equals)
+  Use Pagination, Change menu from admin pannel
+
+- Cart Functional
+  Add to Cart
+  View Cart by button click on main page, Delete button, check sum, etc.
+  Login and press Shopping Cart on top menu, Check button (refresh, delete), price sum
+	Andrii Teterka
+		ShoppingCartPage
+		ProductComponent
+		ProductComponentsContainer
+		CartProductComponent
+		CartProductsContainer
+		CartEmptyComponent
+		ShoppingCartComponent
+		ShoppingCartPage
+
+- Wish List
+  Login and press Wish List on top menu, Check button (refresh, delete), price sum
+	Andrii Melnyk
+		HeadUnit/WishListClick
+		RightMenuUnit
+		WishListPage
+		RightLoginUnit
+
+- Currency
+  Choose Product, change Currency
+  Use Shopping Cart and Wish List
+	Pavlo Voluikevych
+		DropDownComponent
+		HeadUnit/CurrencyClick
+		ShoppingCartPage/prices
+		WishListPage/prices
+		CartProductComponent/prices
+		CartProductsContainer/prices
+		CartEmptyComponent/prices
+		Use (Big)Decimal Regex
+
+- Register new user
+  Edit Account for exist user
+	Iuliia Shpintal
+                HeadUnit/Register Dropdown
+		RightMenuUnit/Register
+		RightLogoutUnit/RegisterPage
+		RightLoginUnit/SuccessRegisterPage
+
+- Login Form
+  Change password
+  Forgotten Password (email)
+  *Lock/Unlock user (from DB/Admin Panel)
+	Yaroslav Klymovets
+		RightMenuUnit/Login
+		RightLogoutUnit/LoginPage
+		RightLoginUnit/PasswordPage
+		RightLogoutUnit/ForgottenPasswordPage
+
+
+//- Product Comparison, add to comparation, check table // for Maksym
+
+- Feedback. Goto Product Details (click name item), add review comments, View comments
+  *Confirm from Admin pannel, review all comments
+
+- Address Book Entries, add, edit, delete, etc.
+  History, etc.
+
+	Andrii Melnyk
+	Andrii Teterka
+	Iuliia Shpintal
+	Maksym Kondratiuk
+	Pavlo Voluikevych
+	Yaroslav Klymovets
+
+--------------------------------------------------
+
+	public WebElement get***() {
+		return ***;
+	}
+
+	public String get***Text() {
+		return get***().getAttribute(TAG_ATTRIBUTE_VALUE);
+	}
+
+	public void set***Field(String text) {
+		get***().sendKeys(text);
+	}
+
+	public void clear***() {
+		get***().clear();
+	}
+
+	public void click***() {
+		get***().click();
+	}
