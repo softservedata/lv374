@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
@@ -32,7 +31,8 @@ public class OpencartTest {
         System.setProperty("webdriver.chrome.driver",
                 "C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     //"AfterClass" annotation closes chrome browser when the all tests in the class will be executed.
