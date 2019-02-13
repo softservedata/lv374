@@ -17,7 +17,6 @@ public class CartProductComponent extends CartProductContainer {
 		super(driver);
 		initElements();
 	}
-
 	private void initElements() {
 		cartProductImg = driver.findElement(By.xpath(".//td[@class='text-center']/a/img"));
 		cartProductName = driver.findElement(By.xpath(".//td[@class='text-left']/a"));
