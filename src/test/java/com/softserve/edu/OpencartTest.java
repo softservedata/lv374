@@ -1,5 +1,7 @@
 package com.softserve.edu;
 
+import com.softserve.edu.opencart.data.RegistrationUser;
+import com.softserve.edu.opencart.data.RegistrationUserRepository;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -616,5 +618,22 @@ public class OpencartTest {
         //Check if actual result contains needed message
         Assert.assertTrue(actual.contains("First Name cannot contain digits"),
                 "Test accepted first name with digits in it.");
+    }
+    //---------------------------------------------DEMO-3------------------------
+    @DataProvider
+    public Object[][] registerUserData(){
+        return new Object[][]{
+                {RegistrationUserRepository.getValidUser()},
+        };
+    }
+    @Test(dataProvider = "registerUserData")
+    public void registrationValidUser(RegistrationUser validUser){
+        //Click on "My Account" to open dropdown menu
+        driver.findElement(By.cssSelector(".fa.fa-user")).click();
+
+        //Click on "Register" label
+        driver.findElement(By.cssSelector("a[href*='register']")).click();
+
+
     }
 }

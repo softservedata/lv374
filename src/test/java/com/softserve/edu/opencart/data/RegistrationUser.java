@@ -1,9 +1,11 @@
 package com.softserve.edu.opencart.data;
 
+import com.softserve.edu.EmailRandomizer;
+
 public class RegistrationUser {
     private String firstName;
     private String lastName;
-    private String email;
+    private EmailRandomizer email;
     private String telephone;
     private String fax;
     private String company;
@@ -15,13 +17,13 @@ public class RegistrationUser {
     //region TODO
     private String password;
     private String passwordConfirm;
-    //private String privacyPolicyCheckBox;
-    //private String confirmButton;
+    //private String privacyPolicyCheckBox; TODO
+    //private String confirmButton; TODO
 
-    public RegistrationUser(String firstName, String lastName, String email,
+    public RegistrationUser(String firstName, String lastName, EmailRandomizer email,
                             String telephone, String fax, String company,
                             String address1, String address2, String city,
-                            String postCode, String password, String passwordConfirm){
+                            String postCode, String password, String passwordConfirm) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -35,51 +37,102 @@ public class RegistrationUser {
         this.password = password;
         this.passwordConfirm = passwordConfirm;
     }
-    public void setFirstName(String firstName){
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName){
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setEmail(String email){
+    public String getLastName(){
+        return lastName;
+    }
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void setEmail(EmailRandomizer email) {
         this.email = email;
     }
 
-    public void setTelephone(){
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public EmailRandomizer getEmail(){
+        return email;
+    }
+
+    public void setTelephone() {
         this.telephone = telephone;
     }
 
-    public void setFax(){
+    public String getTelephone(){
+        return telephone;
+    }
+
+    public void setFax() {
         this.fax = fax;
     }
 
-    public void setCompany(String company){
+    public String getFax(){
+        return fax;
+    }
+
+    public void setCompany(String company) {
         this.company = company;
     }
 
-    public void setAddress1(String address1){
+    public String getCompany(){
+        return company;
+    }
+
+    public void setAddress1(String address1) {
         this.address1 = address1;
     }
 
-    public void setAddress2(String address2){
+    public String getAddress1(){
+        return address1;
+    }
+
+    public void setAddress2(String address2) {
         this.address2 = address2;
     }
 
-    public void setCity(String city){
+    public String getAddress2(){
+        return address2;
+    }
+
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public void setPostCode(String postCode){
+    public String getCity(){
+        return city;
+    }
+
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 
-    public void setPassword(String password){
+    public String getPostCode(){
+        return postCode;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setPasswordConfirm(String passwordConfirm){
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getPasswordConfirm(){
+        return passwordConfirm;
     }
 }

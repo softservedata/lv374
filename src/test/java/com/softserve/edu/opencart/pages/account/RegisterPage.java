@@ -1,54 +1,72 @@
 package com.softserve.edu.opencart.pages.account;
 
+import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends RightLogoutUnit {
 
-    private WebElement firstNameInput;
-    private WebElement lastNameInput;
-    private WebElement emailInput;
-    private WebElement telephoneInput;
-    private WebElement faxInput;
-    private WebElement companyInput;
-    private WebElement address1Input;
-    private WebElement address2Input;
-    private WebElement cityInput;
-    private WebElement postCodeInput;
-    //country TODO
-    //region TODO
-    private WebElement passwordInput;
-    private WebElement passwordConfirmInput;
-    private WebElement privacyPolicyCheckBox;
-    private WebElement confirmButton;
+//    private WebElement firstNameInput;
+//    private WebElement lastNameInput;
+//    private WebElement emailInput;
+//    private WebElement telephoneInput;
+//    private WebElement faxInput;
+//    private WebElement companyInput;
+//    private WebElement address1Input;
+//    private WebElement address2Input;
+//    private WebElement cityInput;
+//    private WebElement postCodeInput;
+//    //country TODO
+//    //region TODO
+//    private WebElement passwordInput;
+//    private WebElement passwordConfirmInput;
+//    private WebElement privacyPolicyCheckBox;
+//    private WebElement confirmButton;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
-        initElements();
+        //initElements();
+        checkElements();
     }
 
-    private void initElements(){
-        firstNameInput = driver.findElement(By.cssSelector("#input-firstname"));
-        lastNameInput = driver.findElement(By.cssSelector("#input-lastname"));
-        emailInput = driver.findElement(By.cssSelector("#input-email"));
-        telephoneInput = driver.findElement(By.cssSelector("#input-telephone"));
-        faxInput = driver.findElement(By.cssSelector("#input-fax"));
-        companyInput = driver.findElement(By.cssSelector("#input-company"));
-        address1Input = driver.findElement(By.cssSelector("#input-address-1"));
-        address2Input = driver.findElement(By.cssSelector("#input-address-2"));
-        cityInput = driver.findElement(By.cssSelector("#input-city"));
-        postCodeInput = driver.findElement(By.cssSelector("#input-postcode"));
-        passwordInput = driver.findElement(By.cssSelector("#input-password"));
-        passwordConfirmInput = driver.findElement(By.cssSelector("#input-confirm"));
-        privacyPolicyCheckBox = driver.findElement(By.xpath("//input[@type='checkbox']"));
-        confirmButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
+//    private void initElements(){
+//        firstNameInput = driver.findElement(By.cssSelector("#input-firstname"));
+//        lastNameInput = driver.findElement(By.cssSelector("#input-lastname"));
+//        emailInput = driver.findElement(By.cssSelector("#input-email"));
+//        telephoneInput = driver.findElement(By.cssSelector("#input-telephone"));
+//        faxInput = driver.findElement(By.cssSelector("#input-fax"));
+//        companyInput = driver.findElement(By.cssSelector("#input-company"));
+//        address1Input = driver.findElement(By.cssSelector("#input-address-1"));
+//        address2Input = driver.findElement(By.cssSelector("#input-address-2"));
+//        cityInput = driver.findElement(By.cssSelector("#input-city"));
+//        postCodeInput = driver.findElement(By.cssSelector("#input-postcode"));
+//        passwordInput = driver.findElement(By.cssSelector("#input-password"));
+//        passwordConfirmInput = driver.findElement(By.cssSelector("#input-confirm"));
+//        privacyPolicyCheckBox = driver.findElement(By.xpath("//input[@type='checkbox']"));
+//        confirmButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
+//    }
+    private void checkElements(){
+        getFirstNameInput();
+        getLastNameInput();
+        getEmailInput();
+        getTelephoneInput();
+        getFaxInput();
+        getCompanyInput();
+        getAddress1Input();
+        getAddress2Input();
+        getCityInput();
+        getPostCodeInput();
+        getPasswordInput();
+        getPasswordConfirmInput();
+
     }
     //Page Object
 
     //firstNameInput
     public WebElement getFirstNameInput(){
-        return firstNameInput;
+        //return firstNameInput;
+        return driver.findElement(By.cssSelector("#input-firstname"));
     }
 
     public void clickFistNameInput(){
@@ -65,7 +83,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //lastNameInput
     public WebElement getLastNameInput(){
-        return lastNameInput;
+        //return lastNameInput;
+        return driver.findElement(By.cssSelector("#input-lastname"));
     }
 
     public void clickLastNameInput(){
@@ -82,7 +101,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //emailInput
     public WebElement getEmailInput(){
-        return emailInput;
+        //return emailInput;
+        return driver.findElement(By.cssSelector("#input-email"));
     }
 
     public void clickEmailInput(){
@@ -99,7 +119,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //telephoneInput
     public WebElement getTelephoneInput(){
-        return telephoneInput;
+        //return telephoneInput;
+        return driver.findElement(By.cssSelector("#input-telephone"));
     }
 
     public void clickTelephoneInput(){
@@ -116,7 +137,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //faxInput
     public WebElement getFaxInput(){
-        return faxInput;
+        //return faxInput;
+        return driver.findElement(By.cssSelector("#input-fax"));
     }
 
     public void clickFaxInput(){
@@ -133,7 +155,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //companyInput
     public WebElement getCompanyInput(){
-        return companyInput;
+        //return companyInput;
+        return driver.findElement(By.cssSelector("#input-company"));
     }
 
     public void clickCompanyInput(){
@@ -150,7 +173,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //address1Input
     public WebElement getAddress1Input(){
-        return address1Input;
+        //return address1Input;
+        return driver.findElement(By.cssSelector("#input-address-1"));
     }
 
     public void clickAddress1Input(){
@@ -166,7 +190,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //address2Input
     public WebElement getAddress2Input(){
-        return address2Input;
+        //return address2Input;
+        return driver.findElement(By.cssSelector("#input-address-2"));
     }
 
     public void clickAddress2Input(){
@@ -182,7 +207,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //cityInput
     public WebElement getCityInput(){
-        return cityInput;
+        //return cityInput;
+        return driver.findElement(By.cssSelector("#input-city"));
     }
 
     public void clickCityInput(){
@@ -199,7 +225,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //postCodeInput
     public WebElement getPostCodeInput(){
-        return postCodeInput;
+        //return postCodeInput;
+        return driver.findElement(By.cssSelector("#input-postcode"));
     }
 
     public void clickPostCodeInput(){
@@ -216,7 +243,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //passwordInput
     public WebElement getPasswordInput(){
-        return passwordInput;
+        //return passwordInput;
+        return driver.findElement(By.cssSelector("#input-password"));
     }
 
     public void clickPasswordInput(){
@@ -233,7 +261,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //passwordConfirmInput
     public WebElement getPasswordConfirmInput(){
-        return passwordConfirmInput;
+        //return passwordConfirmInput;
+        return driver.findElement(By.cssSelector("#input-confirm"));
     }
 
     public void clickPasswordConfirmInput(){
@@ -250,7 +279,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //privacyPolicyCheckBox
     public WebElement getPrivacyPolicyCheckBox(){
-        return privacyPolicyCheckBox;
+        //return privacyPolicyCheckBox;
+        return driver.findElement(By.xpath("//input[@type='checkbox']"));
     }
 
     public void clickPrivacyPolicyCheckBox(){
@@ -259,7 +289,8 @@ public class RegisterPage extends RightLogoutUnit {
 
     //confirmButton
     public WebElement getConfirmButton(){
-        return confirmButton;
+        //return confirmButton;
+        return driver.findElement(By.cssSelector(".btn.btn-primary"));
     }
 
     public void clickConfirmButton(){
@@ -267,8 +298,13 @@ public class RegisterPage extends RightLogoutUnit {
     }
 
     //Functional
-    public void registerValidUser(String validFirstName){
+    public void registerUser(){
 
     }
+
+    //Business Logic
+//    public SuccessRegisterPage successRegisterPage(){
+//        return SuccessRegisterPage;
+//    }
 }
 
