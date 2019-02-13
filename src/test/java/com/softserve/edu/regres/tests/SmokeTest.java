@@ -8,6 +8,7 @@ import com.softserve.edu.regres.data.User;
 import com.softserve.edu.regres.data.UserRepository;
 import com.softserve.edu.regres.pages.LoginPage;
 import com.softserve.edu.regres.pages.RegistratorHomePage;
+import com.softserve.edu.regres.pages.TopUnit.ChangeLanguageFields;
 import com.softserve.edu.regres.pages.ValidatorLoginPage;
 
 public class SmokeTest extends TestRunner {
@@ -41,6 +42,27 @@ public class SmokeTest extends TestRunner {
 		// Return to previous state
 	}
 
+	@Test(dataProvider = "validUsers")
+	public void checkRefresh(User validUser) {
+		// Precondition
+		//
+		// Steps
+		LoginPage loginPage = loadApplication();
+		//
+		//loginPage = loginPage.changeLanguage(ChangeLanguageFields.ENGLISH)
+		loginPage.changeLanguage(ChangeLanguageFields.ENGLISH);
+		//
+		loginPage = loginPage
+			.successRegistratorLogin(validUser)
+			.logout();
+		//
+		// Check
+		Assert.assertTrue(loginPage.getLogoAttributeSrcText()
+				.contains(LoginPage.NAME_IMAGE));
+		//
+		// Return to previous state
+	}
+
 	@DataProvider//(parallel = true)
 	public Object[][] invalidUsers() {
 		return new Object[][] {
@@ -48,7 +70,7 @@ public class SmokeTest extends TestRunner {
 			};
 	}
 
-	@Test(dataProvider = "invalidUsers")
+	//@Test(dataProvider = "invalidUsers")
 	public void checkInvalidLogin(User invalidUser) {
 		// Precondition
 		//
