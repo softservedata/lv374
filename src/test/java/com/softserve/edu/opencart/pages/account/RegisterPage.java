@@ -265,5 +265,10 @@ public class RegisterPage extends RightLogoutUnit {
     public void clickConfirmButton(){
         getConfirmButton().click();
     }
+
+    //Functional
+    public void registerValidUser(String validFirstName){
+
+    }
 }
 
