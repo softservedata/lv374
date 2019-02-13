@@ -11,12 +11,11 @@ public class Product {
 	private String description;
 	private String priceDollarExTax;
 	// TODO
-	//private Decimal priceDollarExTax;
+	// private Decimal priceDollarExTax;
 	//
-	//private HashMap<EnumCurrencies, Decimal> prices;
+	// private HashMap<EnumCurrencies, Decimal> prices;
 
-	public Product(String searchText, String name,
-			String description, String priceDollarExTax) {
+	public Product(String searchText, String name, String description, String priceDollarExTax) {
 		this.searchText = searchText;
 		this.name = name;
 		this.description = description;
