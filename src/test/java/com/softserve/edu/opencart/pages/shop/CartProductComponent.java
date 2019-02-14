@@ -3,30 +3,34 @@ package com.softserve.edu.opencart.pages.shop;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class CartProductComponent extends CartProductContainer {
-	private WebElement cartProductImg;
-	private WebElement cartProductName;
-	private WebElement cartProductQuantity;
-	private WebElement cartProductPrice;
-	private WebElement removeButton;
-	private WebElement viewCartButton;
-	private WebElement checkoutButton;
-
 	public CartProductComponent(WebDriver driver) {
 		super(driver);
-		initElements();
 	}
-	private void initElements() {
-		cartProductImg = driver.findElement(By.xpath(".//td[@class='text-center']/a/img"));
-		cartProductName = driver.findElement(By.xpath(".//td[@class='text-left']/a"));
-		cartProductQuantity = driver.findElement(By.xpath(".//td[@class='text-right' and contains(text(), 'x')]"));
-		cartProductPrice = driver.findElement(By.xpath(
-				"//ul[@class='dropdown-menu pull-right']/li[1]/table/tbody/tr/td[@class='text-right' and contains(text(), '$')]"));
-		removeButton = driver.findElement(By.xpath(".//td[@class='text-center']/button"));
-		viewCartButton = driver.findElement(By.xpath(".//p[@class='text-right']/a[1]"));
-		checkoutButton = driver.findElement(By.xpath(".//p[@class='text-right']/a[2]"));
-	}
+
+	@FindBy(how = How.XPATH, using = ".//td[@class='text-center']/a/img")
+	private WebElement cartProductImg;
+
+	@FindBy(how = How.XPATH, using = ".//td[@class='text-left']/a")
+	private WebElement cartProductName;
+
+	@FindBy(how = How.XPATH, using = ".//td[@class='text-right' and contains(text(), 'x')]")
+	private WebElement cartProductQuantity;
+
+	@FindBy(how = How.XPATH, using = "//ul[@class='dropdown-menu pull-right']/li[1]/table/tbody/tr/td[@class='text-right' and contains(text(), '$')]")
+	private WebElement cartProductPrice;
+
+	@FindBy(how = How.XPATH, using = ".//td[@class='text-center']/button")
+	private WebElement removeButton;
+
+	@FindBy(how = How.XPATH, using = ".//p[@class='text-right']/a[1]")
+	private WebElement viewCartButton;
+
+	@FindBy(how = How.XPATH, using = ".//p[@class='text-right']/a[2]")
+	private WebElement checkoutButton;
 
 	// cartProductImg
 	public WebElement getCartProductImg() {
@@ -93,7 +97,6 @@ public class CartProductComponent extends CartProductContainer {
 
 	// Functional
 
-	
 	// Business Logic
 
 }
