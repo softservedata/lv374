@@ -23,7 +23,7 @@ public class CartProductContainer extends HeadUnit {
 	private void initElements() {
 		cartProductComponents = new ArrayList<>();
 		for (WebElement current : driver.findElements(By.xpath(CART_PRODUCT_COMPONENT_XPATH))) {
-	//		cartProductComponents.add(new CartProductComponent(current));
+			// cartProductComponents.add(new CartProductComponent(current));
 		}
 	}
 
