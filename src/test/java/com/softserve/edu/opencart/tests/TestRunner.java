@@ -17,8 +17,8 @@ public abstract class TestRunner {
 
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+//		System.setProperty("webdriver.chrome.driver",
+//				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
@@ -30,13 +30,13 @@ public abstract class TestRunner {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		driver.get("http://192.168.103.181/opencart/upload/");
+		driver.get("http://localhost/opencart/upload/");
 	}
 
 	@AfterMethod
 	public void afterMethod(ITestResult testResult) {
 		if (!testResult.isSuccess()) {
-			driver.get("http://192.168.103.181/opencart/upload/");
+			driver.get("http://localhost/opencart/upload/");
 		}
 	}
 	
