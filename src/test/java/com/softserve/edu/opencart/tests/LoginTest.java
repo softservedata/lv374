@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.account.EditAccountPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
@@ -20,7 +20,7 @@ public class LoginTest extends TestRunner {
     }
 
     @Test(dataProvider = "validUsers")
-    public void checkLogin(User validUser) {
+    public void checkLogin(IUser validUser) {
         //
         // Precondition
         // Steps

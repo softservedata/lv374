@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.data.User;
+import com.softserve.edu.opencart.data.IUser;
 
 public class LoginPage extends RightLogoutUnit {
 
@@ -80,7 +80,7 @@ public class LoginPage extends RightLogoutUnit {
 	}
 
 	// Functional
-	private void fillLoginForm(User user) {
+	private void fillLoginForm(IUser user) {
         clickEmailField();
         clearEmailField();
         setEmailField(user.getEmail());
@@ -92,12 +92,12 @@ public class LoginPage extends RightLogoutUnit {
 
 	// Business Logic
 
-	public MyAccountPage successLogin(User user) {
+	public MyAccountPage successLogin(IUser user) {
         fillLoginForm(user);
         return new MyAccountPage(driver);
     }
 
-	public UnsuccessfulLoginPage unsuccessfullLogin(User invalidUser) {
+	public UnsuccessfulLoginPage unsuccessfullLogin(IUser invalidUser) {
         fillLoginForm(invalidUser);
         return new UnsuccessfulLoginPage(driver);
     }
