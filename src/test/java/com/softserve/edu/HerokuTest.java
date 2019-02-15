@@ -1,5 +1,7 @@
 package com.softserve.edu;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -93,7 +95,7 @@ public class HerokuTest {
 		Thread.sleep(1000); // For Presentation Only
 	}
 
-	@Test
+	//@Test
 	public void checkXPath() throws Exception {
 		//
 		Thread.sleep(1000); // For Presentation Only
@@ -124,4 +126,24 @@ public class HerokuTest {
 		Thread.sleep(1000); // For Presentation Only
 	}
 
+	@Test
+	public void checkFinds() throws Exception {
+		//
+		Thread.sleep(1000); // For Presentation Only
+		//
+		WebElement login = driver.findElement(By.xpath("//input[@id='login']"));
+		login.sendKeys("Hahaha");
+		//
+		//WebElement myElement = driver.findElement(By.xpath("//input[@id='login1']"));
+		//
+		WebElement myElement = null;
+		try { // Do not Use
+			myElement = driver.findElement(By.xpath("//input[@id='login1']"));
+		} catch (Exception e) {
+			System.out.println("Element not found");
+		}
+		//
+		List<WebElement> myElements = driver.findElements(By.xpath("//input[@id='login1']"));
+		System.out.println("myElements.size() = " + myElements.size());
+	}
 }

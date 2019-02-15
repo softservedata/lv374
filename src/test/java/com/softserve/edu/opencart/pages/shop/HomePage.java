@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.common.HeadUnit;
 
 public class HomePage extends HeadUnit {
@@ -57,4 +58,10 @@ public class HomePage extends HeadUnit {
 	// Functional
 
 	// Business Logic
+	
+	public HomePage chooseCurrency(Currencies currency) {
+        clickCurrencyByPartialName(currency);
+        return new HomePage(driver); 
+    }
+
 }
