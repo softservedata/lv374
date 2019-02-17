@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.common;
 
+import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
 import org.apache.poi.sl.usermodel.ObjectMetaData.Application;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,6 @@ public abstract class HeadUnit {
 	private WebElement currency;
 	private WebElement myAccount;
 	private WebElement wishList;
-	private WebElement shoppingCart;
 	private WebElement checkout;
 	private WebElement logo;
 	private WebElement searchField;
@@ -42,17 +42,12 @@ public abstract class HeadUnit {
 	protected HeadUnit(WebDriver driver) {
 		this.driver = driver;
 		initElements();
-		//
-		// searchField = driver.findElement(By.name("search"));
-		// searchButton = driver.findElement(By.cssSelector(".btn.btn-default.btn-lg"));
-		// logo = driver.findElement(By.cssSelector("#logo img"));
 	}
 
 	private void initElements() {
 		currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
 		myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
 		wishList = driver.findElement(By.id("wishlist-total"));
-		shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
 		checkout = driver.findElement(By.cssSelector("a[title='Checkout']"));
 		searchField = driver.findElement(By.name("search"));
 		searchButton = driver.findElement(By.cssSelector(".btn.btn-default.btn-lg"));
@@ -103,7 +98,7 @@ public abstract class HeadUnit {
 
 	// shoppingCart;
 	public WebElement getShoppingCart() {
-		return shoppingCart;
+		return driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
 	}
 
 	public String getShoppingCartText() {
@@ -280,5 +275,10 @@ public abstract class HeadUnit {
 	public AccountLogoutPage gotoLogout() {
 		clickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
 		return new AccountLogoutPage(driver);	
+	}
+
+	public ShoppingCartPage gotoShoppingCartPage(){
+		clickShoppingCart();
+		return new ShoppingCartPage(driver);
 	}
 }

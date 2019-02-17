@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,4 +77,9 @@ public class RegisterPage extends RightLogoutUnit {
 	// Functional
 	
 	// Business Logic
+
+	public RegisterPage chooseCurrency(Currencies currency) {
+		clickCurrencyByPartialName(currency);
+		return new RegisterPage(driver);
+	}
 }
