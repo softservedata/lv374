@@ -12,6 +12,8 @@ public class LoginPage extends RightLogoutUnit {
 	private WebElement emailField;
 	private WebElement passwordField;
 	private WebElement loginButton;
+	private WebElement forgottenPasswordButton;
+	private WebElement newCustomerButton;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -22,6 +24,8 @@ public class LoginPage extends RightLogoutUnit {
 		emailField = driver.findElement(By.id("input-email"));
 		passwordField = driver.findElement(By.id("input-password"));
 		loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+		forgottenPasswordButton = driver.findElement(By.xpath("\"//form//a[text()='Forgotten Password']\""));
+		newCustomerButton = driver.findElement(By.cssSelector("a.btn.btn-primary"));
 	}
 
 	// Page Object
@@ -80,32 +84,70 @@ public class LoginPage extends RightLogoutUnit {
 		getLoginButton().click();
 	}
 
+	// forgotten password button
+
+	public WebElement getForgottenPasswordButton() {
+		return forgottenPasswordButton;
+	}
+
+	public String getForgottenPasswordButtonText() {
+		return getForgottenPasswordButton().getAttribute(TAG_ATTRIBUTE_VALUE);
+	}
+
+	public void clickForgottenPasswordButton() {
+		getForgottenPasswordButton().click();
+	}
+
+	// new customer button
+
+	public WebElement getNewCustomerButton() {
+		return newCustomerButton;
+	}
+
+	public String getNewCustomerButtonText() {
+		return getNewCustomerButton().getAttribute(TAG_ATTRIBUTE_VALUE);
+	}
+
+	public void clickNewCustomerButton() {
+		getNewCustomerButton().click();
+	}
+
 	// Functional
 	private void fillLoginForm(IUser user) {
-        clickEmailField();
-        clearEmailField();
-        setEmailField(user.getEmail());
-        clickPasswordField();
-        clearPasswordField();
-        setPasswordField(user.getPassword());
-        clickLoginButton();
-    }
+		clickEmailField();
+		clearEmailField();
+		setEmailField(user.getEmail());
+		clickPasswordField();
+		clearPasswordField();
+		setPasswordField(user.getPassword());
+		clickLoginButton();
+	}
 
 	// Business Logic
 
 	public MyAccountPage successLogin(IUser user) {
-        fillLoginForm(user);
-        return new MyAccountPage(driver);
-    }
+		fillLoginForm(user);
+		return new MyAccountPage(driver);
+	}
 
 	public UnsuccessfulLoginPage unsuccessfullLogin(IUser invalidUser) {
-        fillLoginForm(invalidUser);
-        return new UnsuccessfulLoginPage(driver);
-    }
+		fillLoginForm(invalidUser);
+		return new UnsuccessfulLoginPage(driver);
+	}
 
 	public LoginPage chooseCurrency(Currencies currency) {
 		clickCurrencyByPartialName(currency);
 		return new LoginPage(driver);
+	}
+
+	public ForgottenPasswordPage gotoForgottenPasswordPage() {
+		clickForgottenPasswordButton();
+		return new ForgottenPasswordPage(driver);
+	}
+
+	public RegisterPage gotoRegisterPage() {
+		clickNewCustomerButton();
+		return new RegisterPage(driver);
 	}
 
 }
