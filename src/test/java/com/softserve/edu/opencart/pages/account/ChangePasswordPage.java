@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChangePasswordPage extends RightLoginUnit {
-
-	public static final String TEXT_DANGER = "Password must be between 4 and 20 characters!";
 	
 	private WebElement passwordField;
 	private WebElement confirmPasswordField;
