@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChangePasswordPage extends RightLoginUnit {
-	
+
 	private WebElement passwordField;
 	private WebElement confirmPasswordField;
 	private WebElement continueButton;
@@ -108,17 +108,17 @@ public class ChangePasswordPage extends RightLoginUnit {
 		setConfirmPasswordField(password);
 		clickContinueButton();
 	}
-	
+
 	// business logic
 
-	public MyAccountPage changeValidPassword(String password) {
+	public SuccessfullChangePasswordPage changeValidPassword(String password) {
 		inputPassword(password);
-		return new MyAccountPage(driver);
+		return new SuccessfullChangePasswordPage(driver);
 	}
-	
-	public ChangePasswordPage setInvalidPassword(String password) {
+
+	public UnsuccessfullChangePaswordPage setInvalidPassword(String password) {
 		inputPassword(password);
-		return new ChangePasswordPage(driver);
+		return new UnsuccessfullChangePaswordPage(driver);
 	}
-	
+
 }
