@@ -1,49 +1,31 @@
 package com.softserve.edu.opencart.pages.shop;
 
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class CartProductComponent extends CartProductContainer {
-	public CartProductComponent(WebDriver driver) {
-		super(driver);
+public class CartProductComponent {
+	WebElement cartProductLayout;
+
+	protected CartProductComponent(WebElement cartProductLayout) {
+		this.cartProductLayout = cartProductLayout;
 	}
-
-	@FindBy(how = How.XPATH, using = ".//td[@class='text-center']/a/img")
-	private WebElement cartProductImg;
-
-	@FindBy(how = How.XPATH, using = ".//td[@class='text-left']/a")
-	private WebElement cartProductName;
-
-	@FindBy(how = How.XPATH, using = ".//td[@class='text-right' and contains(text(), 'x')]")
-	private WebElement cartProductQuantity;
-
-	@FindBy(how = How.XPATH, using = "//ul[@class='dropdown-menu pull-right']/li[1]/table/tbody/tr/td[@class='text-right' and contains(text(), '$')]")
-	private WebElement cartProductPrice;
-
-	@FindBy(how = How.XPATH, using = ".//td[@class='text-center']/button")
-	private WebElement removeButton;
-
-	@FindBy(how = How.XPATH, using = ".//p[@class='text-right']/a[1]")
-	private WebElement viewCartButton;
-
-	@FindBy(how = How.XPATH, using = ".//p[@class='text-right']/a[2]")
-	private WebElement checkoutButton;
 
 	// cartProductImg
 	public WebElement getCartProductImg() {
-		return cartProductImg;
+		return cartProductLayout.findElement(By.cssSelector("td:nth-child(1)>a>img"));
 	}
 
 	// cartProductName
 	public WebElement getCartProductName() {
-		return cartProductName;
+		return cartProductLayout.findElement(By.cssSelector("td:nth-child(2)>a"));
 	}
 
 	public String getCartProductNameText() {
-		return cartProductName.getText();
+		return getCartProductName().getText();
 	}
 
 	public void clickCartProductName() {
@@ -52,25 +34,25 @@ public class CartProductComponent extends CartProductContainer {
 
 	// cartProductQuantity
 	public WebElement getCartProductQuantity() {
-		return cartProductQuantity;
+		return cartProductLayout.findElement(By.cssSelector("td:nth-child(3)"));
 	}
 
 	public String getCartProductQuantityText() {
-		return cartProductQuantity.getText();
+		return getCartProductQuantity().getText();
 	}
 
 	// cartProductPrice
-	public String getCartProductPriceText() {
-		return cartProductPrice.getText();
+	public WebElement getCartProductPrice() {
+		return cartProductLayout.findElement(By.cssSelector("td:nth-child(4)"));
 	}
 
-	public WebElement getCartProductPrice() {
-		return cartProductPrice;
+	public String getCartProductPriceText() {
+		return getCartProductPrice().getText();
 	}
 
 	// removeButton
 	public WebElement getRemoveButton() {
-		return removeButton;
+		return cartProductLayout.findElement(By.xpath(".//td[@class='text-center']/button"));
 	}
 
 	public void clickRemoveButton() {
@@ -79,7 +61,7 @@ public class CartProductComponent extends CartProductContainer {
 
 	// viewCartButton
 	public WebElement getViewCartButton() {
-		return viewCartButton;
+		return cartProductLayout.findElement(By.xpath(".//p[@class='text-right']/a[1]"));
 	}
 
 	public void clickViewCartButton() {
@@ -88,7 +70,7 @@ public class CartProductComponent extends CartProductContainer {
 
 	// checkoutButton
 	public WebElement getCheckoutButton() {
-		return checkoutButton;
+		return cartProductLayout.findElement(By.xpath(".//p[@class='text-right']/a[2]"));
 	}
 
 	public void clickCheckoutButton() {
