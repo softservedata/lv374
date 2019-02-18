@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.WebDriver;
 
 public class ValidatorMyAccountPage extends MyAccountPage {
@@ -13,5 +14,10 @@ public class ValidatorMyAccountPage extends MyAccountPage {
 	// Functional
 
 	// Business Logic
+
+	public ValidatorMyAccountPage chooseCurrency(Currencies currency) {
+		clickCurrencyByPartialName(currency);
+		return new ValidatorMyAccountPage(driver);
+	}
 
 }

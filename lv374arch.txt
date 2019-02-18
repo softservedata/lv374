@@ -46,6 +46,7 @@ LeftResultPage
 com.softserve.edu.opencart.pages.account
 RightMenuUnit
  MyAccountPage
+  ValidatorMyAccountPage
  AddressBookPage
  WishListPage
  OrderHistoryPage
