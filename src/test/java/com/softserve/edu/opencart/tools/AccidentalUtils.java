@@ -8,15 +8,19 @@ public final class AccidentalUtils {
 	private static final long MAX_REMAINDER = 10000L;
 	private static final int MIN_CHARACTER = 97;
 	private static final int MAX_CHARACTER = 122;
+	private static final int MAX_USERNAME = 7;
 	private static final int MAX_EMAIL = 10;
 	private static final String EMAIL_POSTFIX = "@gmail.com";
+	//
+	private static long initialNumber = 0; 
 
 	private AccidentalUtils() {
 	}
 
 	public static List<Integer> randomInt(int count, int minNumber, int maxNumber) {
 		List<Integer> result = new ArrayList<>();
-		Random random = new Random(System.currentTimeMillis() % MAX_REMAINDER);
+		initialNumber = initialNumber + 1;
+		Random random = new Random(System.currentTimeMillis() % MAX_REMAINDER + initialNumber);
 		for (int i = 0; i < count; i++) {
 			result.add(random.nextInt((maxNumber - minNumber) + 1) + minNumber);
 		}
@@ -39,6 +43,10 @@ public final class AccidentalUtils {
 			result = result + current;
 		}
 		return result;
+	}
+
+	public static String randomUsername() {
+		return randomString(MAX_USERNAME);
 	}
 
 	public static String randomEmail() {

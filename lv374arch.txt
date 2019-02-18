@@ -177,4 +177,33 @@ Tasks:
 		get***().click();
 	}
 
+	// Select
+	public Select get***() {
+		//return ***;
+		return new Select(driver.findElement(By.id("changeLanguage")));
+	}
+
+	public WebElement get***AsWebElement() {
+		return get***().getWrappedElement();
+	}
+
+	public WebElement get***Selected() {
+		return get***().getFirstSelectedOption();
+	}
+
+	public String get***SelectedText() {
+		return get***Selected().getText().trim();
+	}
+
+	public void click***() {
+		get***AsWebElement().click();
+	}
+
+	protected void set***(String text) {
+		get***().selectByVisibleText(text);
+	}
+
 http://www.objectaid.com/update/current
+rawftnmbsc@gmail.com
+qsbvnyakju@gmail.com
+mzyidptigk@gmail.com

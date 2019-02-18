@@ -1,6 +1,5 @@
 package com.softserve.edu.opencart.pages.common;
 
-import org.apache.poi.sl.usermodel.ObjectMetaData.Application;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.UnloggedMyAccount;
 import com.softserve.edu.opencart.pages.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.account.LoginPage;
+import com.softserve.edu.opencart.pages.account.RegisterPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
@@ -276,7 +276,12 @@ public abstract class HeadUnit {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.LOGIN);
 		return new LoginPage(driver);	
 	}
-	
+
+	public RegisterPage gotoRegister() {
+		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
+		return new RegisterPage(driver);	
+	}
+
 	public AccountLogoutPage gotoLogout() {
 		clickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
 		return new AccountLogoutPage(driver);	

@@ -46,27 +46,28 @@ interface ISubscribe {
 
 interface IUserBuild {
 	IUserBuild setFax(String fax);
+
 	IUserBuild setCompany(String company);
+
 	IUserBuild setAddress2(String address2);
-	//User build();
+
+	// User build();
 	// 6. Use Dependency Inversion. Add IUser
 	IUser build();
 }
 
 // 6. Use Dependency Inversion. Add IUser
-public class User implements IFirstname, ILastname, IEmail,
-		ITelephone, IAddress1, ICity, IPostcode,
-		ICountry, IRegion, IPassword,
-		ISubscribe, IUserBuild, IUser {
+public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress1, ICity, IPostcode, ICountry, IRegion,
+		IPassword, ISubscribe, IUserBuild, IUser {
 
 	private String firstname;
 	private String lastname;
 	private String email;
 	private String telephone;
-	private String fax; 		// not required
-	private String company; 	// not required
+	private String fax; // not required
+	private String company; // not required
 	private String address1;
-	private String address2; 	// not required
+	private String address2; // not required
 	private String city;
 	private String postcode;
 	private String country;
@@ -99,7 +100,7 @@ public class User implements IFirstname, ILastname, IEmail,
 	// 2. Default Constructor, Use Setters
 //	public User() {
 //	}
-	
+
 	// 4. Use StaticFactory
 	private User() {
 		// Default Parameters
@@ -107,20 +108,20 @@ public class User implements IFirstname, ILastname, IEmail,
 		company = "";
 		address2 = "";
 	}
-	
+
 	// 4. Use StaticFactory
-	//public static User get() {
+	// public static User get() {
 	// 5. Use Builder
 	public static IFirstname get() {
 		return new User();
 	}
-	
+
 	// setters
 
 	// 2. Default Constructor, Use Setters
-	//public void setFirstname(String firstname) {
+	// public void setFirstname(String firstname) {
 	// 3. Use FluentInterface
-	//public User setFirstname(String firstname) {
+	// public User setFirstname(String firstname) {
 	// 5. Use Builder
 	public ILastname setFirstname(String firstname) {
 		this.firstname = firstname;
@@ -193,12 +194,12 @@ public class User implements IFirstname, ILastname, IEmail,
 	}
 
 	// 5. Use Builder
-	//public User build() {
+	// public User build() {
 	// 6. Use Dependency Inversion. Add IUser
 	public IUser build() {
 		return this;
 	}
-	
+
 	// getters
 
 	public String getFirstname() {
@@ -257,4 +258,20 @@ public class User implements IFirstname, ILastname, IEmail,
 		return subscribe;
 	}
 
+	@Override
+	public String toString() {
+		return "Firstname: " + getFirstname()
+			+ " Lastname: " + getLastname()
+			+ " Email: " + getEmail()
+			+ " Telephone: " + getTelephone()
+			+ " Fax: " + getFax()
+			+ " Company: " + getCompany()
+			+ " Address1: " + getAddress1()
+			+ " Address2: " + getAddress2()
+			+ " City: " + getCity()
+			+ " Postcode: " + getPostcode()
+			+ " Country: " + getCountry()
+			+ " Region: " + getRegion()
+			+ " Password: " + getPassword();
+	}
 }
