@@ -48,6 +48,57 @@ public class LoginTest extends TestRunner {
         // Return to previous state
     }
     
+    @Test(dataProvider = "validUsers")
+    public void examiteLogin(IUser validUser) {
+        //
+        // Precondition
+        // Steps
+    	EditAccountPage editAccountPage = loadApplication()
+        		.gotoRegister()
+        		.gotoMyAccountPage(validUser) // Check
+        		.gotoEditAccountPage();
+        //
+        // Check
+        Assert.assertEquals(editAccountPage.getFirstnameText(),
+        		validUser.getFirstname());
+        //
+        // Return to previous state
+        // Steps
+        HomePage homePage = editAccountPage
+        		.continueValidatorMyAccountPage()
+        		.gotoLogout()
+        		.continueHomePage();
+        //
+        // Check
+        Assert.assertTrue(homePage
+				.getSlideshow0FirstImageAttributeSrcText()
+				.contains(HomePage.IPHONE_IMAGE));
+        //
+        editAccountPage = homePage
+        		.gotoLogin()
+        		.successLogin(validUser)
+        		.gotoMyAccountPage(validUser) // Check
+        		.gotoEditAccountPage();
+        //
+        // Check
+        Assert.assertEquals(editAccountPage.getFirstnameText(),
+        		validUser.getFirstname());
+        //
+        // Return to previous state
+        // Steps
+        homePage = editAccountPage
+        		.continueValidatorMyAccountPage()
+        		.gotoLogout()
+        		.continueHomePage();
+        //
+        // Check
+        Assert.assertTrue(homePage
+				.getSlideshow0FirstImageAttributeSrcText()
+				.contains(HomePage.IPHONE_IMAGE));
+        //
+        // Return to previous state
+    }
+   
 	@DataProvider//(parallel = true)
     public Object[][] newValidUsers() {
         // Read from ...
@@ -56,7 +107,7 @@ public class LoginTest extends TestRunner {
             };
     }
 
-    @Test(dataProvider = "newValidUsers")
+    //@Test(dataProvider = "newValidUsers")
     public void checkRegister(IUser newValidUser) {
         //
         // Precondition

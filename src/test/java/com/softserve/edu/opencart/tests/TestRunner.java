@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -17,16 +18,33 @@ public abstract class TestRunner {
 
 	@BeforeClass
 	public void beforeClass() {
+		URL url = this.getClass().getResource("/chromedriver-windows-32bit.exe");
+		if (url == null) {
+			// TODO Log
+			//System.exit(1);
+			// TODO Develop Custom Exception
+			throw new RuntimeException("ERROR: Chromedriver not Found");
+		}
 		System.setProperty("webdriver.chrome.driver",
-				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+				url.getPath());
+				//this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		if (driver != null) {
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		} else {
+			// TODO Log
+			// System.exit(1);
+			// TODO Develop Custom Exception
+			throw new RuntimeException("ERROR: Chromedriver not Found");
+		}
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	@BeforeMethod

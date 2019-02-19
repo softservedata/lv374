@@ -36,7 +36,7 @@ public class AppTest {
 //		};
 //	}
 
-	@Test//(dataProvider = "concurrencyData")
+	//@Test//(dataProvider = "concurrencyData")
 	public void checkSeleniumIDE() throws Exception {
 //		System.setProperty("webdriver.chrome.driver",
 //				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");

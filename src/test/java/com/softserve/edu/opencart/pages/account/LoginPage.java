@@ -80,7 +80,7 @@ public class LoginPage extends RightLogoutUnit {
 	}
 
 	// Functional
-	private void fillLoginForm(IUser user) {
+	protected void fillLoginForm(IUser user) {
         clickEmailField();
         clearEmailField();
         setEmailField(user.getEmail());

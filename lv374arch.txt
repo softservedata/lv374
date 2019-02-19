@@ -45,6 +45,12 @@ LeftResultPage
 
 com.softserve.edu.opencart.pages.account
 RightMenuUnit
+
+RightLoginUnit
+ SuccessRegisterPage
+ EditAccountPage
+ PasswordPage
+
  MyAccountPage
   ValidatorMyAccountPage
  AddressBookPage
@@ -56,11 +62,6 @@ RightMenuUnit
  ReturnsPage
  TransactionPage
  NewsletterPage
-
-RightLoginUnit
- SuccessRegisterPage
- EditAccountPage
- PasswordPage
 
 RightLogoutUnit
  LoginPage
