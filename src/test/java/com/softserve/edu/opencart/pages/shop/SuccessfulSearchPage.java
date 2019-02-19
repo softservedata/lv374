@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.shop;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.WebDriver;
 
 import com.softserve.edu.opencart.data.Product;
@@ -57,6 +58,11 @@ public class SuccessfulSearchPage extends SearchUnit {
 		return getSearchResultComponent()
 					.getProductComponentsContainer()
 					.getProductComponentDescriptionByProduct(product);
+	}
+
+	public SuccessfulSearchPage chooseCurrency(Currencies currency) {
+		clickCurrencyByPartialName(currency);
+		return new SuccessfulSearchPage(driver);
 	}
 
 }

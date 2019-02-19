@@ -64,4 +64,9 @@ public class HomePage extends HeadUnit {
         return new HomePage(driver); 
     }
 
+    public HomePage addToShoppingCart(String productName){
+		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(productName);
+		return new HomePage(driver);
+	}
+
 }

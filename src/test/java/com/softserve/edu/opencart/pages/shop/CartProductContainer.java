@@ -10,44 +10,59 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.common.HeadUnit;
 
-public class CartProductContainer extends HeadUnit {
-	private static final String CART_PRODUCT_COMPONENT_XPATH = (".//ul[@class='dropdown-menu pull-right']/li[1]/table/tbody/tr");
+public class CartProductContainer {
+	private static final String PRODUCT_COMPONENT_CSSSELECTOR = (".table.table-striped>tbody>tr");
 
-	private List<CartProductComponent> cartProductComponents;
+	protected WebDriver driver;
+
+	private List<CartProductComponent> productComponents;
 
 	public CartProductContainer(WebDriver driver) {
-		super(driver);
+		this.driver = driver;
 		initElements();
 	}
 
 	private void initElements() {
-		cartProductComponents = new ArrayList<>();
-		for (WebElement current : driver.findElements(By.xpath(CART_PRODUCT_COMPONENT_XPATH))) {
-			// cartProductComponents.add(new CartProductComponent(current));
+		productComponents = new ArrayList<>();
+		for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
+			productComponents.add(new CartProductComponent(current));
 		}
 	}
 
 	// Page Object
 
-	// cartProductComponents
+	// productComponents
 	public List<CartProductComponent> getCartProductComponents() {
-		return cartProductComponents;
+		return productComponents;
 	}
 
 	// Functional
 
 	// cartProductComponents
-	public CartProductComponent getCartProductComponentByName(String cartProductName) {
+	public CartProductComponent getCartProductComponentByName(String productName) {
 		CartProductComponent result = null;
 		for (CartProductComponent current : getCartProductComponents()) {
-			if (current.getCartProductNameText().toLowerCase().equals(cartProductName.toLowerCase())) {
+			if (current.getCartProductNameText().toLowerCase().equals(productName.toLowerCase())) {
 				result = current;
 			}
 		}
 		if (result == null) {
 			// TODO Develop Custom Exception
-			throw new RuntimeException("ProductName: " + cartProductName + " not Found.");
+			throw new RuntimeException("ProductName: " + productName + " not Found.");
 		}
 		return result;
+	}
+
+	public String getCartProductPriceByName(String productName) {
+		return getCartProductComponentByName(productName).getCartProductPriceText();
+	}
+
+	private void removeProductFromShoppingCartByName(String productName) {
+		getCartProductComponentByName(productName).clickRemoveButton();
+	}
+
+	public HomePage removeProductByName(String productName) {
+		removeProductFromShoppingCartByName(productName);
+		return new HomePage(driver);
 	}
 }
