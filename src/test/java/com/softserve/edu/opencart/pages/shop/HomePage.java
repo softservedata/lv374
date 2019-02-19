@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.common.HeadUnit;
 
 public class HomePage extends HeadUnit {
@@ -31,7 +32,7 @@ public class HomePage extends HeadUnit {
 	public WebElement getSlideshow0() {
 		return slideshow0;
 	}
-
+	
 	// slideshow0FirstImage
 	public WebElement getSlideshow0FirstImage() {
 		//return getSlideshow0().findElement(By.cssSelector("a > img"));
@@ -57,4 +58,15 @@ public class HomePage extends HeadUnit {
 	// Functional
 
 	// Business Logic
+	
+	public HomePage chooseCurrency(Currencies currency) {
+        clickCurrencyByPartialName(currency);
+        return new HomePage(driver); 
+    }
+
+    public HomePage addToShoppingCart(String productName){
+		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(productName);
+		return new HomePage(driver);
+	}
+
 }

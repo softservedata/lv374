@@ -46,6 +46,7 @@ LeftResultPage
 com.softserve.edu.opencart.pages.account
 RightMenuUnit
  MyAccountPage
+  ValidatorMyAccountPage
  AddressBookPage
  WishListPage
  OrderHistoryPage
@@ -58,10 +59,12 @@ RightMenuUnit
 
 RightLoginUnit
  SuccessRegisterPage
+ EditAccountPage
  PasswordPage
 
 RightLogoutUnit
  LoginPage
+  UnsuccessfulLoginPage
  RegisterPage
  ForgottenPasswordPage
  RegisterAccountPage
@@ -173,3 +176,5 @@ Tasks:
 	public void click***() {
 		get***().click();
 	}
+
+http://www.objectaid.com/update/current

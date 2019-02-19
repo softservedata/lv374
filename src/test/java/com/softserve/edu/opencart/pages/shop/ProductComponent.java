@@ -23,9 +23,7 @@ public class ProductComponent {
 		name = productLayout.findElement(By.cssSelector("h4 a"));
         price = productLayout.findElement(By.cssSelector(".price"));
         partialDescription = productLayout.findElement(By.cssSelector("h4 + p"));
-        //addToCartButton = productLayout.findElement(By.cssSelector("button:has(.fa.fa-shopping-cart)")); // may be null
         addToCartButton = productLayout.findElement(By.cssSelector(".fa.fa-shopping-cart"));
-        //addToWishButton = productLayout.findElement(By.cssSelector("button:has(.fa.fa-heart)")); // may be null
         addToWishButton = productLayout.findElement(By.cssSelector(".fa.fa-heart"));
         addToCompareButton = productLayout.findElement(By.cssSelector(".fa.fa-exchange"));
 	}

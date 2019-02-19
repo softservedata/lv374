@@ -27,6 +27,7 @@
 		<!-- - - - - - Automation - - - - - -->
 		<org.seleniumhq.selenium.version>3.141.59</org.seleniumhq.selenium.version>
 		<org.seleniumhq.selenium.htmlunit-driver>2.33.3</org.seleniumhq.selenium.htmlunit-driver>
+		<com.selenide.version>5.1.0</com.selenide.version>
 		<!-- - - - - - Reports - - - - - -->
 		<testng.reports.directory>target/surefire-reports/test-output</testng.reports.directory>
 		<!-- <allure.version>1.5.0</allure.version> -->
@@ -77,6 +78,11 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>htmlunit-driver</artifactId>
 			<version>${org.seleniumhq.selenium.htmlunit-driver}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>selenide</artifactId>
+			<version>${com.selenide.version}</version>
 		</dependency>
 		<!-- - - - Reports - - - -->
 		<dependency>
@@ -175,8 +181,14 @@
 			<artifactId>gson</artifactId>
 			<version>${google.gson.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<extensions>

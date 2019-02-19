@@ -12,7 +12,7 @@ import com.softserve.edu.opencart.data.Product;
 public class ProductComponentsContainer {
 	private static final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
 
-	private WebDriver driver;
+	protected WebDriver driver;
 	//
 	private List<ProductComponent> productComponents;
 	
