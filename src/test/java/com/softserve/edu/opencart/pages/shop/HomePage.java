@@ -32,7 +32,7 @@ public class HomePage extends HeadUnit {
 	public WebElement getSlideshow0() {
 		return slideshow0;
 	}
-
+	
 	// slideshow0FirstImage
 	public WebElement getSlideshow0FirstImage() {
 		//return getSlideshow0().findElement(By.cssSelector("a > img"));

@@ -1,6 +1,5 @@
 package com.softserve.edu.opencart.pages.common;
 
-import org.apache.poi.sl.usermodel.ObjectMetaData.Application;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.UnloggedMyAccount;
 import com.softserve.edu.opencart.pages.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.account.LoginPage;
+import com.softserve.edu.opencart.pages.account.WishListPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
@@ -270,6 +270,11 @@ public abstract class HeadUnit {
 	public HomePage gotoHomePage() {
 		clickLogo();
 		return new HomePage(driver);
+	}
+	
+	public WishListPage gotoWishList() {
+		clickWishList();
+		return new WishListPage(driver);
 	}
 
 	public LoginPage gotoLogin() {
