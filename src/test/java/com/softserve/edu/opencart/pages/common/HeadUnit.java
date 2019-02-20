@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.common;
 
+import com.softserve.edu.opencart.pages.account.RegisterPage;
 import 	org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -279,6 +280,11 @@ public abstract class HeadUnit {
 	public AccountLogoutPage gotoLogout() {
 		clickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
 		return new AccountLogoutPage(driver);	
+	}
+
+	public RegisterPage gotoRegister() {
+		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
+		return new RegisterPage(driver);
 	}
 
 }

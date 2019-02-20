@@ -20,8 +20,8 @@ public final class UserRepository {
 			.setAddress1("address1")
 			.setCity("city")
 			.setPostcode("postcode")
-			.setCountry("country")
-			.setRegion("region")
+			.setCountry("Ukraine")
+			.setRegion("Kyiv")
 			.setPassword("qwerty")
 			.setSubscribe(true)
 			.setCompany("company")
@@ -45,7 +45,7 @@ public final class UserRepository {
 				.build();
 	}
 
-	public IUser generateNew() {
+	public static IUser generateNew() {
 		return User.get()
 				.setFirstname(AccidentalUtils.randomString(7))
 				.setLastname("hahaha")
@@ -54,8 +54,8 @@ public final class UserRepository {
 				.setAddress1("address1")
 				.setCity("city")
 				.setPostcode("postcode")
-				.setCountry("country")
-				.setRegion("region")
+				.setCountry("Ukraine")
+				.setRegion("Kyiv")
 				.setPassword("qwerty")
 				.setSubscribe(true)
 				.setCompany("company")
