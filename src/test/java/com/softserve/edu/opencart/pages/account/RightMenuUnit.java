@@ -1,13 +1,11 @@
 package com.softserve.edu.opencart.pages.account;
 
-import javax.swing.text.NavigationFilter;
-
-import com.softserve.edu.opencart.data.IUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import com.softserve.edu.opencart.pages.common.NavigationUnit;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.pages.common.NavigationUnit;
 
 public class RightMenuUnit extends NavigationUnit {
 
