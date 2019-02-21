@@ -1,5 +1,11 @@
 package com.softserve.edu.opencart.data;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 interface IFirstname {
 	ILastname setFirstname(String firstname);
 }
@@ -29,11 +35,11 @@ interface IPostcode {
 }
 
 interface ICountry {
-	IRegion setCountry(String country);
+	IRegion setCountry(User.Country country);
 }
 
 interface IRegion {
-	IPassword setRegion(String region);
+	IPassword setRegion(User.Region region);
 }
 
 interface IPassword {
@@ -69,8 +75,8 @@ public class User implements IFirstname, ILastname, IEmail,
 	private String address2; 	// not required
 	private String city;
 	private String postcode;
-	private String country;
-	private String region;
+	private Country country;
+	private Region region;
 	private String password;
 	private boolean subscribe;
 
@@ -99,7 +105,7 @@ public class User implements IFirstname, ILastname, IEmail,
 	// 2. Default Constructor, Use Setters
 //	public User() {
 //	}
-	
+
 	// 4. Use StaticFactory
 	private User() {
 		// Default Parameters
@@ -107,14 +113,14 @@ public class User implements IFirstname, ILastname, IEmail,
 		company = "";
 		address2 = "";
 	}
-	
+
 	// 4. Use StaticFactory
 	//public static User get() {
 	// 5. Use Builder
 	public static IFirstname get() {
 		return new User();
 	}
-	
+
 	// setters
 
 	// 2. Default Constructor, Use Setters
@@ -166,18 +172,48 @@ public class User implements IFirstname, ILastname, IEmail,
 		this.city = city;
 		return this;
 	}
+	public static enum Country {
+		UKRAINE("Ukraine"),
+		SWEDEN("Sweden");
+		//
+		private String field;
+
+		private Country(String field) {
+			this.field = field;
+		}
+
+		public String getField() {
+			return field;
+		}
+	}
 
 	public ICountry setPostcode(String postcode) {
 		this.postcode = postcode;
 		return this;
 	}
+	public static enum Region {
+		LVIV("L'vivs'ka Oblast'"),
+		TERNOPIL("Ternopil's'ka Oblast'"),
+		CHERKASY("Cherkas'ka Oblast'"),
+		HALLAND("Halland");
 
-	public IRegion setCountry(String country) {
+		private String name;
+
+		private Region(String name){
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+
+	public IRegion setCountry(Country country) {
 		this.country = country;
 		return this;
 	}
 
-	public IPassword setRegion(String region) {
+	public IPassword setRegion(Region region) {
 		this.region = region;
 		return this;
 	}
@@ -241,11 +277,11 @@ public class User implements IFirstname, ILastname, IEmail,
 		return postcode;
 	}
 
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public String getRegion() {
+	public Region getRegion() {
 		return region;
 	}
 

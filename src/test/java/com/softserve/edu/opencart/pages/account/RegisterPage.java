@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.account;
 
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -354,7 +355,6 @@ public class RegisterPage extends RightLogoutUnit {
         return driver.findElement(By.cssSelector("label.radio-inline > input[value='0']"));
     }
 
-
     public void clickSubscribeNo() {
         getSubscribeNo().click();
     }
@@ -423,10 +423,10 @@ public class RegisterPage extends RightLogoutUnit {
         setPostcodeField(user.getPostcode());
         //
         clickCountry();
-        setCountry(user.getCountry());
+        setCountry(user.getCountry().getField());
         //
         clickRegion();
-        setRegion(user.getRegion());
+        setRegion(user.getRegion().getName());
         //
         clickPassword();
         clearPassword();

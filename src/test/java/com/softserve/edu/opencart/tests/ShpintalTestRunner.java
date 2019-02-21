@@ -9,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ShpintalTestRunner {
