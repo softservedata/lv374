@@ -9,20 +9,44 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ShpintalTestRunner {
 
     private WebDriver driver;
 
+
+//    public void beforeClass() {
+//        System.setProperty("webdriver.chrome.driver",
+//                "C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        }
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        URL url = this.getClass().getResource("/chromedriver.exe");
+        if (url == null) {
+            // TODO Log
+            //System.exit(1);
+            // TODO Develop Custom Exception
+            throw new RuntimeException("ERROR: Chromedriver not Found");
         }
+        System.setProperty("webdriver.chrome.driver",
+                url.getPath());
+        //this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
+        driver = new ChromeDriver();
+        if (driver != null) {
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        } else {
+            // TODO Log
+            // System.exit(1);
+            // TODO Develop Custom Exception
+            throw new RuntimeException("ERROR: Chromedriver not Found");
+        }
+    }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {

@@ -382,72 +382,85 @@ public class RegisterPage extends RightLogoutUnit {
 
 	// Functional
 	private void fillRegistrationForm(IUser user) {
-		clickFirstname();
-		clearFirstname();
-		setFirstnameField(user.getFirstname());
-		//
-		clickLastname();
-		clearLastname();
-		setLastnameField(user.getLastname());
-		//
-		clickEmail();
-		clearEmail();
-		setEmailField(user.getEmail());
-		//
-		clickTelephone();
-		clearTelephone();
-		setTelephoneField(user.getTelephone());
-		//
-		clickFax();
-		clearFax();
-		setFaxField(user.getFax());
-		//
-		clickCompany();
-		clearCompany();
-		setCompanyField(user.getCompany());
-		//
-		clickAddress1();
-		clearAddress1();
-		setAddress1Field(user.getAddress1());
-		//
-		clickAddress2();
-		clearAddress2();
-		setAddress2Field(user.getAddress2());
-		//
-		clickCity();
-		clearCity();
-		setCityField(user.getCity());
-		//
-		clickPostcode();
-		clearPostcode();
-		setPostcodeField(user.getPostcode());
-		//
-		clickCountry();
-		setCountry(user.getCountry().getField());
-		//
-		clickRegion();
-		setRegion(user.getRegion().getName());
-		//
-		clickPassword();
-		clearPassword();
-		setPasswordField(user.getPassword());
-		//
-		clickConfirmPassword();
-		clearConfirmPassword();
-		setConfirmPasswordField(user.getPassword());
-		//
-		if (user.isSubscribe()) {
-			clickSubscribeYes();
-		} else {
-			clickSubscribeNo();
-		}
-		//
-		clickPrivacyPolicy();
-		//
-		clickContinueButton();
-	}
+        clickFirstname();
+        clearFirstname();
+        setFirstnameField(user.getFirstname());
+        //
+        clickLastname();
+        clearLastname();
+        setLastnameField(user.getLastname());
+        //
+        clickEmail();
+        clearEmail();
+        setEmailField(user.getEmail());
+        //
+        clickTelephone();
+        clearTelephone();
+        setTelephoneField(user.getTelephone());
+        //
+        clickFax();
+        clearFax();
+        if (user.getFax() != null && user.getFax().trim().length() > 0){
+            setFaxField(user.getFax());
+        }
+        //
+        clickCompany();
+        clearCompany();
+        if (user.getCompany() != null && user.getCompany().trim().length() > 0){
+            setCompanyField(user.getCompany());
+        }
+        //
+        clickAddress1();
+        clearAddress1();
+        setAddress1Field(user.getAddress1());
+        //
+        clickAddress2();
+        clearAddress2();
+        if (user.getAddress2() != null && user.getAddress2().trim().length() > 0){
+            setAddress2Field(user.getAddress2());
+        }
+        "vgdvd".equals("fddsvd");
+        //
+        clickCity();
+        clearCity();
+        setCityField(user.getCity());
+        //
+        clickPostcode();
+        clearPostcode();
+        setPostcodeField(user.getPostcode());
+        //
+        clickCountry();
+        setCountry(user.getCountry().getCountryName());
+        //
+        clickRegion();
+        setRegion(user.getRegion().getRegionName());
+        //
+        clickPassword();
+        clearPassword();
+        setPasswordField(user.getPassword());
+        //
+        clickConfirmPassword();
+        clearConfirmPassword();
+        if (user.getConfirmPassword() != null
+                && user.getConfirmPassword().trim().length() > 0){
+            setConfirmPasswordField(user.getConfirmPassword());
+        } else {
+            setConfirmPasswordField(user.getPassword());
+        }
+        //
+        if (user.isSubscribe()) {
+            clickSubscribeYes();
+        } else {
+            clickSubscribeNo();
+        }
+        //
+        clickPrivacyPolicy();
+        //
+        clickContinueButton();
+    }
 
 	// Business Logic
+
 	public SuccessRegisterPage successfullRegisterUser(IUser newValidUser) {
 		fillRegistrationForm(newValidUser);
 		return new SuccessRegisterPage(driver);
