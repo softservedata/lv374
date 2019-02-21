@@ -22,9 +22,9 @@ public interface IUser {
 
 	String getPostcode();
 
-	String getCountry();
+	User.Country getCountry();
 
-	String getRegion();
+	User.Region getRegion();
 
 	String getPassword();
 
