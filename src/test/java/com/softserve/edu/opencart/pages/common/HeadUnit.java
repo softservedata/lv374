@@ -15,6 +15,8 @@ import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
+import io.qameta.allure.Step;
+
 public abstract class HeadUnit {
 	protected final String OPTION_NULL_MESSAGE = "DropdownOption is null";
 	protected final String OPTION_NOT_FOUND_MESSAGE = "Option %s not found in %s";
@@ -272,6 +274,7 @@ public abstract class HeadUnit {
 		return new HomePage(driver);
 	}
 
+	@Step("@Step: gotoLogin")
 	public LoginPage gotoLogin() {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.LOGIN);
 		return new LoginPage(driver);	

@@ -9,6 +9,15 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.account.EditAccountPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+
+@Epic("@Epic: Login_Test")
+@Feature("@Feature: Login_Application_Test")
 public class LoginTest extends TestRunner {
 
 	@DataProvider//(parallel = true)
@@ -19,6 +28,43 @@ public class LoginTest extends TestRunner {
             };
     }
 
+	@Description("@Description: class LoginTest; checkLoginReport()")
+	@Severity(SeverityLevel.BLOCKER)
+	@Story("@Story: check_Login_Report")
+    @Test(dataProvider = "validUsers")
+    public void checkLoginReport(IUser validUser) {
+		logger.info("START TEST: checkLoginReport("
+					+ validUser.toString() + ")");
+        //
+        // Precondition
+        // Steps
+    	EditAccountPage editAccountPage = loadApplication()
+        		.gotoLogin()
+        		.successLogin(validUser)
+        		.gotoEditAccountPage();
+        //
+        // Check
+        Assert.assertEquals(editAccountPage.getFirstnameText(),
+        		validUser.getFirstname());
+        //
+        // Return to previous state
+        // Steps
+        HomePage homePage = editAccountPage
+        		.continueValidatorMyAccountPage()
+        		.gotoLogout()
+        		.continueHomePage();
+        //
+        // Check
+        Assert.assertTrue(homePage
+				.getSlideshow0FirstImageAttributeSrcText()
+				.contains(HomePage.IPHONE_IMAGE));
+        //
+        // Return to previous state
+		//Assert.assertTrue(false);
+		logger.info("DONE TEST: checkLoginReport("
+				+ validUser.toString() + ")");
+    }
+	
     //@Test(dataProvider = "validUsers")
     public void checkLogin(IUser validUser) {
         //
@@ -48,7 +94,7 @@ public class LoginTest extends TestRunner {
         // Return to previous state
     }
     
-    @Test(dataProvider = "validUsers")
+    //@Test(dataProvider = "validUsers")
     public void examiteLogin(IUser validUser) {
         //
         // Precondition

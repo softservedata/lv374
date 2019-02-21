@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.IUser;
 
+import io.qameta.allure.Step;
+
 public class LoginPage extends RightLogoutUnit {
 
 	private WebElement emailField;
@@ -92,6 +94,7 @@ public class LoginPage extends RightLogoutUnit {
 
 	// Business Logic
 
+	@Step("@Step: successLogin")
 	public MyAccountPage successLogin(IUser user) {
         fillLoginForm(user);
         return new MyAccountPage(driver);

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.User;
 
+import io.qameta.allure.Step;
+
 public class RightLoginUnit extends RightMenuUnit {
 
 	private WebElement editAccountBar;
@@ -47,6 +49,7 @@ public class RightLoginUnit extends RightMenuUnit {
 	
 	// Business Logic
 	
+	@Step("@Step: gotoEditAccountPage")
 	public EditAccountPage gotoEditAccountPage() {
 		clickEditAccountBar();
         return new EditAccountPage(driver);
