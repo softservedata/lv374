@@ -41,7 +41,7 @@ public abstract class TestRunner {
 	public HomePage loadApplication() {
 		return new HomePage(driver);
 	}
-	
+
 	public MailLoginPage loadMail() {
 		return new MailLoginPage(driver);
 	}
