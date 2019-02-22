@@ -1,86 +1,71 @@
 package com.softserve.edu.opencart.pages.shop;
 
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 
-public class ProductComparisonComponent extends ProductComparisonPage{
-	private WebElement removeButton;
-	private WebElement continueButton;
-	private WebElement addToCartButton;
-	private WebElement successMessage;
-	private WebElement productName;
-	private WebElement productPrice;
+public class ProductComparisonComponent{
+	WebElement productComparisonInstance;
+	protected ProductComparisonComponent(WebElement productComparisonInstance) {
+    	this.productComparisonInstance = productComparisonInstance;
+	}
 	
-	public ProductComparisonComponent(WebDriver driver) {
-		super(driver);
-		initElements();
+	public WebElement getProductComparisonInstance() {
+		   return productComparisonInstance;
 	}
-	private void initElements() {
-		removeButton = driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
-		continueButton = driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
-		addToCartButton = driver.findElement(By.xpath("//*[@id='content']/table/tbody[2]/tr/td[2]/input"));
-		productName = driver.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[1]/td[2]/a/strong"));
-		productPrice = driver.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[3]/td[2]"));
-		successMessage = driver.findElement(By.xpath("/html/body/div[2]/div[1]"));
+	
+	 // RemoveButton;
+	public WebElement getRemoveButton() {
+		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
 	}
-	public WebElement getremoveButton() {
-		return removeButton;
+	
+    public void clickRemoveButton() {
+    	getRemoveButton().click();
+    }
+	
+    // ContinueButton;
+	public WebElement getContinueButton() {
+		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
 	}
-	public WebElement getcontinueButton() {
-		return continueButton;
+	
+	public void clickContinueButtonn() {
+    	getContinueButton().click();
+    }
+	
+	// addToCartButton;
+	public WebElement getAddToCartButton() {
+		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[2]/tr/td[2]/input"));
 	}
-	public WebElement getaddToCartButton() {
-		return addToCartButton;
-	}
+	
+	public void clickAddToCartButton() {
+    	getAddToCartButton().click();
+    }
 	
 	// product name
 	public WebElement getProductName() {
-		return productName;
+		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[1]/td[2]/a/strong"));
 	}
+	
 	public String getProductNameText() {
 		return getProductName().getText();
 	}
+	
 	public void clicProductName() {
 		getProductName().click();
     }
+	
     // price;
     public WebElement getPrice() {
-        return productPrice;
+        return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[3]/td[2]"));
     }
 
     public String getPriceText() {
         return getPrice().getText();
     }
     
-    // RemoveButton;
-    public WebElement getRemoveButton() {
-        return removeButton;
-    }
-    
-    public void clickRemoveButton() {
-    	getRemoveButton().click();
-    }
-    
-    // ContinueButton;
-    public WebElement getContinueButton() {
-        return continueButton;
-    }
-    
-    public void clickContinueButtonn() {
-    	getContinueButton().click();
-    }
-    // addToCartButton;
-    public WebElement getAddToCartButton() {
-        return addToCartButton;
-    }
-    
-    public void clickAddToCartButton() {
-    	getAddToCartButton().click();
-    }
- // Success Message
+    // Success Message
  	public WebElement getSuccessMessage() {
- 		return successMessage;
+ 		return productComparisonInstance.findElement(By.xpath("/html/body/div[2]/div[1]"));
  	}
  	public String getSuccessMessageText() {
  		return getSuccessMessage().getText();
