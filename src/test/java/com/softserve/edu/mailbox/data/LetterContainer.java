@@ -27,6 +27,18 @@ public class LetterContainer {
 		}
 	}
 
+	// page object
+
+	// letters component
 	
+	public List<LetterComponent> getLetters(){
+		return letters;
+	}
+	
+	// functional
+	
+	public LetterComponent findLettterBy() {
+		return null;
+	}
 	
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.mailbox.data.MailUser;
+import com.softserve.edu.mailbox.pages.boxes.IncomesLettersPage;
 
 public class MailLoginPage {
 
@@ -30,7 +31,7 @@ public class MailLoginPage {
 	private void initElements() {
 		loginField = driver.findElement(By.xpath("//input[@id='id-l']"));
 		passwordField = driver.findElement(By.xpath("//input[@id='id-p']"));
-		loginButton = driver.findElement(By.cssSelector("div.button__content"));
+		loginButton = driver.findElement(By.cssSelector(".button.button_style-main"));
 	}
 
 	// pageobject
@@ -99,7 +100,6 @@ public class MailLoginPage {
 		clickLoginField();
 		clearLoginField();
 		setLoginField(user.getUsername());
-		clickPasswordField();
 		clearPasswordField();
 		setPasswordField(user.getPassword());
 		clickLoginButton();
@@ -107,9 +107,9 @@ public class MailLoginPage {
 
 	// business logic
 
-	public IncomesPage successfullLogin(MailUser user) {
+	public IncomesLettersPage successfullLogin(MailUser user) {
 		login(user);
-		return new IncomesPage(driver);
+		return new IncomesLettersPage(driver);
 	}
 
 	public MailLoginPage unsuccessfullLogin(MailUser user) {
