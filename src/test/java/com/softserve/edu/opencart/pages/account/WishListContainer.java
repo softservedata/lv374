@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Product;
+
 public class WishListContainer {
 
 	private static final String WISHLIST_COMPONENT_CSSSELECTOR = "table.table-hover > tbody > tr";
@@ -50,7 +52,15 @@ public class WishListContainer {
 		}
 		return result;
 	}
+	
+	public String getWishListProductByName(String productName) {
+		return getWishListComponentByName(productName).getWishListProductNameText();
+	}
 
+	public String getWishListNameByProduct(Product product) {
+		return getWishListProductByName(product.getName());
+	}
+	
 	//addToCart
 	public void addToCart(String productName) {
 		getWishListComponentByName(productName).clickAddToCartButton();

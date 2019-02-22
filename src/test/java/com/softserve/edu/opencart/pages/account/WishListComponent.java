@@ -7,11 +7,19 @@ public class WishListComponent {
 	
     WebElement wishlistSketch;
 
+    private WishListContainer wishListContainer;
+    
     protected WishListComponent(WebElement wishlistSketch) {
     	this.wishlistSketch = wishlistSketch;
     }
     
    //Page Object
+    
+   //wishListContainer
+    
+    public WishListContainer getWishListContainer() {
+    	return wishListContainer;
+    }
     
    //wishlistSketch
    public WebElement getWishListSketch() {

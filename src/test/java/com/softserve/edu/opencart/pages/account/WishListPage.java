@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class WishListPage extends RightMenuUnit {
 
 	private WishListContainer wishListContainer;
-	
+
 	public WishListPage(WebDriver driver) {
 		super(driver);
 		wishListContainer = new WishListContainer(driver);
@@ -14,4 +14,5 @@ public class WishListPage extends RightMenuUnit {
 	public WishListContainer getWishListContainer() {
 		return wishListContainer;
 	}
+
 }

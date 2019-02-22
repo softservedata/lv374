@@ -78,5 +78,10 @@ public class ProductComponentsContainer {
 	public String getProductComponentDescriptionByProduct(Product product) {
 		return getProductComponentDescriptionByName(product.getName());
 	}
-
+	
+	public HomePage addToWishList(String productName) {
+		clickProductComponentAddToWishButtonByName(productName);
+		return new HomePage(driver);
+	}
+	
 }
