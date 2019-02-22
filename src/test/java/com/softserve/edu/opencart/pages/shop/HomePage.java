@@ -9,8 +9,7 @@ import com.softserve.edu.opencart.pages.common.HeadUnit;
 
 public class HomePage extends HeadUnit {
 	public static final String IPHONE_IMAGE = "iPhone6-1140x380.jpg";
-	
-	private WebElement slideshow0;
+
 	//
 	private ProductComponentsContainer productComponentsContainer;
 	
@@ -20,8 +19,6 @@ public class HomePage extends HeadUnit {
 	}
 	
 	private void initElements() {
-		//slideshow0 = driver.findElement(By.id("slideshow0"));
-		slideshow0 = driver.findElement(By.cssSelector("#slideshow0"));
 		//
 		productComponentsContainer = new ProductComponentsContainer(driver);
 	}
@@ -30,7 +27,7 @@ public class HomePage extends HeadUnit {
 
 	// slideshow0
 	public WebElement getSlideshow0() {
-		return slideshow0;
+		return driver.findElement(By.cssSelector("#slideshow0"));
 	}
 	
 	// slideshow0FirstImage
@@ -46,7 +43,6 @@ public class HomePage extends HeadUnit {
 	}
 
 	public String getSlideshow0FirstImageAttributeSrcText() {
-		System.out.println("Attribute: " + getSlideshow0FirstImageAttributeText(TAG_ATTRIBUTE_SRC));
 		return getSlideshow0FirstImageAttributeText(TAG_ATTRIBUTE_SRC);
 	}
 
@@ -66,6 +62,11 @@ public class HomePage extends HeadUnit {
 
     public HomePage addToShoppingCart(String productName){
 		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(productName);
+		return new HomePage(driver);
+	}
+
+	public HomePage refresh(){
+		driver.navigate().refresh();
 		return new HomePage(driver);
 	}
 

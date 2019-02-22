@@ -41,7 +41,7 @@ public final class UserRepository {
 				.setRegion(User.Region.CHERKASY)
 				.setPassword("ytrewq")
 				.setSubscribe(true)
-				.setCompany("company")
+				.setFax("2334")
 				.build();
 	}
 
@@ -58,7 +58,7 @@ public final class UserRepository {
 				.setRegion(User.Region.LVIV)
 				.setPassword("qwerty")
 				.setSubscribe(true)
-				.setCompany("company")
+				.setCompany("dbdfb")
 				.build();
 	}
 
