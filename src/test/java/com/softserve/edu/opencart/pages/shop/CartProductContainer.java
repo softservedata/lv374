@@ -1,8 +1,10 @@
 package com.softserve.edu.opencart.pages.shop;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.opencart.data.Price;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,8 +55,8 @@ public class CartProductContainer {
 		return result;
 	}
 
-	public String getCartProductPriceByName(String productName) {
-		return getCartProductComponentByName(productName).getCartProductPriceText();
+	public BigDecimal getCartProductPriceByName(String productName) {
+		return Price.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
 	}
 
 	private void removeProductFromShoppingCartByName(String productName) {

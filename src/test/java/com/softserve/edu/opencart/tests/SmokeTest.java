@@ -27,9 +27,9 @@ public class SmokeTest extends TestRunner {
 		SuccessfulSearchPage successfulSearchPage = loadApplication()
 				.successfulSearch(validProduct);
 		// Check
-		Assert.assertTrue(successfulSearchPage
+		Assert.assertEquals(successfulSearchPage
 				.getProductComponentPrice(validProduct)
-				.contains(validProduct.getPriceDollarExTax()));
+				,validProduct.getPriceDollar());
 		Assert.assertTrue(successfulSearchPage
 				.getProductComponentDescription(validProduct)
 				.contains(validProduct.getDescription()));

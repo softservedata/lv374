@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.data;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import org.apache.poi.hpsf.Decimal;
@@ -9,17 +10,14 @@ public class Product {
 	private String searchText;
 	private String name;
 	private String description;
-	private String priceDollarExTax;
-	// TODO
-	// private Decimal priceDollarExTax;
-	//
-	// private HashMap<EnumCurrencies, Decimal> prices;
+	private BigDecimal priceDollar;
 
-	public Product(String searchText, String name, String description, String priceDollarExTax) {
+
+	public Product(String searchText, String name, String description, String priceDollar) {
 		this.searchText = searchText;
 		this.name = name;
 		this.description = description;
-		this.priceDollarExTax = priceDollarExTax;
+		this.priceDollar = new BigDecimal(priceDollar);
 	}
 
 	public void setSearchText(String searchText) {
@@ -34,8 +32,8 @@ public class Product {
 		this.description = description;
 	}
 
-	public void setPriceDollarExTax(String priceDollarExTax) {
-		this.priceDollarExTax = priceDollarExTax;
+	public void setPriceDollarExTax(BigDecimal priceDollar) {
+		this.priceDollar = priceDollar;
 	}
 
 	public String getSearchText() {
@@ -50,8 +48,8 @@ public class Product {
 		return description;
 	}
 
-	public String getPriceDollarExTax() {
-		return priceDollarExTax;
+	public BigDecimal getPriceDollar() {
+		return priceDollar;
 	}
 
 }
