@@ -31,9 +31,9 @@ public final class ProductRepository {
 	
 	
 	public static Product getInvalidProduct() {
-		return new Product("ccc", "aaa",
+		return new Product("Ipont", "Ipont",
 				"bebebe",
-				"o.00"); 
+				"0.00"); 
 	}
 
 }

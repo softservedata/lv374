@@ -13,7 +13,8 @@ public class SearchTests extends TestRunner {
 	@DataProvider
 	public Object[][] productData() {
 		return new Object[][] {
-			{ ProductRepository.getIPhone() },
+			{ ProductRepository.getIPhone(),
+				}
 		};
 	}
 	
@@ -37,5 +38,4 @@ public class SearchTests extends TestRunner {
 				.getSlideshow0FirstImageAttributeSrcText()
 				.contains(HomePage.IPHONE_IMAGE));
 	}
-	
 }
