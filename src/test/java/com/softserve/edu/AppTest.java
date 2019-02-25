@@ -105,7 +105,7 @@ public class AppTest {
 		ActualProductList.add(driver.findElement(By.xpath("//div[contains(@class,'product-layout product-grid')]//a[contains(text(),'iPod Nano')]")).getText());
 		ActualProductList.add(driver.findElement(By.xpath("//div[contains(@class,'product-layout product-grid')]//a[contains(text(),'iPod Shuffle')]")).getText());
 		ActualProductList.add(driver.findElement(By.xpath("//div[contains(@class,'product-layout product-grid')]//a[contains(text(),'iPod Touch')]")).getText());
-		Assert.assertEquals(ActualProductList, ExpectedProductList, "Wrong characters entered");
+		Assert.assertEquals(ActualProductList, ExpectedProductList, "Wrong characters entered a");
 	}
 }
 
