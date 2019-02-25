@@ -62,6 +62,71 @@ public final class UserRepository {
 				.build();
 	}
 
+	public static  IUser userBadEmail() {
+		return User.get()
+				.setFirstname("")
+				.setLastname("")
+				.setEmail("dvdfbd")
+				.setTelephone("")
+				.setAddress1("")
+				.setCity("")
+				.setPostcode("")
+				.setCountry(User.Country.UKRAINE)
+				.setRegion(User.Region.LVIV)
+				.setPassword("")
+				.setSubscribe(true)
+				.setConfirmPassword("")
+				.build();
+	}
+
+	public static IUser emptyUser(){
+		return User.get()
+				.setFirstname("")
+				.setLastname("")
+				.setEmail("")
+				.setTelephone("")
+				.setAddress1("")
+				.setCity("")
+				.setPostcode("")
+				.setCountry(User.Country.UKRAINE)
+				.setRegion(User.Region.LVIV)
+				.setPassword("")
+				.setSubscribe(false)
+				.build();
+	}
+
+	public static IUser userLastName33Length(){
+		return User.get()
+				.setFirstname(AccidentalUtils.randomString(7))
+				.setLastname(AccidentalUtils.randomString(33))
+				.setEmail(AccidentalUtils.randomEmail())
+				.setTelephone("1234567890")
+				.setAddress1("dfbdfb")
+				.setCity(AccidentalUtils.randomString(7))
+				.setPostcode("123456")
+				.setCountry(User.Country.UKRAINE)
+				.setRegion(User.Region.CHERKASY)
+				.setPassword("qwerty123")
+				.setSubscribe(true)
+				.build();
+	}
+
+	public static IUser userWithFirstNameConsistsDigits(){
+		return User.get()
+				.setFirstname("Ruslana123456")
+				.setLastname("John")
+				.setEmail(AccidentalUtils.randomEmail())
+				.setTelephone("0987658125")
+				.setAddress1("Ruska 87")
+				.setCity("Kyiv")
+				.setPostcode("12121")
+				.setCountry(User.Country.UKRAINE)
+				.setRegion(User.Region.KYIV)
+				.setPassword("qwerty345")
+				.setSubscribe(true)
+				.build();
+	}
+
 	// TODO Read data from Excel, DB, etc.
 	
 }
