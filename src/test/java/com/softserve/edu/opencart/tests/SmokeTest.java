@@ -15,9 +15,9 @@ public class SmokeTest extends TestRunner {
 	public Object[][] productData() {
 		return new Object[][] {
 			//{ ProductRepository.getMacBook() },
-			//{ ProductRepository.getIPhone() },
+			{ ProductRepository.getIPhone() },
 			//{ ProductRepository.getIPodNano() },
-			{ ProductRepository.getIPodNanoShortDescription() },
+			//{ ProductRepository.getIPodNanoShortDescription() },
 		};
 	}
 	

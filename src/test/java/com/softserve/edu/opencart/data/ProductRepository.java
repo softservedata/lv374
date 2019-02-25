@@ -12,9 +12,9 @@ public final class ProductRepository {
 	}
 
 	public static Product getIPhone() {
-		return new Product("phone", "iPhone",
+		return new Product("Iphone", "iPhone",
 				"iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a nam..",
-				"122.00");
+				"123.20");
 	}
 
 	public static Product getIPodNano() {
