@@ -1,5 +1,4 @@
-package com.softserve.edu.opencart.tests;
-
+package com.softserve.edu.opencart.tests.kondratiuk;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,15 +8,12 @@ import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
 
-public class SmokeTest extends TestRunner {
+public class SearchTests extends TestRunner {
 
-	@DataProvider//(parallel = true)
+	@DataProvider
 	public Object[][] productData() {
 		return new Object[][] {
-			//{ ProductRepository.getMacBook() },
 			{ ProductRepository.getIPhone() },
-			//{ ProductRepository.getIPodNano() },
-			//{ ProductRepository.getIPodNanoShortDescription() },
 		};
 	}
 	

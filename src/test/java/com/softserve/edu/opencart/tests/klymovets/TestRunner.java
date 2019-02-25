@@ -1,4 +1,4 @@
-package com.softserve.edu.mailbox.test;
+package com.softserve.edu.opencart.tests.klymovets;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,25 +10,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.mailbox.pages.MailLoginPage;
+import com.softserve.edu.opencart.pages.shop.HomePage;
 
-public class MailTestRunner {
+public abstract class TestRunner {
 
 	private WebDriver driver;
 
 	@BeforeClass
 	public void beforeClass() {
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	}
-
-	@BeforeMethod
-	public void beforeMethod() {
-		driver.get("https://accounts.ukr.net/login");
-	}
-
-	@AfterMethod
-	public void afterMethod() {
-		driver.get("https://mail.ukr.net/q/logout");
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -36,7 +28,21 @@ public class MailTestRunner {
 		driver.quit();
 	}
 
-	public MailLoginPage loadMailApplication() {
+	@BeforeMethod
+	public void beforeMethod() {
+		driver.get("http://localhost/opencart/upload/");
+	}
+
+	@AfterMethod
+	public void afterMethod() {
+		driver.get("http://localhost/opencart/upload/index.php?route=account/logout");
+	}
+
+	public HomePage loadApplication() {
+		return new HomePage(driver);
+	}
+
+	public MailLoginPage loadMail() {
 		return new MailLoginPage(driver);
 	}
 

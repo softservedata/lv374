@@ -7,6 +7,8 @@ import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.shop.SearchResultComponent.SelectInputLimit;
 import com.softserve.edu.opencart.pages.shop.SearchResultComponent.SelectInputSort;
 
+import java.math.BigDecimal;
+
 public class SuccessfulSearchPage extends SearchUnit {
 
 	private SearchResultComponent searchResultComponent;
@@ -48,7 +50,7 @@ public class SuccessfulSearchPage extends SearchUnit {
 		return new SuccessfulSearchPage(driver);
 	}
 
-	public String getProductComponentPrice(Product product) {
+	public BigDecimal getProductComponentPrice(Product product) {
 		return getSearchResultComponent()
 					.getProductComponentsContainer()
 					.getProductComponentPriceByProduct(product);
@@ -63,6 +65,11 @@ public class SuccessfulSearchPage extends SearchUnit {
 	public SuccessfulSearchPage chooseCurrency(Currencies currency) {
 		clickCurrencyByPartialName(currency);
 		return new SuccessfulSearchPage(driver);
+	}
+
+	public BigDecimal getPrice(Currencies currency, Product product){
+		chooseCurrency(currency);
+		return getProductComponentPrice(product);
 	}
 
 }

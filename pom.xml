@@ -58,6 +58,11 @@
 	<dependencies>
 		<!-- - - - Test - - - -->
 		<dependency>
+    		<groupId>com.sikulix</groupId>
+    		<artifactId>sikulixapi</artifactId>
+    		<version>1.1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${org.testng.version}</version>

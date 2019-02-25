@@ -81,7 +81,7 @@ public class ShopingCartProductComponent {
     }
 
     public String getTotalPriceText(){
-        return getUnitPrice().getText();
+        return getTotalPrice().getText();
     }
 
     // Functional
