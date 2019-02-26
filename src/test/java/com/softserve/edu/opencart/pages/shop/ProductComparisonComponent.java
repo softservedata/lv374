@@ -2,19 +2,17 @@ package com.softserve.edu.opencart.pages.shop;
 
 
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.pages.common.NavigationUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ProductComparisonComponent{
-	WebElement driver;
-	protected ProductComparisonComponent(WebDriver driver) {
-    	this.driver = (WebElement) driver;
+public class ProductComparisonComponent extends NavigationUnit{
+	public ProductComparisonComponent(WebDriver driver) {
+		super(driver);
 	}
-	
-	public WebElement driver() {
-		   return driver;
-	}
-	
+
 	 // RemoveButton;
 	public WebElement getRemoveButton() {
 		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
