@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+    <!--
+    function tell(a, b) {
+        document.getElementById('result').innerHTML +="<br>"+ a +": " + b;
+    }
+    //-->
+</script>
+</head>
+<body>
+
+<p>A script on this page starts this clock:</p>
+
+<br><br><br>
+<input id="testbutton" type="button" name="plainButton"
+ value="Plain Button" title="onmousedown_DONE"
+onMouseDown="tell(this.name, 'onmousedown');"
+onMouseUp="tell(this.name, 'onmouseup');"
+onFocus="tell(this.name, 'onfocus');"
+onMouseOver="tell(this.name, 'onmouseover');"
+onMouseOut="tell(this.name, 'onmouseout');"
+>
+<br><br><br>
+
+<div id='result'>RESULT</div>
+
+</body>
+</html>
