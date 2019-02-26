@@ -6,12 +6,12 @@ import com.softserve.edu.opencart.pages.common.NavigationUnit;
 
 public class ProductComparisonPage extends NavigationUnit {
 
-	private ProductComparisonContainer productComparisonContainer;
+	private ProductComparisonComponent productComparisonComponent;
 	protected ProductComparisonPage(WebDriver driver) {
 		super(driver);
-		productComparisonContainer = new ProductComparisonContainer(driver);
+		productComparisonComponent = new ProductComparisonComponent(driver);
 	}
-	public ProductComparisonContainer getProductComparisonContainer(){
-        return productComparisonContainer;
+	public ProductComparisonComponent getComparisonComponent(){
+        return productComparisonComponent;
 	}
 }
