@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softserve.edu.opencart.data.Price;
+import com.softserve.edu.opencart.tools.AccidentalUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,7 +56,7 @@ public class ProductComponentsContainer {
 	}
 	
 	public BigDecimal getProductComponentPriceByName(String productName) {
-		return Price.getPrice(getProductComponentByName(productName).getPriceText());
+		return AccidentalUtils.getPrice(getProductComponentByName(productName).getPriceText());
 	}
 
 	public String getProductComponentDescriptionByName(String productName) {
@@ -69,6 +69,10 @@ public class ProductComponentsContainer {
 
 	public void clickProductComponentAddToWishButtonByName(String productName) {
 		getProductComponentByName(productName).clickAddToWishButton();
+	}
+
+	public String getCurrencyByProduct(Product product){
+		return AccidentalUtils.getCurrencySymbol(getProductComponentByName(product.getName()).getPriceText());
 	}
 
 	// Business Logic

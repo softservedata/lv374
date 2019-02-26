@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.shop;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.common.NavigationUnit;
 import org.openqa.selenium.WebDriver;
 
@@ -19,13 +20,13 @@ public class ShoppingCartPage extends NavigationUnit {
         return shoppingCartProductsContainer;
     }
 
-    public ShoppingCartPage setQuantityProductsByName(String productName, String quantity){
-        getShoppingCartProductsContainer().quantityProductsByName(productName, quantity);
+    public ShoppingCartPage setQuantityProductsByName(Product product, String quantity){
+        getShoppingCartProductsContainer().quantityProductsByName(product, quantity);
         return new ShoppingCartPage(driver);
     }
 
-    public ShoppingCartPage removeProductByName(String productName){
-        getShoppingCartProductsContainer().removeProductFromShoppingCartByName(productName);
+    public ShoppingCartPage removeProductByName(Product product){
+        getShoppingCartProductsContainer().removeProductFromShoppingCartByName(product);
         return new ShoppingCartPage(driver);
     }
 
@@ -34,12 +35,12 @@ public class ShoppingCartPage extends NavigationUnit {
         return new ShoppingCartPage(driver);
     }
 
-    public BigDecimal getUnitPrice(Currencies currency, String productName){
-       return chooseCurrency(currency).getShoppingCartProductsContainer().getUnitPriceByName(productName);
+    public BigDecimal getUnitPriceByCurrency(Currencies currency, Product product){
+       return chooseCurrency(currency).getShoppingCartProductsContainer().getUnitPriceByName(product);
     }
 
-    public BigDecimal getTotalPrice(Currencies currency, String productName){
-        return chooseCurrency(currency).getShoppingCartProductsContainer().getTotalPriceByName(productName);
+    public BigDecimal getTotalPriceByCurrency(Currencies currency, Product product){
+        return chooseCurrency(currency).getShoppingCartProductsContainer().getTotalPriceByName(product);
     }
 
 }
