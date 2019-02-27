@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.melnyk;
+package com.softserve.edu.opencart.tests.melnyk;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ public class TestRunner {
 	
 	protected final String SERVER_URL = "http://127.0.1.1/opencart/upload/";
 
-	private WebDriver driver;
+	protected WebDriver driver;
 	
     @BeforeClass
     public void beforeClass() {
