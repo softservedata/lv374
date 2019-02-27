@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 
 public class CartProductContainer {
 	private static final String PRODUCT_COMPONENT_CSSSELECTOR = (".table.table-striped>tbody>tr");
+	private static final String PRICE_TABLE_CSSSELECTOR = (".dropdown-menu.pull-right .table.table-bordered");
 
 	protected WebDriver driver;
 
@@ -51,6 +52,10 @@ public class CartProductContainer {
 			throw new RuntimeException("ProductName: " + productName + " not Found.");
 		}
 		return result;
+	}
+
+	public TotalPriceTableComponent getTotalPriceTableComponent(){
+		return new TotalPriceTableComponent(driver.findElement(By.cssSelector(PRICE_TABLE_CSSSELECTOR)));
 	}
 
 	public BigDecimal getCartProductPriceByName(String productName) {

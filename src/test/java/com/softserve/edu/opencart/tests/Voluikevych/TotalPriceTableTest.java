@@ -11,27 +11,28 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-public class ShoppingCartPagePriceTest extends TestRunnerVoluikevych {
+public class TotalPriceTableTest extends TestRunnerVoluikevych {
 
     @DataProvider
     public Object[][] dataProvider() {
         return new Object[][] {{
                 ProductRepository.getIPhone(),
                 ProductRepository.getMacBook(),
-                Currencies.EURO
+                Currencies.EURO,
+                Currencies.US_DOLLAR
         }};
     }
 
     @Test(dataProvider = "dataProvider")
-    public void convertUSDToEURO(Product iphone, Product macBook, Currencies currency) {
-        ShoppingCartPage shop = loadApplication()
+    public void totalPriceTest(Product iphone, Product macBook, Currencies euro, Currencies usd){
+        ShoppingCartPage shoppingCartPage = loadApplication()
                 .addToShoppingCart(iphone.getName())
                 .refresh()
                 .addToShoppingCart(macBook.getName())
                 .refresh()
                 .gotoShoppingCart();
-        BigDecimal euro = shop.gotoShoppingCart().getTotalProductPriceByCurrency(currency, macBook);
-        Assert.assertEquals(euro, AccidentalUtils.getExpectedEURO(macBook.getPriceDollar()));
+        BigDecimal totalUSD = shoppingCartPage.getTableTotalByCurrency(usd);
+        BigDecimal totalEuro = shoppingCartPage.gotoShoppingCart().getTableTotalByCurrency(euro);
+        Assert.assertEquals(totalEuro, AccidentalUtils.getExpectedEURO(totalUSD));
     }
-
 }
