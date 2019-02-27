@@ -43,4 +43,8 @@ public class ShoppingCartPage extends NavigationUnit {
         return chooseCurrency(currency).getShoppingCartProductsContainer().getTotalPriceByName(product);
     }
 
+    public String getShoppingCartCurrencySymbol(Product product){
+        return getShoppingCartProductsContainer().getCurrencyByProduct(product);
+    }
+
 }

@@ -7,40 +7,40 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class HomePageCurrnecyTest extends TestRunnerVoluikevych {
+public class HomePageCurrencyTest extends TestRunnerVoluikevych {
 
     @DataProvider
     public Object[][] euro() {
         return new Object[][] {{
                 ProductRepository.getIPhone(),
-                Currencies.EURO
+                Currencies.EURO,
+                "€"
         }};
     }
 
     @Test(dataProvider = "euro")
-    public void changeCurrencyToEURO(Product product, Currencies currency){
+    public void changeCurrencyToEURO(Product product, Currencies currency, String currencySymbol){
         String actualCurrency = loadApplication()
                 .chooseCurrency(currency)
-                .getProductComponentsContainer()
-                .getCurrencyByProduct(product);
-        Assert.assertEquals(actualCurrency,"€", "Currency not equals");
+                .getHomePageCurrencySymbol(product);
+        Assert.assertEquals(actualCurrency,currencySymbol, "Currency not equals");
     }
 
     @DataProvider
     public Object[][] pound() {
         return new Object[][] {{
                 ProductRepository.getIPhone(),
-                Currencies.POUND_STERLING
+                Currencies.POUND_STERLING,
+                "£"
         }};
     }
 
     @Test(dataProvider = "pound")
-    public void changeCurrencyToPound(Product product, Currencies currency){
+    public void changeCurrencyToPound(Product product, Currencies currency, String currencySymbol){
         String actualCurrency = loadApplication()
                 .chooseCurrency(currency)
-                .getProductComponentsContainer()
-                .getCurrencyByProduct(product);
-        Assert.assertEquals(actualCurrency,"£", "Currency not equals");
+                .getHomePageCurrencySymbol(product);
+        Assert.assertEquals(actualCurrency,currencySymbol, "Currency not equals");
     }
 
 }
