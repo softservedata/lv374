@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 
 import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.apache.poi.hpsf.Decimal;
 
 public class Product {
@@ -18,7 +19,7 @@ public class Product {
 		this.searchText = searchText;
 		this.name = name;
 		this.description = description;
-		this.priceDollar = AccidentalUtils.getPrice(priceDollar);
+		this.priceDollar = PriceUtils.getPrice(priceDollar);
 	}
 
 	public void setSearchText(String searchText) {

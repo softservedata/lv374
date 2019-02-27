@@ -27,16 +27,16 @@ public class HomePage extends HeadUnit {
 	// Page Object
 
 	// slideshow0
-	public WebElement getSlideshow0() {
+	private WebElement getSlideshow0() {
 		return driver.findElement(By.cssSelector("#slideshow0"));
 	}
 	
 	// slideshow0FirstImage
-	public WebElement getSlideshow0FirstImage() {
+	private WebElement getSlideshow0FirstImage() {
 		return getSlideshow0().findElement(By.xpath(".//a/img"));
 	}
 
-	public String getSlideshow0FirstImageAttributeText(String attribute) {
+	private String getSlideshow0FirstImageAttributeText(String attribute) {
 		return getSlideshow0FirstImage().getAttribute(attribute).trim();
 	}
 
@@ -58,13 +58,8 @@ public class HomePage extends HeadUnit {
         return new HomePage(driver); 
     }
 
-    public HomePage addToShoppingCart(String productName){
-		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(productName);
-		return new HomePage(driver);
-	}
-
-	public HomePage refresh(){
-		driver.navigate().refresh();
+    public HomePage addToShoppingCart(Product product){
+		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(product.getName());
 		return new HomePage(driver);
 	}
 

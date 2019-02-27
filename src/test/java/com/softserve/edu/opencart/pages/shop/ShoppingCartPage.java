@@ -67,7 +67,7 @@ public class ShoppingCartPage extends NavigationUnit {
     }
 
     public BigDecimal getTableTotalByCurrency(Currencies currency){
-        return chooseCurrency(currency).getTotalPriceTableComponent().getTablTotalPrice();
+        return chooseCurrency(currency).getTotalPriceTableComponent().getTableTotalPrice();
     }
 
 }

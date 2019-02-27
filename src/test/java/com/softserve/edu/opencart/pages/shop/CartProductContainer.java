@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -59,7 +59,7 @@ public class CartProductContainer {
 	}
 
 	public BigDecimal getCartProductPriceByName(String productName) {
-		return AccidentalUtils.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
+		return PriceUtils.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
 	}
 
 	private void removeProductFromShoppingCartByName(String productName) {

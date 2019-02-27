@@ -1,6 +1,6 @@
 package com.softserve.edu.opencart.pages.shop;
 
-import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -15,19 +15,19 @@ public class TotalPriceTableComponent {
         this.totalTable = totalTable;
     }
 
-    public WebElement getTableSubTotal(){
+    private WebElement getTableSubTotal(){
         return totalTable.findElement(By.cssSelector("tr:first-child>td+td"));
     }
 
-    public WebElement getTableEcoTax(){
+    private WebElement getTableEcoTax(){
         return totalTable.findElement(By.cssSelector("tr:first-child+tr>td+td"));
     }
 
-    public WebElement getTableVAT(){
+    private WebElement getTableVAT(){
         return totalTable.findElement(By.cssSelector("tr:first-child+tr+tr>td+td"));
     }
 
-    public WebElement getTableTotal(){
+    private WebElement getTableTotal(){
         return totalTable.findElement(By.cssSelector("tr:last-child>td+td"));
     }
 
@@ -48,19 +48,35 @@ public class TotalPriceTableComponent {
     }
 
     public BigDecimal getTableSubTotalPrice(){
-        return AccidentalUtils.getPrice(getTableSubTotalText());
+        return PriceUtils.getPrice(getTableSubTotalText());
     }
 
     public BigDecimal getTableEcoTaxPrice(){
-        return AccidentalUtils.getPrice(getTableEcoTaxText());
+        return PriceUtils.getPrice(getTableEcoTaxText());
     }
 
     public BigDecimal getTableVATPrice(){
-        return AccidentalUtils.getPrice(getTableVATText());
+        return PriceUtils.getPrice(getTableVATText());
     }
 
-    public BigDecimal getTablTotalPrice(){
-        return AccidentalUtils.getPrice(getTableTotalText());
+    public BigDecimal getTableTotalPrice(){
+        return PriceUtils.getPrice(getTableTotalText());
+    }
+
+    public String getTableSubTotalSymbol(){
+        return PriceUtils.getCurrencySymbol(getTableSubTotalText());
+    }
+
+    public String getTableEcoTaxSymbol(){
+        return PriceUtils.getCurrencySymbol(getTableEcoTaxText());
+    }
+
+    public String getTableVATSymbol(){
+        return PriceUtils.getCurrencySymbol(getTableVATText());
+    }
+
+    public String getTableTotalSymbol(){
+        return PriceUtils.getCurrencySymbol(getTableTotalText());
     }
 
 }

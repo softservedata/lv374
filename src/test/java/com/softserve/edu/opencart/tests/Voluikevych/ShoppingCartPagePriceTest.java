@@ -4,7 +4,7 @@ import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
-import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,13 +25,11 @@ public class ShoppingCartPagePriceTest extends TestRunnerVoluikevych {
     @Test(dataProvider = "dataProvider")
     public void convertUSDToEURO(Product iphone, Product macBook, Currencies currency) {
         ShoppingCartPage shop = loadApplication()
-                .addToShoppingCart(iphone.getName())
-                .refresh()
-                .addToShoppingCart(macBook.getName())
-                .refresh()
+                .addToShoppingCart(iphone)
+                .addToShoppingCart(macBook)
                 .gotoShoppingCart();
         BigDecimal euro = shop.gotoShoppingCart().getTotalProductPriceByCurrency(currency, macBook);
-        Assert.assertEquals(euro, AccidentalUtils.getExpectedEURO(macBook.getPriceDollar()));
+        Assert.assertEquals(euro, PriceUtils.getExpectedEURO(macBook.getPriceDollar()));
     }
 
 }

@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.pages.shop;
 
 import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,15 +55,15 @@ public class ShoppingCartProductsContainer {
     }
 
     public BigDecimal getUnitPriceByName(Product product){
-        return AccidentalUtils.getPrice(getShoppingCartComponentByName(product.getName()).getUnitPriceText());
+        return PriceUtils.getPrice(getShoppingCartComponentByName(product.getName()).getUnitPriceText());
     }
 
     public BigDecimal getTotalPriceByName(Product product){
-        return AccidentalUtils.getPrice(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
+        return PriceUtils.getPrice(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
     }
 
     public String getCurrencyByProduct(Product product){
-        return AccidentalUtils.getCurrencySymbol(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
+        return PriceUtils.getCurrencySymbol(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
     }
 
     public String getModelByName(Product product){

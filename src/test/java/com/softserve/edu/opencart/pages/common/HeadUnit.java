@@ -90,6 +90,7 @@ public abstract class HeadUnit {
 	public void clickMyAccount() {
 		getMyAccount().click();
 	}
+
 	//action
 	public Actions getAction() {
 		return new Actions(driver);
@@ -125,6 +126,8 @@ public abstract class HeadUnit {
 	}
 
 	public void clickShoppingCart() {
+		getAction().moveToElement(getShoppingCart()).perform();
+		getWait().until(ExpectedConditions.elementToBeClickable(getShoppingCart()));
 		getShoppingCart().click();
 	}
 
