@@ -2,21 +2,20 @@ package com.softserve.edu.opencart.pages.shop;
 
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
 
-public class ProductComparisonComponent{
-	WebElement productComparisonInstance;
-	protected ProductComparisonComponent(WebElement productComparisonInstance) {
-    	this.productComparisonInstance = productComparisonInstance;
+import com.softserve.edu.opencart.pages.common.NavigationUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ProductComparisonComponent extends NavigationUnit{
+	public ProductComparisonComponent(WebDriver driver) {
+		super(driver);
 	}
-	
-	public WebElement getProductComparisonInstance() {
-		   return productComparisonInstance;
-	}
-	
+
 	 // RemoveButton;
 	public WebElement getRemoveButton() {
-		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
+		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
 	}
 	
     public void clickRemoveButton() {
@@ -25,7 +24,7 @@ public class ProductComparisonComponent{
 	
     // ContinueButton;
 	public WebElement getContinueButton() {
-		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
+		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
 	}
 	
 	public void clickContinueButtonn() {
@@ -34,7 +33,7 @@ public class ProductComparisonComponent{
 	
 	// addToCartButton;
 	public WebElement getAddToCartButton() {
-		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[2]/tr/td[2]/input"));
+		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[2]/tr/td[2]/input"));
 	}
 	
 	public void clickAddToCartButton() {
@@ -43,7 +42,7 @@ public class ProductComparisonComponent{
 	
 	// product name
 	public WebElement getProductName() {
-		return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[1]/td[2]/a/strong"));
+		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[1]/td[2]/a/strong"));
 	}
 	
 	public String getProductNameText() {
@@ -56,7 +55,7 @@ public class ProductComparisonComponent{
 	
     // price;
     public WebElement getPrice() {
-        return productComparisonInstance.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[3]/td[2]"));
+        return driver.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[3]/td[2]"));
     }
 
     public String getPriceText() {
@@ -65,7 +64,7 @@ public class ProductComparisonComponent{
     
     // Success Message
  	public WebElement getSuccessMessage() {
- 		return productComparisonInstance.findElement(By.xpath("/html/body/div[2]/div[1]"));
+ 		return driver.findElement(By.xpath("/html/body/div[2]/div[1]"));
  	}
  	public String getSuccessMessageText() {
  		return getSuccessMessage().getText();

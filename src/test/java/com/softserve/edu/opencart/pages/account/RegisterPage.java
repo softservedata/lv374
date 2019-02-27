@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.opencart.data.IUser;
 
+import java.sql.Driver;
+
 public class RegisterPage extends RightLogoutUnit {
 
 	public RegisterPage(WebDriver driver) {
@@ -533,6 +535,7 @@ public class RegisterPage extends RightLogoutUnit {
         clickContinueButton();
     }
 
+
 	// Business Logic
 
 	public SuccessRegisterPage successfullRegisterUser(IUser newValidUser) {
@@ -544,4 +547,24 @@ public class RegisterPage extends RightLogoutUnit {
 	    fillRegistrationFormWithNoPrivacyPolicy(newValidUser);
 	    return new UnsuccessfullRegisterPage(driver);
     }
+
+    public UnsuccessfullRegisterPage userWithBadEmail(IUser userBadEmail){
+		fillRegistrationForm(userBadEmail);
+		return  new UnsuccessfullRegisterPage(driver);
+	}
+
+	public UnsuccessfullRegisterPage userWithNoData(IUser emptyUser){
+		fillRegistrationForm(emptyUser);
+		return new UnsuccessfullRegisterPage(driver);
+	}
+
+	public UnsuccessfullRegisterPage userWithFirstNameLength33Symbols(IUser userLastName33Length){
+		fillRegistrationForm(userLastName33Length);
+		return new UnsuccessfullRegisterPage(driver);
+	}
+
+	public UnsuccessfullRegisterPage userWithFirstNameConsistsDigits(IUser userWithFirstNameConsistsDigits){
+		fillRegistrationForm(userWithFirstNameConsistsDigits);
+		return new UnsuccessfullRegisterPage(driver);
+	}
 }

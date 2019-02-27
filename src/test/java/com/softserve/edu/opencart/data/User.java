@@ -150,6 +150,7 @@ public class User implements IFirstname, ILastname, IEmail,
 		LVIV("L'vivs'ka Oblast'"),
 		TERNOPIL("Ternopil's'ka Oblast'"),
 		CHERKASY("Cherkas'ka Oblast'"),
+		KYIV("Kyiv"),
 		HALLAND("Halland");
 
 		private String region;

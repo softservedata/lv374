@@ -72,4 +72,8 @@ public class SuccessfulSearchPage extends SearchUnit {
 		return getProductComponentPrice(product);
 	}
 
+	public String getSuccessfulSearchCurrencySymbol(Product product){
+		return getSearchResultComponent().getProductComponentsContainer().getCurrencyByProduct(product);
+	}
+
 }

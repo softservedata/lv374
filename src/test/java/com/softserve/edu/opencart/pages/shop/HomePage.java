@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.shop;
 
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,10 +33,7 @@ public class HomePage extends HeadUnit {
 	
 	// slideshow0FirstImage
 	public WebElement getSlideshow0FirstImage() {
-		//return getSlideshow0().findElement(By.cssSelector("a > img"));
 		return getSlideshow0().findElement(By.xpath(".//a/img"));
-		//return getSlideshow0().findElement(By.xpath("//a/img")); // ERROR
-		//return driver.findElement(By.xpath("//div[@id='slideshow0']//a/img"));
 	}
 
 	public String getSlideshow0FirstImageAttributeText(String attribute) {
@@ -68,6 +66,10 @@ public class HomePage extends HeadUnit {
 	public HomePage refresh(){
 		driver.navigate().refresh();
 		return new HomePage(driver);
+	}
+
+	public String getHomePageCurrencySymbol(Product product){
+		return getProductComponentsContainer().getCurrencyByProduct(product);
 	}
 
 }

@@ -32,9 +32,17 @@ public class WishListComponent {
    public WebElement getWishListProductName() {
 	   return wishlistSketch.findElement(By.cssSelector("td:nth-child(" + productNameTd +")>a"));
    }
+
+    public WebElement getWishlistUnitPrice(){
+        return wishlistSketch.findElement(By.cssSelector(".price"));
+    }
    
    public String getWishListProductNameText() {
 	   return getWishListProductName().getText();
+   }
+
+   public String getWishlistUnitPriceText(){
+        return getWishlistUnitPrice().getText().trim();
    }
    
    //addToCartButton

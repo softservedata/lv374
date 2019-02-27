@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.data;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
+import com.softserve.edu.opencart.tools.AccidentalUtils;
 import org.apache.poi.hpsf.Decimal;
 
 public class Product {
@@ -17,7 +18,7 @@ public class Product {
 		this.searchText = searchText;
 		this.name = name;
 		this.description = description;
-		this.priceDollar = new BigDecimal(priceDollar);
+		this.priceDollar = AccidentalUtils.getPrice(priceDollar);
 	}
 
 	public void setSearchText(String searchText) {
