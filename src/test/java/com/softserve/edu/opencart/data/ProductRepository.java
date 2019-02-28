@@ -35,5 +35,9 @@ public final class ProductRepository {
 				"bebebe",
 				"0.00"); 
 	}
-
+	public static Product getPercent() {
+		return new Product("%", "12",
+				"12",
+				"12");
+	}
 }

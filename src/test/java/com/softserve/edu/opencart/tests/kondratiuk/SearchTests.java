@@ -1,7 +1,9 @@
 package com.softserve.edu.opencart.tests.kondratiuk;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
+
 
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
@@ -11,15 +13,15 @@ import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
 public class SearchTests extends TestRunner {
 
-	@DataProvider(name = "DataSet1")
-	public Object[][] DataSet1() {
+	@DataProvider(name = "Dataset1")
+	public Object[][] Dataset1() {
 		return new Object[][] {
 			{ ProductRepository.getIPhone(),
 				}
 		};
 	}
 	
-	@Test(dataProvider = "DataSet1")
+	@Test(dataProvider = "Dataset1")
 	public void checkSearch(Product validProduct) throws Exception {
 		// Steps
 		SuccessfulSearchPage successfulSearchPage = loadApplication()
@@ -39,15 +41,29 @@ public class SearchTests extends TestRunner {
 				.getSlideshow0FirstImageAttributeSrcText()
 				.contains(HomePage.IPHONE_IMAGE));
 	}
-	@DataProvider(name = "DataSet2")
-	public Object[][] DataSet2() {
+	@DataProvider(name = "Dataset3")
+	public Object[][] Dataset3() {
+		return new Object[][] {
+			{ ProductRepository.getPercent(),
+				}
+			
+			};
+		}
+	@Test(dataProvider = "Dataset3")
+	public void PercentCheck (Product PercentSearch) throws Exception {
+		UnsuccessfulSearchPage unsuccessfulSearchPage = loadApplication()
+				.unsuccessfulSearch(PercentSearch);
+		Assert.assertTrue(unsuccessfulSearchPage.getNoProductLabelText().contains("There is no product that matches the search criteria"));
+	}
+	@DataProvider(name = "Dataset2")
+	public Object[][] Dataset2() {
 		return new Object[][] {
 			{ ProductRepository.getInvalidProduct(),
 				}
 			
 			};
 		}
-	@Test(dataProvider = "DataSet2")
+	@Test(dataProvider = "Dataset2")
 	public void errorCheck (Product invalidProduct) throws Exception {
 		UnsuccessfulSearchPage unsuccessfulSearchPage = loadApplication()
 				.unsuccessfulSearch(invalidProduct);
