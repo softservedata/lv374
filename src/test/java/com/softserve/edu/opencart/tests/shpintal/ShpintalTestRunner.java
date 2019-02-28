@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.edu.opencart.tests.shpintal;
 
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +16,6 @@ public class ShpintalTestRunner {
 
     private WebDriver driver;
 
-
 //    public void beforeClass() {
 //        System.setProperty("webdriver.chrome.driver",
 //                "C:\\Users\\juliaa_sha\\Downloads\\chromedriver_win32\\chromedriver.exe");
@@ -24,6 +23,7 @@ public class ShpintalTestRunner {
 //        driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //        }
+
     @BeforeClass
     public void beforeClass() {
         URL url = this.getClass().getResource("/chromedriver.exe");

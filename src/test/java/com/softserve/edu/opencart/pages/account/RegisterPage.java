@@ -543,9 +543,9 @@ public class RegisterPage extends RightLogoutUnit {
 		return new SuccessRegisterPage(driver);
 	}
 
-	public UnsuccessfullRegisterPage userWithNoPrivacyPolicy(IUser newValidUser){
+	public UnsuccessfullRegisterPageAlert userWithNoPrivacyPolicy(IUser newValidUser){
 	    fillRegistrationFormWithNoPrivacyPolicy(newValidUser);
-	    return new UnsuccessfullRegisterPage(driver);
+	    return new UnsuccessfullRegisterPageAlert(driver);
     }
 
     public UnsuccessfullRegisterPage userWithBadEmail(IUser userBadEmail){
