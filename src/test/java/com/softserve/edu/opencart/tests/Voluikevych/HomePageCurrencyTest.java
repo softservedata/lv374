@@ -46,16 +46,8 @@ public class HomePageCurrencyTest extends TestRunnerVoluikevych {
         Assert.assertEquals(actualCurrency,currencySymbol, "Currency not equals");
     }
 
-    @DataProvider
-    public Object[][] convertToEuro(){
-        return new Object[][] {{
-                ProductRepository.getIPhone(),
-                Currencies.EURO
-        }};
-    }
-
-    @Test(dataProvider = "convertToEuro")
-    public void homePageConvertPriceToEuro(Product iphone, Currencies currency){
+    @Test(dataProvider = "homePageEuro")
+    public void homePageConvertPriceToEuro(Product iphone, Currencies currency, String str){
         BigDecimal euro = loadApplication()
                 .chooseCurrency(currency)
                 .getProductComponentsContainer()
@@ -63,16 +55,8 @@ public class HomePageCurrencyTest extends TestRunnerVoluikevych {
         Assert.assertEquals(euro, PriceUtils.getExpectedEURO(iphone.getPriceDollar()));
     }
 
-    @DataProvider
-    public Object[][] convertToPound(){
-        return new Object[][] {{
-                ProductRepository.getIPhone(),
-                Currencies.POUND_STERLING
-        }};
-    }
-
-    @Test(dataProvider = "convertToPound")
-    public void homePageConvertPriceToPound(Product iphone, Currencies currency){
+    @Test(dataProvider = "homePagePound")
+    public void homePageConvertPriceToPound(Product iphone, Currencies currency, String str){
         BigDecimal pound = loadApplication()
                 .chooseCurrency(currency)
                 .getProductComponentsContainer()

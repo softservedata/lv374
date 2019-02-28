@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.pages.common;
 
 import com.softserve.edu.opencart.pages.account.RegisterPage;
-import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
+import com.softserve.edu.opencart.pages.shop.*;
 
 import 	org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,9 +17,6 @@ import com.softserve.edu.opencart.data.UnloggedMyAccount;
 import com.softserve.edu.opencart.pages.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.account.LoginPage;
 import com.softserve.edu.opencart.pages.account.WishListPage;
-import com.softserve.edu.opencart.pages.shop.HomePage;
-import com.softserve.edu.opencart.pages.shop.SuccessfulSearchPage;
-import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
 public abstract class HeadUnit {
 	protected final String OPTION_NULL_MESSAGE = "DropdownOption is null";
@@ -201,6 +198,8 @@ public abstract class HeadUnit {
 	}
 
 	public void clickCartButton() {
+		getAction().moveToElement(getCartButton()).perform();
+		getWait().until(ExpectedConditions.elementToBeClickable(getCartButton()));
 		getCartButton().click();
 	}
 
@@ -312,6 +311,11 @@ public abstract class HeadUnit {
 	public ShoppingCartPage gotoShoppingCart(){
 		clickShoppingCart();
 		return  new ShoppingCartPage(driver);
+	}
+
+	public CartProductContainer openDropdownCart(){
+		clickCartButton();
+		return new CartProductContainer(driver);
 	}
 
 }
