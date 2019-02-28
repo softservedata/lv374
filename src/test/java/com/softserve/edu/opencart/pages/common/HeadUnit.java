@@ -2,9 +2,13 @@ package com.softserve.edu.opencart.pages.common;
 
 import com.softserve.edu.opencart.pages.account.RegisterPage;
 import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
+
 import 	org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.LoggedMyAccount;
@@ -28,6 +32,9 @@ public abstract class HeadUnit {
 	protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
 	
 	protected WebDriver driver;
+//	private Actions action;
+//	private WebDriverWait wait;
+
 	//
 	private WebElement currency;
 	private WebElement myAccount;
@@ -48,7 +55,7 @@ public abstract class HeadUnit {
 	private void initElements() {
 		currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
 		myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
-		wishList = driver.findElement(By.id("wishlist-total"));
+		wishList = driver.findElement(By.cssSelector("#wishlist-total"));
 		checkout = driver.findElement(By.cssSelector("a[title='Checkout']"));
 		searchField = driver.findElement(By.name("search"));
 		searchButton = driver.findElement(By.cssSelector(".btn.btn-default.btn-lg"));
@@ -84,6 +91,16 @@ public abstract class HeadUnit {
 		getMyAccount().click();
 	}
 
+	//action
+	public Actions getAction() {
+		return new Actions(driver);
+	}
+	
+	//wait
+	public WebDriverWait getWait() {
+		return new WebDriverWait(driver, 10);
+	}
+
 	// wishList;
 	public WebElement getWishList() {
 		return wishList;
@@ -94,6 +111,8 @@ public abstract class HeadUnit {
 	}
 
 	public void clickWishList() {
+		getAction().moveToElement(getWishList()).perform();
+	    getWait().until(ExpectedConditions.elementToBeClickable(getWishList()));
 		getWishList().click();
 	}
 
@@ -107,6 +126,8 @@ public abstract class HeadUnit {
 	}
 
 	public void clickShoppingCart() {
+		getAction().moveToElement(getShoppingCart()).perform();
+		getWait().until(ExpectedConditions.elementToBeClickable(getShoppingCart()));
 		getShoppingCart().click();
 	}
 

@@ -1,8 +1,11 @@
 package com.softserve.edu.opencart.pages.account;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,4 +83,14 @@ public class WishListContainer {
 		deleteButton(productName);
 		return new WishListPage(driver);
 	}
+
+	public BigDecimal getWishListUnitPriceByProduct(Product product){
+		return PriceUtils.getPrice(getWishListComponentByName(product.getName()).getWishlistUnitPriceText());
+	}
+
+	public String getCurrencyByProduct(Product product){
+		return PriceUtils.getCurrencySymbol(getWishListComponentByName(product.getName()).getWishlistUnitPriceText());
+	}
+
+
 }

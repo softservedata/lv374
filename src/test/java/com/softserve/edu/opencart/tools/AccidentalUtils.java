@@ -1,8 +1,12 @@
 package com.softserve.edu.opencart.tools;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class AccidentalUtils {
 	private static final long MAX_REMAINDER = 10000L;
@@ -47,4 +51,5 @@ public final class AccidentalUtils {
 	public static String randomEmail() {
 		return randomString(MAX_EMAIL) + EMAIL_POSTFIX;
 	}
+
 }

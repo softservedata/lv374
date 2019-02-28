@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.shop;
 
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,19 +27,16 @@ public class HomePage extends HeadUnit {
 	// Page Object
 
 	// slideshow0
-	public WebElement getSlideshow0() {
+	private WebElement getSlideshow0() {
 		return driver.findElement(By.cssSelector("#slideshow0"));
 	}
 	
 	// slideshow0FirstImage
-	public WebElement getSlideshow0FirstImage() {
-		//return getSlideshow0().findElement(By.cssSelector("a > img"));
+	private WebElement getSlideshow0FirstImage() {
 		return getSlideshow0().findElement(By.xpath(".//a/img"));
-		//return getSlideshow0().findElement(By.xpath("//a/img")); // ERROR
-		//return driver.findElement(By.xpath("//div[@id='slideshow0']//a/img"));
 	}
 
-	public String getSlideshow0FirstImageAttributeText(String attribute) {
+	private String getSlideshow0FirstImageAttributeText(String attribute) {
 		return getSlideshow0FirstImage().getAttribute(attribute).trim();
 	}
 
@@ -60,13 +58,12 @@ public class HomePage extends HeadUnit {
         return new HomePage(driver); 
     }
 
-    public HomePage addToShoppingCart(String productName){
-		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(productName);
+    public HomePage addToShoppingCart(Product product){
+		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(product.getName());
 		return new HomePage(driver);
 	}
 
-	public HomePage refresh(){
-		driver.navigate().refresh();
-		return new HomePage(driver);
+	public String getHomePageCurrencySymbol(Product product){
+		return getProductComponentsContainer().getCurrencyByProduct(product);
 	}
 	}

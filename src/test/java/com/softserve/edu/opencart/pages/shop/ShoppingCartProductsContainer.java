@@ -1,6 +1,7 @@
 package com.softserve.edu.opencart.pages.shop;
 
-import com.softserve.edu.opencart.data.Price;
+import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +27,6 @@ public class ShoppingCartProductsContainer {
         for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
             productComponents.add(new ShopingCartProductComponent(current));
         }
-        System.out.println(productComponents);
     }
 
     // Page Object
@@ -54,24 +54,28 @@ public class ShoppingCartProductsContainer {
         return result;
     }
 
-    public BigDecimal getUnitPriceByName(String productName){
-        return Price.getPrice(getShoppingCartComponentByName(productName).getUnitPriceText());
+    public BigDecimal getUnitPriceByName(Product product){
+        return PriceUtils.getPrice(getShoppingCartComponentByName(product.getName()).getUnitPriceText());
     }
 
-    public BigDecimal getTotalPriceByName(String productName){
-        return Price.getPrice(getShoppingCartComponentByName(productName).getTotalPriceText());
+    public BigDecimal getTotalPriceByName(Product product){
+        return PriceUtils.getPrice(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
     }
 
-    public String getModelByName(String productName){
-        return getShoppingCartComponentByName(productName).getProductModelText();
+    public String getCurrencyByProduct(Product product){
+        return PriceUtils.getCurrencySymbol(getShoppingCartComponentByName(product.getName()).getTotalPriceText());
     }
 
-    public void quantityProductsByName(String productName, String quantity){
-        getShoppingCartComponentByName(productName).setQuantity(quantity);
+    public String getModelByName(Product product){
+        return getShoppingCartComponentByName(product.getName()).getProductModelText();
     }
 
-    public void removeProductFromShoppingCartByName(String productName){
-        getShoppingCartComponentByName(productName).clickRemoveFromShoppingCartButton();
+    public void quantityProductsByName(Product product, String quantity){
+        getShoppingCartComponentByName(product.getName()).setQuantity(quantity);
+    }
+
+    public void removeProductFromShoppingCartByName(Product product){
+        getShoppingCartComponentByName(product.getName()).clickRemoveFromShoppingCartButton();
     }
 
 

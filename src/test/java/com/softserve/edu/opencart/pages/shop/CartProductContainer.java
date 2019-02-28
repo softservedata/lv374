@@ -4,16 +4,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softserve.edu.opencart.data.Price;
+import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.pages.common.HeadUnit;
-
 public class CartProductContainer {
 	private static final String PRODUCT_COMPONENT_CSSSELECTOR = (".table.table-striped>tbody>tr");
+	private static final String PRICE_TABLE_CSSSELECTOR = (".dropdown-menu.pull-right .table.table-bordered");
 
 	protected WebDriver driver;
 
@@ -55,16 +54,20 @@ public class CartProductContainer {
 		return result;
 	}
 
+	public TotalPriceTableComponent getTotalPriceTableComponent(){
+		return new TotalPriceTableComponent(driver.findElement(By.cssSelector(PRICE_TABLE_CSSSELECTOR)));
+	}
+
 	public BigDecimal getCartProductPriceByName(String productName) {
-		return Price.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
+		return PriceUtils.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
 	}
 
 	private void removeProductFromShoppingCartByName(String productName) {
 		getCartProductComponentByName(productName).clickRemoveButton();
 	}
 
-	public HomePage removeProductByName(String productName) {
-		removeProductFromShoppingCartByName(productName);
+	public HomePage removeProductByName(Product product) {
+		removeProductFromShoppingCartByName(product.getName());
 		return new HomePage(driver);
 	}
 }

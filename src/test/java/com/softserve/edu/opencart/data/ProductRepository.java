@@ -8,7 +8,7 @@ public final class ProductRepository {
 	public static Product getMacBook() {
 		return new Product("mac", "MacBook",
 				"Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..",
-				"500.00");
+				"602.00");
 	}
 
 	public static Product getIPhone() {

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softserve.edu.opencart.data.Price;
+import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,14 +33,14 @@ public class ProductComponentsContainer {
 	// Page Object
 	
 	// productComponents
-	public List<ProductComponent> getProductComponents() {
+	private List<ProductComponent> getProductComponents() {
 		return productComponents;
 	}
 
 	// Functional
 	
 	// productComponents
-	public ProductComponent getProductComponentByName(String productName) {
+	private ProductComponent getProductComponentByName(String productName) {
 		ProductComponent result = null;
 		for (ProductComponent current : getProductComponents()) {
 			if (current.getNameText().toLowerCase()
@@ -55,11 +55,11 @@ public class ProductComponentsContainer {
 		return result;
 	}
 	
-	public BigDecimal getProductComponentPriceByName(String productName) {
-		return Price.getPrice(getProductComponentByName(productName).getPriceText());
+	private BigDecimal getProductComponentPriceByName(String productName) {
+		return PriceUtils.getPrice(getProductComponentByName(productName).getPriceText());
 	}
 
-	public String getProductComponentDescriptionByName(String productName) {
+	private String getProductComponentDescriptionByName(String productName) {
 		return getProductComponentByName(productName).getPartialDescriptionText();
 	}
 
@@ -67,8 +67,12 @@ public class ProductComponentsContainer {
 		getProductComponentByName(productName).clickAddToCartButton();
 	}
 
-	public void clickProductComponentAddToWishButtonByName(String productName) {
+	private void clickProductComponentAddToWishButtonByName(String productName) {
 		getProductComponentByName(productName).clickAddToWishButton();
+	}
+
+	public String getCurrencyByProduct(Product product){
+		return PriceUtils.getCurrencySymbol(getProductComponentByName(product.getName()).getPriceText());
 	}
 
 	// Business Logic
@@ -80,6 +84,7 @@ public class ProductComponentsContainer {
 	public String getProductComponentDescriptionByProduct(Product product) {
 		return getProductComponentDescriptionByName(product.getName());
 	}
+
 	
 	public HomePage addToWishList(String productName) {
 		clickProductComponentAddToWishButtonByName(productName);
