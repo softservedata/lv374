@@ -6,6 +6,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.pages.account.WishListPage;
 import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
 
 import org.testng.Assert;
@@ -33,9 +34,19 @@ public class AddToCartTest extends TestRunner{
 				.gotoWishList()
 				.addToCart(validProduct)
 				.gotoShoppingCart();
+		
 		Assert.assertTrue(cartPage
 				.getShoppingCartProductsContainer()
 				.getNameByProduct(validProduct)
 				.contains(validProduct.getName()));
-		}
+		
+		WishListPage cleanUpWishList = cartPage
+				.gotoWishList()
+				.deleteFromWishList(validProduct);
+		
+		Assert.assertTrue(cleanUpWishList
+				.checkEmptyWishList());
+	}
+	
+	
 }

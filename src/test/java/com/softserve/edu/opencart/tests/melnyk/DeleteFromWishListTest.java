@@ -31,10 +31,8 @@ public class DeleteFromWishListTest extends TestRunner{
 				.addToWishList(validProduct)
 				.gotoWishList()
 				.deleteFromWishList(validProduct);
-				Assert.assertFalse(wishListPage
-				.getWishListContainer()
-				.getWishListComponents()
-				.contains(validProduct.getName()));
+				Assert.assertTrue(wishListPage
+						.checkEmptyWishList());
 		}
 	
 }
