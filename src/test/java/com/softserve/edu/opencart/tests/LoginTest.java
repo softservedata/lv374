@@ -8,6 +8,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.account.EditAccountPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
+import com.softserve.edu.opencart.tools.ListUtils;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -28,10 +29,22 @@ public class LoginTest extends TestRunner {
             };
     }
 
+    @DataProvider // (parallel = true)
+    public Object[][] validCsvUsers() {
+        return ListUtils.toMultiArray(UserRepository.fromCsv());
+    }
+
+    @DataProvider // (parallel = true)
+    public Object[][] validExcelUsers() {
+        return ListUtils.toMultiArray(UserRepository.fromExcel());
+    }
+
 	@Description("@Description: class LoginTest; checkLoginReport()")
 	@Severity(SeverityLevel.BLOCKER)
 	@Story("@Story: check_Login_Report")
-    @Test(dataProvider = "validUsers")
+    //@Test(dataProvider = "validUsers")
+	//@Test(dataProvider = "validCsvUsers")
+	@Test(dataProvider = "validExcelUsers")
     public void checkLoginReport(IUser validUser) {
 		logger.info("START TEST: checkLoginReport("
 					+ validUser.toString() + ")");

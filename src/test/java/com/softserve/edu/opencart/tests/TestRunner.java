@@ -26,7 +26,7 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 
 public abstract class TestRunner {
-	protected final String SERVER_URL = "http://192.168.103.229/opencart/upload/";
+	protected final String SERVER_URL = "http://10.26.34.245/opencart/upload/";
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private WebDriver driver;
 

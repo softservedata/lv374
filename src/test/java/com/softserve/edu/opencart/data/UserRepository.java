@@ -1,6 +1,10 @@
 package com.softserve.edu.opencart.data;
 
+import java.util.List;
+
 import com.softserve.edu.opencart.tools.AccidentalUtils;
+import com.softserve.edu.opencart.tools.CSVReader;
+import com.softserve.edu.opencart.tools.ExcelReader;
 
 public final class UserRepository {
 
@@ -62,6 +66,22 @@ public final class UserRepository {
 				.build();
 	}
 
-	// TODO Read data from Excel, DB, etc.
-	
+	public static List<IUser> fromCsv(String filename) {
+        return User.getByLists(new CSVReader(filename).getAllCells());
+    }
+
+    public static List<IUser> fromCsv() {
+        return fromCsv("users.csv");
+    }
+
+    public static List<IUser> fromExcel(String filename) {
+        return User.getByLists(new ExcelReader(filename).getAllCells());
+    }
+
+    public static List<IUser> fromExcel() {
+        return fromExcel("users.xlsx");
+    }
+
+    // TODO Read data DB, etc.
+
 }
