@@ -20,13 +20,6 @@ public class AddToWishListTest extends TestRunner {
 		} };
 	}
 
-	@DataProvider
-	public Object[][] fewProductDataProvider() {
-		return new Object[][] { { UserRepository.getValid() ,
-				ProductRepository.getIPhone(),
-				ProductRepository.getMacBook()
-		} };
-	}
 	@Test(dataProvider = "oneProductDataProvider")
 	public void addToWishListOneProduct(IUser validUser, Product validProduct) {
 		WishListPage wishListPage = loadApplication()
@@ -56,6 +49,14 @@ public class AddToWishListTest extends TestRunner {
 		Assert.assertTrue(logout.getAccountLogoutLabel().isDisplayed());
 	}
 
+	@DataProvider
+	public Object[][] fewProductDataProvider() {
+		return new Object[][] { { UserRepository.getValid() ,
+				ProductRepository.getIPhone(),
+				ProductRepository.getMacBook()
+		} };
+	}
+	
 	@Test(dataProvider = "fewProductDataProvider")
 	public void addToWishListFewProducts(IUser validUser, Product iPhone, Product macBook) {
 		WishListPage wishListPage = loadApplication()
