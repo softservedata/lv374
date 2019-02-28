@@ -249,11 +249,11 @@ public abstract class HeadUnit {
 		searchText(text);
 		return new SuccessfulSearchPage(driver);
 	}
-
+	
 	public SuccessfulSearchPage successfulSearch(Product validProduct) {
 		return successfulSearch(validProduct.getSearchText());
 	}
-
+	
 	public UnsuccessfulSearchPage unsuccessfulSearch(String text) {
 		searchText(text);
 		return new UnsuccessfulSearchPage(driver);

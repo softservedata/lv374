@@ -69,5 +69,4 @@ public class HomePage extends HeadUnit {
 		driver.navigate().refresh();
 		return new HomePage(driver);
 	}
-
-}
+	}
