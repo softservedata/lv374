@@ -1,7 +1,5 @@
 package com.softserve.edu.opencart.pages.account;
 
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.tests.ShpintalTestRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

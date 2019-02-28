@@ -15,8 +15,8 @@ public class AddToWishListTest extends TestRunner {
 	@DataProvider
 	public Object[][] dataProvider() {
 		return new Object[][] { { UserRepository.getValid() ,
-			 ProductRepository.getIPhone()
-			 } };
+				ProductRepository.getIPhone()
+		} };
 	}
 
 	@Test(dataProvider = "dataProvider")
@@ -35,7 +35,7 @@ public class AddToWishListTest extends TestRunner {
 				.getWishListProductByName(validProduct)
 				.contains(validProduct.getName()));
 	}
-	
+
 //	@Test
 //	public void checkScreen() throws FindFailed {
 //		Screen s = new Screen();
