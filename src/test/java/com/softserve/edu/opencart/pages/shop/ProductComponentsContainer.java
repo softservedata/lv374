@@ -26,7 +26,7 @@ public class ProductComponentsContainer {
 	private void initElements() {
 		productComponents = new ArrayList<>();
 		for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
-			productComponents.add(new ProductComponent(current));
+			productComponents.add(new ProductComponent(current, driver));
 		}
 	}
 
@@ -85,9 +85,8 @@ public class ProductComponentsContainer {
 		return getProductComponentDescriptionByName(product.getName());
 	}
 
-	
-	public HomePage addToWishList(String productName) {
-		clickProductComponentAddToWishButtonByName(productName);
+	public HomePage addToWishList(Product product) {
+		clickProductComponentAddToWishButtonByName(product.getName());
 		return new HomePage(driver);
 	}
 	

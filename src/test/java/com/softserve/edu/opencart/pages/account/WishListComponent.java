@@ -18,7 +18,6 @@ public class WishListComponent {
    //Page Object
     
    //wishListContainer
-    
     public WishListContainer getWishListContainer() {
     	return wishListContainer;
     }
@@ -51,7 +50,7 @@ public class WishListComponent {
    }
    
    public void clickAddToCartButton() {
-	   getAddToCartButton().click();
+	   getAddToCartButton().click();;
    }
    
    //deleteButton

@@ -13,7 +13,7 @@ public class PriceUtils {
     private static DecimalFormat format = new DecimalFormat();
 
     public static BigDecimal getPrice(String price) {
-        Matcher matcher = Pattern.compile("\\d+\\.\\d{1,2}").matcher(price);
+        Matcher matcher = Pattern.compile("\\d+\\.\\d{1,2}").matcher(price.replaceAll(",",""));
         matcher.find();
         return new BigDecimal(matcher.group(0)).setScale(2, BigDecimal.ROUND_HALF_DOWN);
     }

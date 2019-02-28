@@ -1,27 +1,28 @@
 package com.softserve.edu.opencart.tests.melnyk;
 
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
-import com.softserve.edu.opencart.pages.account.WishListPage;
+import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
 
-public class AddToWishListTest extends TestRunner {
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+
+public class AddToCartTest extends TestRunner{
 
 	@DataProvider
 	public Object[][] dataProvider() {
 		return new Object[][] { { UserRepository.getValid() ,
-				ProductRepository.getIPhone()
-		} };
+			 ProductRepository.getIPhone()
+			 } };
 	}
-
+	
 	@Test(dataProvider = "dataProvider")
 	public void checkAddToCart(IUser validUser, Product validProduct) {
-		WishListPage wishListPage = loadApplication()
+		ShoppingCartPage cartPage = loadApplication()
 				.gotoLogin()
 				.successLogin(validUser)
 				.gotoHomePage()
@@ -29,18 +30,12 @@ public class AddToWishListTest extends TestRunner {
 				.getSearchResultComponent()
 				.getProductComponentsContainer()
 				.addToWishList(validProduct)
-				.gotoWishList();
-		Assert.assertTrue(wishListPage
-				.getWishListContainer()
-				.getWishListProductByName(validProduct)
+				.gotoWishList()
+				.addToCart(validProduct)
+				.gotoShoppingCart();
+		Assert.assertTrue(cartPage
+				.getShoppingCartProductsContainer()
+				.getNameByProduct(validProduct)
 				.contains(validProduct.getName()));
-	}
-
-//	@Test
-//	public void checkScreen() throws FindFailed {
-//		Screen s = new Screen();
-//		
-//		s.find("logo.png");
-//		s.click("logo.png");
-//	}
+		}
 }

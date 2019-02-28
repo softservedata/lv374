@@ -9,38 +9,39 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public abstract class TestRunnerVoluikevych {
-	private WebDriver driver;
+	protected final String SERVER_URL = "http://localhost/opencart/upload/";
+
+	protected WebDriver driver;
 
 	@BeforeClass
 	public void beforeClass() {
-//		System.setProperty("webdriver.chrome.driver",
-//				this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
 		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		if (driver != null) {
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		} else {
+			throw new RuntimeException("ERROR: Chromedriver not Found");
+		}
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	@BeforeMethod
 	public void beforeMethod() {
-		driver.get("http://localhost/opencart/upload");
+		driver.get(SERVER_URL);
 	}
 
-	@AfterMethod
-	public void afterMethod(ITestResult testResult) {
-		if (!testResult.isSuccess()) {
-			driver.get("http://localhost/opencart/upload");
-		}
-	}
-	
 	public HomePage loadApplication() {
-		return new HomePage(driver); 
+		return new HomePage(driver);
 	}
+
 }
