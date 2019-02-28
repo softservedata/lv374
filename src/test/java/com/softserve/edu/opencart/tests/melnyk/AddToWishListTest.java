@@ -28,7 +28,7 @@ public class AddToWishListTest extends TestRunner {
 	 			.successfulSearch(validProduct)
 				.getSearchResultComponent()
 				.getProductComponentsContainer()
-				.addToWishList(validProduct.getName())
+				.addToWishList(validProduct)
 				.gotoWishList();
 		Assert.assertTrue(wishListPage
 				.getWishListContainer()

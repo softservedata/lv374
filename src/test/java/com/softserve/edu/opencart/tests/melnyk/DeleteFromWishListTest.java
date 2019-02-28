@@ -28,7 +28,7 @@ public class DeleteFromWishListTest extends TestRunner{
 	 			.successfulSearch(validProduct)
 				.getSearchResultComponent()
 				.getProductComponentsContainer()
-				.addToWishList(validProduct.getName())
+				.addToWishList(validProduct)
 				.gotoWishList()
 				.deleteFromWishList(validProduct);
 				Assert.assertFalse(wishListPage

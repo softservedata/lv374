@@ -60,18 +60,13 @@ public class WishListContainer {
 		return getWishListComponentByName(product.getName()).getWishListProductNameText();
 	}
 	
-	//addToCart
-	public void addToCart(String productName) {
-		getWishListComponentByName(productName).clickAddToCartButton();
-	}
-	
 	//deleteButton
 	public void deleteButton(String productName) {
 		getWishListComponentByName(productName).clickDeleteButton();
 	}
 	
 	public CartProductContainer addToCartByName(String productName) {
-		addToCart(productName);
+		getWishListComponentByName(productName).clickAddToCartButton();
 		return new CartProductContainer(driver);
 	}
 	

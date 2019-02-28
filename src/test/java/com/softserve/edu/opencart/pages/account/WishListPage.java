@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class WishListPage extends RightMenuUnit {
 
 	private WishListContainer wishListContainer;
-
+	
 	public WishListPage(WebDriver driver) {
 		super(driver);
 		wishListContainer = new WishListContainer(driver);
@@ -19,7 +19,7 @@ public class WishListPage extends RightMenuUnit {
 	public WishListContainer getWishListContainer() {
 		return wishListContainer;
 	}
-
+	
 	public WishListPage chooseCurrency(Currencies currency){
 		clickCurrencyByPartialName(currency);
 		return new WishListPage(driver);

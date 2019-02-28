@@ -85,9 +85,8 @@ public class ProductComponentsContainer {
 		return getProductComponentDescriptionByName(product.getName());
 	}
 
-	
-	public HomePage addToWishList(String productName) {
-		clickProductComponentAddToWishButtonByName(productName);
+	public HomePage addToWishList(Product product) {
+		clickProductComponentAddToWishButtonByName(product.getName());
 		return new HomePage(driver);
 	}
 	

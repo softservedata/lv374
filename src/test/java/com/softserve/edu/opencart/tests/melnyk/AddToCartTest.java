@@ -6,10 +6,6 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
-import com.softserve.edu.opencart.pages.account.WishListComponent;
-import com.softserve.edu.opencart.pages.account.WishListPage;
-import com.softserve.edu.opencart.pages.shop.CartProductComponent;
-import com.softserve.edu.opencart.pages.shop.CartProductContainer;
 import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
 
 import org.testng.Assert;
@@ -33,8 +29,9 @@ public class AddToCartTest extends TestRunner{
 	 			.successfulSearch(validProduct)
 				.getSearchResultComponent()
 				.getProductComponentsContainer()
-				.addToWishList(validProduct.getName())
+				.addToWishList(validProduct)
 				.gotoWishList()
+				.addToCart(validProduct)
 				.gotoShoppingCart();
 		Assert.assertTrue(cartPage
 				.getShoppingCartProductsContainer()

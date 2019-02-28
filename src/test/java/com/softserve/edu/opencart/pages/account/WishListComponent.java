@@ -50,7 +50,7 @@ public class WishListComponent {
    }
    
    public void clickAddToCartButton() {
-	   getAddToCartButton().click();
+	   getAddToCartButton().click();;
    }
    
    //deleteButton
