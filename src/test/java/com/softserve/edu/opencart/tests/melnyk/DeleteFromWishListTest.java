@@ -10,17 +10,17 @@ import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.account.WishListPage;
 
-public class AddToWishListTest extends TestRunner {
-
+public class DeleteFromWishListTest extends TestRunner{
+	
 	@DataProvider
 	public Object[][] dataProvider() {
 		return new Object[][] { { UserRepository.getValid() ,
 			 ProductRepository.getIPhone()
 			 } };
 	}
-
+	
 	@Test(dataProvider = "dataProvider")
-	public void checkAddToCart(IUser validUser, Product validProduct) {
+	public void checkDeleteFromWishList(IUser validUser, Product validProduct) {
 		WishListPage wishListPage = loadApplication()
 				.gotoLogin()
 				.successLogin(validUser)
@@ -29,18 +29,12 @@ public class AddToWishListTest extends TestRunner {
 				.getSearchResultComponent()
 				.getProductComponentsContainer()
 				.addToWishList(validProduct.getName())
-				.gotoWishList();
-		Assert.assertTrue(wishListPage
+				.gotoWishList()
+				.deleteFromWishList(validProduct);
+				Assert.assertFalse(wishListPage
 				.getWishListContainer()
-				.getWishListProductByName(validProduct)
+				.getWishListComponents()
 				.contains(validProduct.getName()));
-	}
+		}
 	
-//	@Test
-//	public void checkScreen() throws FindFailed {
-//		Screen s = new Screen();
-//		
-//		s.find("logo.png");
-//		s.click("logo.png");
-//	}
 }

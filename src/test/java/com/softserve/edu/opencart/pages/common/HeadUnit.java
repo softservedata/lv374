@@ -32,8 +32,6 @@ public abstract class HeadUnit {
 	protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
 	
 	protected WebDriver driver;
-//	private Actions action;
-//	private WebDriverWait wait;
 
 	//
 	private WebElement currency;

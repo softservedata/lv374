@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.softserve.edu.opencart.tools.AccidentalUtils;
 import com.softserve.edu.opencart.tools.PriceUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.shop.CartProductContainer;
 
 public class WishListContainer {
 
@@ -56,12 +56,8 @@ public class WishListContainer {
 		return result;
 	}
 	
-	public String getWishListProductByName(String productName) {
-		return getWishListComponentByName(productName).getWishListProductNameText();
-	}
-
-	public String getWishListNameByProduct(Product product) {
-		return getWishListProductByName(product.getName());
+	public String getWishListProductByName(Product product) {
+		return getWishListComponentByName(product.getName()).getWishListProductNameText();
 	}
 	
 	//addToCart
@@ -74,9 +70,9 @@ public class WishListContainer {
 		getWishListComponentByName(productName).clickDeleteButton();
 	}
 	
-	public WishListPage addToCartByName(String productName) {
+	public CartProductContainer addToCartByName(String productName) {
 		addToCart(productName);
-		return new WishListPage(driver);
+		return new CartProductContainer(driver);
 	}
 	
 	public WishListPage deleteButtonByName(String productName) {

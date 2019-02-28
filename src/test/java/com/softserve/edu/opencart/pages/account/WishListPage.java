@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.account;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
+
 import org.openqa.selenium.WebDriver;
 
 import java.math.BigDecimal;
@@ -30,6 +31,16 @@ public class WishListPage extends RightMenuUnit {
 
 	public String getWishListCurrencySymbol(Product product){
 		return getWishListContainer().getCurrencyByProduct(product);
+	}
+	
+	public WishListPage addToCart(Product product) {
+		getWishListContainer().addToCartByName(product.getName());
+		return new WishListPage(driver);
+	}
+	
+	public WishListPage deleteFromWishList(Product product) {
+		getWishListContainer().deleteButton(product.getName());
+		return new WishListPage(driver);
 	}
 
 }

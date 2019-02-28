@@ -54,6 +54,10 @@ public class ShoppingCartProductsContainer {
         return result;
     }
 
+    public String getNameByProduct(Product product) {
+    	return getShoppingCartComponentByName(product.getName()).getProductNameText();
+    }
+    
     public BigDecimal getUnitPriceByName(Product product){
         return PriceUtils.getPrice(getShoppingCartComponentByName(product.getName()).getUnitPriceText());
     }

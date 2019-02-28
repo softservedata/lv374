@@ -18,7 +18,6 @@ public class WishListComponent {
    //Page Object
     
    //wishListContainer
-    
     public WishListContainer getWishListContainer() {
     	return wishListContainer;
     }
