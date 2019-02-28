@@ -62,7 +62,6 @@ public class SearchResultComponent {
 	private Select inputSort;
 	private Select inputLimit;
 	//
-	private ProductComponentsContainer productComponentsContainer;
 	
 	public SearchResultComponent(WebDriver driver) {
 		this.driver = driver;
@@ -76,7 +75,6 @@ public class SearchResultComponent {
 		inputSort = new Select(driver.findElement(By.id("input-sort")));
 		inputLimit = new Select(driver.findElement(By.id("input-limit")));
 		//
-		productComponentsContainer = new ProductComponentsContainer(driver);
 	}
 
 	// Page Object
@@ -143,7 +141,7 @@ public class SearchResultComponent {
 	
 	// productComponentsContainer
 	public ProductComponentsContainer getProductComponentsContainer() {
-		return productComponentsContainer;
+		return new ProductComponentsContainer(driver);
 	}
 
 	// Functional

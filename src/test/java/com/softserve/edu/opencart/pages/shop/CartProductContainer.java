@@ -62,12 +62,12 @@ public class CartProductContainer {
 		return PriceUtils.getPrice(getCartProductComponentByName(productName).getCartProductPriceText());
 	}
 
-	private void removeProductFromShoppingCartByName(String productName) {
+	private void removeProductFromCartByName(String productName) {
 		getCartProductComponentByName(productName).clickRemoveButton();
 	}
 
 	public HomePage removeProductByName(Product product) {
-		removeProductFromShoppingCartByName(product.getName());
+		removeProductFromCartByName(product.getName());
 		return new HomePage(driver);
 	}
 }

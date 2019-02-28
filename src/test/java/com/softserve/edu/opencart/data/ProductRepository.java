@@ -28,7 +28,18 @@ public final class ProductRepository {
 				"Its the small iPod with one very big idea: video. The worlds most",
 				"122.00");
 	}
-	
+
+	public static Product getMacBookAir(){
+		return new Product("MacBook Air", "MacBook Air",
+				"MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don’t lose..",
+				"1,202.00");
+	}
+
+	public static Product getMacBookPro(){
+		return new Product("MacBook Pro", "MacBook Pro",
+				"Latest Intel mobile architecture Powered by the most advanced mobile processors ..",
+				"2,000.00");
+	}
 	
 	public static Product getInvalidProduct() {
 		return new Product("Ipont", "Ipont",

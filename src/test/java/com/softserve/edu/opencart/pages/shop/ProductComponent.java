@@ -1,9 +1,15 @@
 package com.softserve.edu.opencart.pages.shop;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductComponent {
+
+    WebDriver driver;
 
 	protected WebElement productLayout;
 	//
@@ -14,8 +20,9 @@ public class ProductComponent {
     private WebElement addToWishButton;
     private WebElement addToCompareButton;
 
-	protected ProductComponent(WebElement productLayout) {
+	protected ProductComponent(WebElement productLayout, WebDriver driver) {
 		this.productLayout = productLayout;
+		this.driver = driver;
 		initElements();
 	}
 	
@@ -29,6 +36,16 @@ public class ProductComponent {
 	}
 	
 	// Page Object
+
+    //action
+    public Actions getAction() {
+        return new Actions(driver);
+    }
+
+    //wait
+    public WebDriverWait getWait() {
+        return new WebDriverWait(driver, 10);
+    }
 	
     // productLayout
     public WebElement getProductLayout() {
@@ -73,6 +90,8 @@ public class ProductComponent {
     }
     
     public void clickAddToCartButton() {
+        getAction().moveToElement(getAddToCartButton()).perform();
+        getWait().until(ExpectedConditions.elementToBeClickable(getAddToCartButton()));
     	getAddToCartButton().click();
     }
 
