@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.opencart.data.IUser;
 
-import java.sql.Driver;
-
 public class RegisterPage extends RightLogoutUnit {
 
 	public RegisterPage(WebDriver driver) {
@@ -384,6 +382,8 @@ public class RegisterPage extends RightLogoutUnit {
 	}
 
 	// Functional
+
+	//this method fills in registration form with correct data
 	private void fillRegistrationForm(IUser user) {
         clickFirstname();
         clearFirstname();
@@ -461,6 +461,7 @@ public class RegisterPage extends RightLogoutUnit {
         clickContinueButton();
     }
 
+	//this method fills in registration form with correct data, but does not click on Privacy Policy
     private void fillRegistrationFormWithNoPrivacyPolicy(IUser user) {
         clickFirstname();
         clearFirstname();
@@ -539,40 +540,43 @@ public class RegisterPage extends RightLogoutUnit {
 
 	// Business Logic
 
+	//this method returns SuccessRegisterPage with all valid data entered
 	@Step("@Step: fill in registration form with successfullRegisterUser")
 	public SuccessRegisterPage successfullRegisterUser(IUser newValidUser) {
 		fillRegistrationForm(newValidUser);
 		return new SuccessRegisterPage(driver);
 	}
 
+	//this method returns UnsuccessfullRegisterPageAlert with all valid data entered but no PrivacyPolicy
 	@Step("@Step: fill in registration form with userWithNoPrivacyPolicy")
 	public UnsuccessfullRegisterPageAlert userWithNoPrivacyPolicy(IUser newValidUser){
 	    fillRegistrationFormWithNoPrivacyPolicy(newValidUser);
 	    return new UnsuccessfullRegisterPageAlert(driver);
     }
 
-    public UnsuccessfullRegisterPage userWithBadEmail(IUser userBadEmail){
-		fillRegistrationForm(userBadEmail);
-		return  new UnsuccessfullRegisterPage(driver);
-	}
-
+	//this method returns UnsuccessfullRegisterPage with all no data
 	@Step("@Step: fill in registration form with userWithNoData")
 	public UnsuccessfullRegisterPage userWithNoData(IUser emptyUser){
 		fillRegistrationForm(emptyUser);
 		return new UnsuccessfullRegisterPage(driver);
 	}
 
+	//this method returns UnsuccessfullRegisterPageAlert with userWithFirstNameLength33Symbols
 	@Step("@Step: fill in registration form with userWithFirstNameLength33Symbols")
 	public UnsuccessfullRegisterPage userWithFirstNameLength33Symbols(IUser userLastName33Length){
 		fillRegistrationForm(userLastName33Length);
 		return new UnsuccessfullRegisterPage(driver);
 	}
 
+	//this method returns UnsuccessfullRegisterPageAlert with userWithFirstNameConsistsDigits
 	@Step("@Step: fill in registration form with userWithFirstNameConsistsDigits")
 	public UnsuccessfullRegisterPage userWithFirstNameConsistsDigits(IUser userWithFirstNameConsistsDigits){
 		fillRegistrationForm(userWithFirstNameConsistsDigits);
 		return new UnsuccessfullRegisterPage(driver);
 	}
 
-
+	public UnsuccessfullRegisterPage userWithBadEmail(IUser userBadEmail){
+		fillRegistrationForm(userBadEmail);
+		return  new UnsuccessfullRegisterPage(driver);
+	}
 }
