@@ -50,12 +50,12 @@ interface IUserBuild {
 	IUserBuild setAddress2(String address2);
 	IUserBuild setConfirmPassword(String confirmPassword);
 
-	// 6. Use Dependency Inversion. Add IUser
+	// Use Dependency Inversion. Add IUser
 	IUser build();
 }
 
-// 6. Use Dependency Inversion. Add IUser
-public class User implements IFirstname, ILastname, IEmail,
+	// Use Dependency Inversion. Add IUser
+	public class User implements IFirstname, ILastname, IEmail,
 		ITelephone, IAddress1, ICity, IPostcode,
 		ICountry, IRegion, IPassword,
 		ISubscribe, IUserBuild, IUser {
@@ -64,25 +64,25 @@ public class User implements IFirstname, ILastname, IEmail,
 	private String lastname;
 	private String email;
 	private String telephone;
-	private String fax; 				// not required
-	private String company; 			// not required
+	private String fax;                // not required
+	private String company;            // not required
 	private String address1;
-	private String address2; 			// not required
+	private String address2;            // not required
 	private String city;
 	private String postcode;
 	private Country country;
 	private Region region;
 	private String password;
-	private String confirmPassword; 	// not required
+	private String confirmPassword;    // not required
 	private boolean subscribe;
 
-	// 5. Use Builder
+	// Use Builder
 	public static IFirstname get() {
 		return new User();
 	}
 
 	// setters
-	// 5. Use Builder
+	// Use Builder
 	public ILastname setFirstname(String firstname) {
 		this.firstname = firstname;
 		return this;
@@ -127,6 +127,7 @@ public class User implements IFirstname, ILastname, IEmail,
 		this.city = city;
 		return this;
 	}
+
 	public static enum Country {
 		UKRAINE("Ukraine"),
 		SWEDEN("Sweden");
@@ -146,6 +147,7 @@ public class User implements IFirstname, ILastname, IEmail,
 		this.postcode = postcode;
 		return this;
 	}
+
 	public static enum Region {
 		LVIV("L'vivs'ka Oblast'"),
 		TERNOPIL("Ternopil's'ka Oblast'"),
@@ -155,7 +157,7 @@ public class User implements IFirstname, ILastname, IEmail,
 
 		private String region;
 
-		private Region(String region){
+		private Region(String region) {
 			this.region = region;
 		}
 
@@ -184,20 +186,17 @@ public class User implements IFirstname, ILastname, IEmail,
 		return this;
 	}
 
-	public IUserBuild setConfirmPassword(String confirmPassword){
+	public IUserBuild setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
-		return  this;
+		return this;
 	}
 
-	// 5. Use Builder
-	//public User build() {
-	// 6. Use Dependency Inversion. Add IUser
+	// Use Dependency Inversion. Add IUser
 	public IUser build() {
 		return this;
 	}
-	
-	// getters
 
+	// getters
 	public String getFirstname() {
 		return firstname;
 	}
@@ -250,7 +249,7 @@ public class User implements IFirstname, ILastname, IEmail,
 		return password;
 	}
 
-	public String getConfirmPassword(){
+	public String getConfirmPassword() {
 		return confirmPassword;
 	}
 

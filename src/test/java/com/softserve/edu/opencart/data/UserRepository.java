@@ -127,6 +127,4 @@ public final class UserRepository {
 				.build();
 	}
 
-	// TODO Read data from Excel, DB, etc.
-	
 }
