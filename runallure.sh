@@ -1,4 +1,4 @@
-@echo off
+echo off
 echo starting ...
 rem call allure serve allure-results
 call allure serve ./target/allure-results

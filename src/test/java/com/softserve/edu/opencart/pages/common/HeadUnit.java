@@ -297,6 +297,9 @@ public abstract class HeadUnit {
 		return new HomePage(driver);
 	}
 
+	/**
+	 * Click on Wish List and open wish list page
+	 */
 	@Step("Go to Wish List")
 	public WishListPage gotoWishList() {
 		clickWishList();
@@ -309,11 +312,13 @@ public abstract class HeadUnit {
 		return new LoginPage(driver);	
 	}
 	
+	@Step("Go to Logout Page")
 	public AccountLogoutPage gotoLogout() {
 		clickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
 		return new AccountLogoutPage(driver);	
 	}
-
+	
+	@Step("Go to Register Page")
 	public RegisterPage gotoRegister() {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
 		return new RegisterPage(driver);

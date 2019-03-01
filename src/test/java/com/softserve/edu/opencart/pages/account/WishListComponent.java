@@ -31,10 +31,11 @@ public class WishListComponent {
    public WebElement getWishListProductName() {
 	   return wishlistSketch.findElement(By.cssSelector("td:nth-child(" + productNameTd +")>a"));
    }
-
-    public WebElement getWishlistUnitPrice(){
-        return wishlistSketch.findElement(By.cssSelector(".price"));
-    }
+   
+   //wishListUnitPrice
+   public WebElement getWishlistUnitPrice(){
+       return wishlistSketch.findElement(By.cssSelector(".price"));
+   }
    
    public String getWishListProductNameText() {
 	   return getWishListProductName().getText();
@@ -61,7 +62,5 @@ public class WishListComponent {
    public void clickDeleteButton() {
 	   getDeleteButton().click();
    }
-   
-   
    
 }

@@ -7,6 +7,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
@@ -14,6 +16,7 @@ public class WishListPage extends RightMenuUnit {
 
 	private WishListContainer wishListContainer;
 	private WebElement continueButton;
+	public static final Logger logger = LoggerFactory.getLogger(WishListPage.class);
 
 	public WishListPage(WebDriver driver) {
 		super(driver);
@@ -21,6 +24,9 @@ public class WishListPage extends RightMenuUnit {
 		wishListContainer = new WishListContainer(driver);
 	}
 	
+	//Page Object
+	
+	//continueButton
 	public WebElement getContinueButton() {
 		return continueButton;
 	}
@@ -28,6 +34,13 @@ public class WishListPage extends RightMenuUnit {
 	public void clickContinueButton() {
 		getContinueButton().click();
 	}
+	
+	//wishListContainer
+	public WishListContainer getWishListContainer() {
+		return wishListContainer;
+	}
+	
+	//Functional
 	
 	public boolean checkEmptyWishList() {
 		if(getWishListContainer()
@@ -38,9 +51,7 @@ public class WishListPage extends RightMenuUnit {
 		return false;
 	}
 	
-	public WishListContainer getWishListContainer() {
-		return wishListContainer;
-	}
+	//Business Logic
 	
 	public WishListPage chooseCurrency(Currencies currency){
 		clickCurrencyByPartialName(currency);
@@ -61,13 +72,16 @@ public class WishListPage extends RightMenuUnit {
 		return new MyAccountPage(driver);
 	}
 	
+	@Step("Add product to Cart")
 	public WishListPage addToCart(Product product) {
 		getWishListContainer().addToCartByName(product.getName());
+		logger.info("Product added to cart");
 		return new WishListPage(driver);
 	}
 	
 	public WishListPage deleteFromWishList(Product product) {
 		getWishListContainer().deleteButton(product.getName());
+		logger.info("Product deleted frow wish list");
 		return new WishListPage(driver);
 	}
 	

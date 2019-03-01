@@ -39,9 +39,8 @@ public class WishListContainer {
 		return wishlistComponents;
 	}
 
-	// Functional
 	
-	//wishlistComponents
+	//wishlistComponentByName
 	public WishListComponent getWishListComponentByName(String productName) {
 		WishListComponent result = null;
 		for (WishListComponent current : getWishListComponents()) {
@@ -64,6 +63,8 @@ public class WishListContainer {
 	public void deleteButton(String productName) {
 		getWishListComponentByName(productName).clickDeleteButton();
 	}
+	
+	//Business Logic
 	
 	public CartProductContainer addToCartByName(String productName) {
 		getWishListComponentByName(productName).clickAddToCartButton();

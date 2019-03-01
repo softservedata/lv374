@@ -191,9 +191,8 @@ public class RightMenuUnit extends NavigationUnit {
 		return new AddressBookPage(driver);
 	}
 
-	public WishListPage gotoWishListPage(IUser user) {
+	public WishListPage gotoWishListPage() {
 		clickWishListBar();
-		loginUser(user);
 		return new WishListPage(driver);
 	}
 

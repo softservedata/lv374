@@ -11,12 +11,15 @@ import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.opencart.pages.shop.HomePage;
 
-public class TestRunner {
+public abstract class TestRunner {
 
 	protected final String SERVER_URL = "http://127.0.1.1/opencart/upload/";
 
 	protected WebDriver driver;
 
+	/**
+	 * Create instance of WebDriver, open browser and go to opencart
+	 */
 	@BeforeClass
 	public void beforeClass() {
 		URL url = this.getClass().getResource("/chromedriver-linux-64bit");
@@ -34,6 +37,10 @@ public class TestRunner {
 		}
 	}
 
+	/**
+	 * Destroying instance of WebDriver 
+	 * It closes all Browser Windows and safely ends the session
+	 */
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
 		if (driver != null) {
@@ -41,6 +48,9 @@ public class TestRunner {
 		}
 	}
 
+	/**
+	 * Redirect to main page
+	 */
 	@BeforeMethod
 	public void beforeMethod() {
 		driver.get(SERVER_URL);
