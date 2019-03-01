@@ -1,28 +1,40 @@
 package com.softserve.edu.opencart.tests.shpintal;
 
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.User;
 import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.account.EditAccountPage;
 import com.softserve.edu.opencart.pages.account.SuccessRegisterPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-public class SuccessfulRegistration extends ShpintalTestRunner {
+@Epic("@Epic: SuccessfulRegistrationTests")
+public class SuccessfulRegistrationTests extends ShpintalTestRunner {
+
     @DataProvider//(parallel = true)
     public Object[][] newValidUsers() {
         // Read from ...
         return new Object[][]{
-                //{UserRepository.generateNew()},
-                {UserRepository.userBadEmail()}
+                {UserRepository.generateNew()}
         };
     }
 
-    //@Test(dataProvider = "newValidUsers")
-    public void checkRegister(IUser newValidUser) {
+    /**
+     * Positive test.
+     * Used technique: Decision Tables.
+     * This test checks if user can be registered
+     * with valid data entered in all fields.
+     */
+    @Description("@Description:  This test checks if user can be registered with valid data entered in all fields.")
+    @Test(dataProvider = "newValidUsers")
+    public void checkIfUserCanBeRegisteredWithValidDataEntered(IUser newValidUser) {
+        logger.info("START TEST: checkIfUserCanBeRegisteredWithValidDataEntered("
+                + newValidUser.toString() + ")");
         //
-        // Precondition
-        System.out.println("\nCreate new User:\n" + newValidUser);
         // Steps
         EditAccountPage editAccountPage = loadApplication()
                 .gotoRegister()
@@ -67,7 +79,8 @@ public class SuccessfulRegistration extends ShpintalTestRunner {
                 .getSlideshow0FirstImageAttributeSrcText()
                 .contains(HomePage.IPHONE_IMAGE));
         //
-        // Return to previous state
+        logger.info("DONE TEST: checkIfUserCanBeRegisteredWithValidDataEntered("
+                + newValidUser.toString() + ")");
     }
 
     /**
@@ -76,8 +89,8 @@ public class SuccessfulRegistration extends ShpintalTestRunner {
      * This test checks if user can be registered
      * with valid data entered in all fields.
      */
-    //@Test(dataProvider = "newValidUsers")
-    public void checkIfUserCanBeRegisteredWithValidDataEntered(IUser newValidUser) {
+    // @Test(dataProvider = "newValidUsers")
+    public void checkIfUserCanBeRegisteredWithValidDataEntered1(IUser newValidUser) {
         SuccessRegisterPage successRegisterPage = loadApplication()
                 .gotoRegister()
                 .successfullRegisterUser(newValidUser);
@@ -85,4 +98,5 @@ public class SuccessfulRegistration extends ShpintalTestRunner {
         Assert.assertTrue(successRegisterPage.getSuccessfulCreatedLableText().trim().toLowerCase()
                 .contains(SuccessRegisterPage.EXPECTED_RESULT_SUCCESS_REGISTER_PAGE));
     }
+
 }

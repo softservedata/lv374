@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -538,11 +539,13 @@ public class RegisterPage extends RightLogoutUnit {
 
 	// Business Logic
 
+	@Step("@Step: fill in registration form with successfullRegisterUser")
 	public SuccessRegisterPage successfullRegisterUser(IUser newValidUser) {
 		fillRegistrationForm(newValidUser);
 		return new SuccessRegisterPage(driver);
 	}
 
+	@Step("@Step: fill in registration form with userWithNoPrivacyPolicy")
 	public UnsuccessfullRegisterPageAlert userWithNoPrivacyPolicy(IUser newValidUser){
 	    fillRegistrationFormWithNoPrivacyPolicy(newValidUser);
 	    return new UnsuccessfullRegisterPageAlert(driver);
@@ -553,18 +556,23 @@ public class RegisterPage extends RightLogoutUnit {
 		return  new UnsuccessfullRegisterPage(driver);
 	}
 
+	@Step("@Step: fill in registration form with userWithNoData")
 	public UnsuccessfullRegisterPage userWithNoData(IUser emptyUser){
 		fillRegistrationForm(emptyUser);
 		return new UnsuccessfullRegisterPage(driver);
 	}
 
+	@Step("@Step: fill in registration form with userWithFirstNameLength33Symbols")
 	public UnsuccessfullRegisterPage userWithFirstNameLength33Symbols(IUser userLastName33Length){
 		fillRegistrationForm(userLastName33Length);
 		return new UnsuccessfullRegisterPage(driver);
 	}
 
+	@Step("@Step: fill in registration form with userWithFirstNameConsistsDigits")
 	public UnsuccessfullRegisterPage userWithFirstNameConsistsDigits(IUser userWithFirstNameConsistsDigits){
 		fillRegistrationForm(userWithFirstNameConsistsDigits);
 		return new UnsuccessfullRegisterPage(driver);
 	}
+
+
 }

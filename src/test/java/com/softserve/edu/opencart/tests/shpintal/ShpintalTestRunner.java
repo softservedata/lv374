@@ -1,8 +1,11 @@
 package com.softserve.edu.opencart.tests.shpintal;
 
 import com.softserve.edu.opencart.pages.shop.HomePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +15,9 @@ import org.testng.annotations.BeforeMethod;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class ShpintalTestRunner {
+public abstract class ShpintalTestRunner {
+
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private WebDriver driver;
 
@@ -65,7 +70,9 @@ public class ShpintalTestRunner {
         }
     }
 
+    @Step("@Step: load HomePage")
     public HomePage loadApplication() {
+        logger.debug("loadApplication() start");
         return new HomePage(driver);
     }
 }

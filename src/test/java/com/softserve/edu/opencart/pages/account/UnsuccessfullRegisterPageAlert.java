@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 public class UnsuccessfullRegisterPageAlert extends RegisterPage {
 
     public static final String EXPECTED_WARNING_PRIVACY_POLICY = "Warning: You must agree to the Privacy Policy!";
+
 
     public UnsuccessfullRegisterPageAlert(WebDriver driver) {
         super(driver);

@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -66,7 +67,7 @@ public class RightLoginUnit extends RightMenuUnit {
 	// Functional
 
 	// Business Logic
-	
+	@Step("@Step: gotoEditAccountPage")
 	public EditAccountPage gotoEditAccountPage() {
 		clickEditAccount();
         return new EditAccountPage(driver);

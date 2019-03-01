@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,6 +49,7 @@ public class SuccessRegisterPage extends RightMenuUnit {
     // Functional
 
     // Business Logic
+    @Step("@Step: continueMyAccountPage")
     public MyAccountPage continueMyAccountPage() {
         clickContinueButton();
         return new MyAccountPage(driver);

@@ -10,6 +10,9 @@ public class UnsuccessfullRegisterPage extends RegisterPage {
     public static final String EXPECTED_WARNING_LAST_NAME = "Last Name must be between 1 and 32 characters!";
     public static final String EXPECTED_WARNING_FIRST_NAME_DIGITS = "First Name cannot contain digits";
 
+    private WebElement textDanger;
+    private WebElement alertMessage;
+
     public UnsuccessfullRegisterPage(WebDriver driver) {
         super(driver);
         checkElements();

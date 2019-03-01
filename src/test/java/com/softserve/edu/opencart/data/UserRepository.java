@@ -13,9 +13,9 @@ public final class UserRepository {
 	
 	public static IUser getValid() {
 		return User.get()
-			.setFirstname("hahaha")
-			.setLastname("hahaha")
-			.setEmail("hahaha@gmail.com")
+			.setFirstname(AccidentalUtils.randomString(7))
+			.setLastname(AccidentalUtils.randomString(7))
+			.setEmail(AccidentalUtils.randomEmail())
 			.setTelephone("1234567")
 			.setAddress1("address1")
 			.setCity("city")
@@ -48,7 +48,7 @@ public final class UserRepository {
 	public static IUser generateNew() {
 		return User.get()
 				.setFirstname(AccidentalUtils.randomString(7))
-				.setLastname("hahaha")
+				.setLastname(AccidentalUtils.randomString(7))
 				.setEmail(AccidentalUtils.randomEmail())
 				.setTelephone("1234567")
 				.setAddress1("address1")

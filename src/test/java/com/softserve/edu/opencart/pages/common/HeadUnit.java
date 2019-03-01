@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.common;
 
 import com.softserve.edu.opencart.pages.account.RegisterPage;
 import com.softserve.edu.opencart.pages.shop.ShoppingCartPage;
+import io.qameta.allure.Step;
 import 	org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -273,16 +274,19 @@ public abstract class HeadUnit {
 		return new WishListPage(driver);
 	}
 
+	@Step("@Step: gotoLogin")
 	public LoginPage gotoLogin() {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.LOGIN);
 		return new LoginPage(driver);	
 	}
-	
+
+	@Step("@Step: gotoLogout")
 	public AccountLogoutPage gotoLogout() {
 		clickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
 		return new AccountLogoutPage(driver);	
 	}
 
+	@Step("@Step: gotoRegister")
 	public RegisterPage gotoRegister() {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
 		return new RegisterPage(driver);
