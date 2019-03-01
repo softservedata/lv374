@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.pages.shop;
 
 import com.softserve.edu.opencart.data.Currencies;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,16 +68,33 @@ public class SuccessfulSearchPage extends SearchUnit {
 					.getProductComponentDescriptionByProduct(product);
 	}
 
+	/**
+	 * Change currency for USD, EURO or POUND STERLING
+	 * @param currency
+	 * @return
+	 */
 	public SuccessfulSearchPage chooseCurrency(Currencies currency) {
 		clickCurrencyByPartialName(currency);
 		return new SuccessfulSearchPage(driver);
 	}
 
+	/**
+	 * Change currency and get product price
+	 * @param currency
+	 * @param product
+	 * @return
+	 */
+	@Step("Get Product Price")
 	public BigDecimal getPrice(Currencies currency, Product product){
 		chooseCurrency(currency);
 		return getProductComponentPrice(product);
 	}
 
+	/**
+	 * Gte currency symbol from product price
+	 * @param product
+	 * @return
+	 */
 	public String getSuccessfulSearchCurrencySymbol(Product product){
 		return getSearchResultComponent().getProductComponentsContainer().getCurrencyByProduct(product);
 	}

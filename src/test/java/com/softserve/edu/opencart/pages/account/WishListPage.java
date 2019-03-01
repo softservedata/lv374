@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.pages.account;
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.Product;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,6 +47,7 @@ public class WishListPage extends RightMenuUnit {
 		return new WishListPage(driver);
 	}
 
+	@Step("Get product price")
 	public BigDecimal getWishListPriceByCurrency(Currencies currency, Product product){
 		return chooseCurrency(currency).getWishListContainer().getWishListUnitPriceByProduct(product);
 	}

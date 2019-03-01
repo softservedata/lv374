@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.pages.common;
 import com.softserve.edu.opencart.pages.account.RegisterPage;
 import com.softserve.edu.opencart.pages.shop.*;
 
+import io.qameta.allure.Step;
 import 	org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,8 @@ import com.softserve.edu.opencart.data.UnloggedMyAccount;
 import com.softserve.edu.opencart.pages.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.account.LoginPage;
 import com.softserve.edu.opencart.pages.account.WishListPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class HeadUnit {
 	protected final String OPTION_NULL_MESSAGE = "DropdownOption is null";
@@ -27,6 +30,7 @@ public abstract class HeadUnit {
 	//
 	protected final String LIST_CURENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
 	protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
+	public static final Logger logger = LoggerFactory.getLogger(HeadUnit.class);
 	
 	protected WebDriver driver;
 
@@ -263,6 +267,12 @@ public abstract class HeadUnit {
 
 	// Business Logic
 
+	/**
+	 * Fill search field some test and click search button
+	 * @param text
+	 * @return page with result of search
+	 */
+	@Step("Search product")
 	public SuccessfulSearchPage successfulSearch(String text) {
 		searchText(text);
 		return new SuccessfulSearchPage(driver);
@@ -281,16 +291,19 @@ public abstract class HeadUnit {
 		return unsuccessfulSearch(invalidProduct.getSearchText());
 	}
 
+	@Step("Go to Home Page")
 	public HomePage gotoHomePage() {
 		clickLogo();
 		return new HomePage(driver);
 	}
-	
+
+	@Step("Go to Wish List")
 	public WishListPage gotoWishList() {
 		clickWishList();
 		return new WishListPage(driver);
 	}
 
+	@Step("Go to Login Page")
 	public LoginPage gotoLogin() {
 		clickUnloggedMyAccountByPartialName(UnloggedMyAccount.LOGIN);
 		return new LoginPage(driver);	
@@ -306,13 +319,24 @@ public abstract class HeadUnit {
 		return new RegisterPage(driver);
 	}
 
+	/**
+	 * Click on shopping cart button and open shopping cart page
+	 * @return
+	 */
+	@Step("Go to Shopping Cart")
 	public ShoppingCartPage gotoShoppingCart(){
 		clickShoppingCart();
 		return  new ShoppingCartPage(driver);
 	}
 
+	/**
+	 * Click on dropdown cart button
+	 * @return
+	 */
+	@Step("Open Dropdown Cart")
 	public CartProductContainer openDropdownCart(){
 		clickCartButton();
+		logger.info("Dropdown cart is open");
 		return new CartProductContainer(driver);
 	}
 

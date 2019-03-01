@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.softserve.edu.opencart.tools.PriceUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Product;
-import com.softserve.edu.opencart.pages.common.HeadUnit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProductComponentsContainer {
+
+	public static final Logger logger = LoggerFactory.getLogger(ProductComponentsContainer.class);
+
 	private static final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
 
 	protected WebDriver driver;
@@ -50,7 +55,6 @@ public class ProductComponentsContainer {
 			}
 		}
 		if (result == null) {
-			// TODO Develop Custom Exception 
 			throw new RuntimeException("ProductName: " + productName + " not Found.");
 		}
 		return result;
@@ -74,20 +78,44 @@ public class ProductComponentsContainer {
 	public void clickProductComponentAddToCompareByName(String productName) {
 		getProductComponentByName(productName).clickAddToCompareButton();
 	}
+
+	/**
+	 * Get currency symbol from product price
+	 * @param product
+	 * @return
+	 */
 	public String getCurrencyByProduct(Product product){
 		return PriceUtils.getCurrencySymbol(getProductComponentByName(product.getName()).getPriceText());
 	}
 
 	// Business Logic
 
+	/**
+	 * Get product price
+	 * @param product product which price you need to get
+	 * @return
+	 */
+	@Step("Get Product price")
 	public BigDecimal getProductComponentPriceByProduct(Product product) {
+		logger.info("Product "+product.getName()+" cost "+getProductComponentPriceByName(product.getName()));
 		return getProductComponentPriceByName(product.getName());
 	}
 
+	/**
+	 * Gte product description
+	 * @param product product which description you need to get
+	 * @return
+	 */
 	public String getProductComponentDescriptionByProduct(Product product) {
 		return getProductComponentDescriptionByName(product.getName());
 	}
 
+	/**
+	 * Add product to wish list
+	 * @param product
+	 * @return
+	 */
+	@Step("Add to Wish List")
 	public HomePage addToWishList(Product product) {
 		clickProductComponentAddToWishButtonByName(product.getName());
 		return new HomePage(driver);
