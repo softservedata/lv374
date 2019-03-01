@@ -13,15 +13,15 @@ import com.softserve.edu.opencart.pages.shop.UnsuccessfulSearchPage;
 
 public class SearchTests extends TestRunner {
 
-	@DataProvider(name = "Dataset1")
-	public Object[][] Dataset1() {
+	@DataProvider(name = "Dataset3")
+	public Object[][] Dataset3() {
 		return new Object[][] {
 			{ ProductRepository.getIPhone(),
 				}
 		};
 	}
 	
-	@Test(dataProvider = "Dataset1")
+	@Test(dataProvider = "Dataset3")
 	public void checkSearch(Product validProduct) throws Exception {
 		// Steps
 		SuccessfulSearchPage successfulSearchPage = loadApplication()
@@ -41,20 +41,6 @@ public class SearchTests extends TestRunner {
 				.getSlideshow0FirstImageAttributeSrcText()
 				.contains(HomePage.IPHONE_IMAGE));
 	}
-	@DataProvider(name = "Dataset3")
-	public Object[][] Dataset3() {
-		return new Object[][] {
-			{ ProductRepository.getPercent(),
-				}
-			
-			};
-		}
-	@Test(dataProvider = "Dataset3")
-	public void PercentCheck (Product PercentSearch) throws Exception {
-		UnsuccessfulSearchPage unsuccessfulSearchPage = loadApplication()
-				.unsuccessfulSearch(PercentSearch);
-		Assert.assertTrue(unsuccessfulSearchPage.getNoProductLabelText().contains("There is no product that matches the search criteria"));
-	}
 	@DataProvider(name = "Dataset2")
 	public Object[][] Dataset2() {
 		return new Object[][] {
@@ -69,4 +55,18 @@ public class SearchTests extends TestRunner {
 				.unsuccessfulSearch(invalidProduct);
 		Assert.assertTrue(unsuccessfulSearchPage.getNoProductLabelText().contains("There is no product that matches the search criteria"));
 	}
+	@DataProvider(name = "Dataset1")
+	public Object[][] Dataset1 () {
+		return new Object[][] {
+			{ ProductRepository.getPercent(),
+				}
+			
+			};
+		}
+	@Test(dataProvider = "Dataset1")
+	public void PercentCheck (Product Percent) throws Exception {
+		UnsuccessfulSearchPage unsuccessfulSearchPage = loadApplication()
+				.unsuccessfulSearch(Percent);
+		Assert.assertTrue(unsuccessfulSearchPage.getNoProductLabelText().contains("There is no product that matches the search criteria"));
+}
 }

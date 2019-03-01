@@ -1,7 +1,10 @@
 package com.softserve.edu.opencart.pages.shop;
 
 import com.softserve.edu.opencart.data.Currencies;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.shop.SearchResultComponent.SelectInputLimit;
@@ -12,11 +15,13 @@ import java.math.BigDecimal;
 public class SuccessfulSearchPage extends SearchUnit {
 
 	private SearchResultComponent searchResultComponent;
+	private WebElement compareButton;
 	
 	public SuccessfulSearchPage(WebDriver driver) {
 		super(driver);
 		//
 		searchResultComponent = new SearchResultComponent(driver);
+		compareButton = driver.findElement(By.cssSelector("#compare-total"));
 	}
 
 	// Page Object
@@ -75,5 +80,14 @@ public class SuccessfulSearchPage extends SearchUnit {
 	public String getSuccessfulSearchCurrencySymbol(Product product){
 		return getSearchResultComponent().getProductComponentsContainer().getCurrencyByProduct(product);
 	}
-
-}
+	public WebElement getCompareButton(){
+		return compareButton;
+	}
+	public void clickCompareButton() {
+		compareButton.click();
+	}
+	public ProductComparisonPage gotocompare() {
+		clickCompareButton();
+		return new ProductComparisonPage(driver);
+	}
+	}

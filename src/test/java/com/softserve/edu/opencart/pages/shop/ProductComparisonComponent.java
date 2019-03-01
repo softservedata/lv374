@@ -3,6 +3,7 @@ package com.softserve.edu.opencart.pages.shop;
 
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.common.NavigationUnit;
 
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ public class ProductComparisonComponent extends NavigationUnit{
 
 	 // RemoveButton;
 	public WebElement getRemoveButton() {
-		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[3]/tr/td[2]/a"));
+		return driver.findElement(By.xpath("//*[@id=\"content\"]/table/tbody[2]/tr/td[2]/a"));
 	}
 	
     public void clickRemoveButton() {
@@ -42,10 +43,10 @@ public class ProductComparisonComponent extends NavigationUnit{
 	
 	// product name
 	public WebElement getProductName() {
-		return driver.findElement(By.xpath("//*[@id='content']/table/tbody[1]/tr[1]/td[2]/a/strong"));
+		return driver.findElement(By.cssSelector("#content > table > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2) > a > strong"));
 	}
 	
-	public String getProductNameText() {
+	public String getProductNameText(Product validProduct) {
 		return getProductName().getText();
 	}
 	
@@ -64,9 +65,10 @@ public class ProductComparisonComponent extends NavigationUnit{
     
     // Success Message
  	public WebElement getSuccessMessage() {
- 		return driver.findElement(By.xpath("/html/body/div[2]/div[1]"));
+ 		return driver.findElement(By.cssSelector("#content > p"));
  	}
  	public String getSuccessMessageText() {
  		return getSuccessMessage().getText();
  	}
+ 	
 }

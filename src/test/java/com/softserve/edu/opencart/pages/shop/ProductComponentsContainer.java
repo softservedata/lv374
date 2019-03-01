@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.pages.common.HeadUnit;
 
 public class ProductComponentsContainer {
 	private static final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
@@ -70,7 +71,9 @@ public class ProductComponentsContainer {
 	private void clickProductComponentAddToWishButtonByName(String productName) {
 		getProductComponentByName(productName).clickAddToWishButton();
 	}
-
+	public void clickProductComponentAddToCompareByName(String productName) {
+		getProductComponentByName(productName).clickAddToCompareButton();
+	}
 	public String getCurrencyByProduct(Product product){
 		return PriceUtils.getCurrencySymbol(getProductComponentByName(product.getName()).getPriceText());
 	}
@@ -89,5 +92,8 @@ public class ProductComponentsContainer {
 		clickProductComponentAddToWishButtonByName(product.getName());
 		return new HomePage(driver);
 	}
-	
+	public SuccessfulSearchPage addToCompare(Product product) {
+    	clickProductComponentAddToCompareByName(product.getName());
+		return new SuccessfulSearchPage(driver);
+	}
 }

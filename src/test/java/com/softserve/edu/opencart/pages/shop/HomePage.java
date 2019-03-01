@@ -62,6 +62,10 @@ public class HomePage extends HeadUnit {
 		getProductComponentsContainer().clickProductComponentAddToCartButtonByName(product.getName());
 		return new HomePage(driver);
 	}
+    public HomePage addToCompare(Product product) {
+    	getProductComponentsContainer().clickProductComponentAddToCompareByName(product.getName());
+		return new HomePage(driver);
+	}
 
 	public String getHomePageCurrencySymbol(Product product){
 		return getProductComponentsContainer().getCurrencyByProduct(product);

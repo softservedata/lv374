@@ -11,9 +11,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.opencart.pages.shop.HomePage;
+import com.softserve.edu.opencart.pages.shop.ProductComparisonPage;
 
 public abstract class TestRunner {
-	private WebDriver driver;
+	public WebDriver driver;
 
 	@BeforeClass
     public void beforeClass() {
