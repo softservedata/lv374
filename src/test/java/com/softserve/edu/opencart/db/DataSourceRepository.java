@@ -23,7 +23,7 @@ public final class DataSourceRepository {
 			throw new RuntimeException(FAILED_JDBC_DRIVER);
 		}
 		return new DataSource(sqlDriver,
-				"jdbc:mysql://http://10.26.34.245:3306/lv374?useSSL=false",
+				"jdbc:mysql://10.26.34.245:3306/lv374?useSSL=false",
 				"lv374", "Lv374_Taqc");
 				//System.getenv().get("MY_SQL_LOGIN"),
 				//System.getenv().get("MY_SQL_PASSWORD"));

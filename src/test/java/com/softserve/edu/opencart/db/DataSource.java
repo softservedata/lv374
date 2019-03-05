@@ -65,5 +65,13 @@ public final class DataSource {
 		}
 		return result;
 	}
+	
+	@Override
+	public String toString() {
+	    return "isExists jdbcDriver: " + (jdbcDriver != null)
+	            + " connectionUrl: " + connectionUrl
+	            + " username: " + username
+	            + " password: " + password;
+	}
 
 }

@@ -8,7 +8,7 @@ import com.softserve.edu.opencart.db.entity.CustomerLogin.CustomerLoginQueries;
 
 public class CustomerLoginDao extends ADaoCRUD<CustomerLogin>  {
 
-    private final static String LOGIN_FIELDNAME = "Login";
+    //private final static String LOGIN_FIELDNAME = "Login";
     SimpleDateFormat simpleDateFormat;
 
     public CustomerLoginDao() {
@@ -45,11 +45,14 @@ public class CustomerLoginDao extends ADaoCRUD<CustomerLogin>  {
     }
 
     protected String[] getUpdateFields(CustomerLogin entity) {
-        String[] result = new String[5];
+        String[] result = new String[6];
         String[] allFields = getFields(entity);
-        result[0] = allFields[2]; // passsword
-        result[1] = allFields[3]; // name
-        result[2] = allFields[0]; // id
+        result[0] = allFields[1]; // email
+        result[1] = allFields[2]; // ip
+        result[2] = allFields[3]; // total
+        //result[3] = allFields[4]; // date_added
+        //result[4] = allFields[5]; // date_modified
+        result[3] = allFields[0]; // customer_login_id
         return result;
     }
 

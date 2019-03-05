@@ -31,6 +31,7 @@ abstract class ADaoCRUD<TEntity extends IEntity> extends ADaoRead<TEntity> imple
 		try {
 			statement = ConnectionManager.getInstance().getConnection().createStatement();
 			// TODO CHECK!
+			System.out.println("QUERY: " + query);
 			result = statement.execute(query);
 		} catch (SQLException e) {
 			throw new RuntimeException(DATABASE_INPUT_ERROR, e);
@@ -60,6 +61,10 @@ abstract class ADaoCRUD<TEntity extends IEntity> extends ADaoRead<TEntity> imple
 
 	// Update
 	public boolean updateByEntity(TEntity entity) {
+	    System.out.println("SQL BASE: " + sqlQueries.get(SqlQueries.UPDATE_BY_ID).toString());
+	    for (String current : getUpdateFields(entity)) {
+	        System.out.println("FIELDS: " + current);
+	    }
 		String query = String.format(sqlQueries.get(SqlQueries.UPDATE_BY_ID).toString(),
 					(Object[]) getUpdateFields(entity));
 		return executeQuery(query, SqlQueries.UPDATE_BY_FIELD);

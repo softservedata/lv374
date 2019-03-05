@@ -89,6 +89,7 @@ public final class ConnectionManager {
 	public Connection getConnection() {
 		Connection connection = getAllConnections().get(Thread.currentThread().getId());
 		if (connection == null) {
+		    System.out.println(getDataSource());
 			try {
 				connection = DriverManager.getConnection(
 						getDataSource().getConnectionUrl(),

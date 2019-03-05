@@ -6,7 +6,9 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.db.service.LoginService;
 import com.softserve.edu.opencart.pages.account.EditAccountPage;
+import com.softserve.edu.opencart.pages.account.UnsuccessfulLoginPage;
 import com.softserve.edu.opencart.pages.shop.HomePage;
 import com.softserve.edu.opencart.tools.ListUtils;
 
@@ -44,7 +46,7 @@ public class LoginTest extends TestRunner {
 	@Story("@Story: check_Login_Report")
     //@Test(dataProvider = "validUsers")
 	//@Test(dataProvider = "validCsvUsers")
-	@Test(dataProvider = "validExcelUsers")
+	//@Test(dataProvider = "validExcelUsers")
     public void checkLoginReport(IUser validUser) {
 		logger.info("START TEST: checkLoginReport("
 					+ validUser.toString() + ")");
@@ -107,6 +109,66 @@ public class LoginTest extends TestRunner {
         // Return to previous state
     }
     
+    @DataProvider//(parallel = true)
+    public Object[][] invalidUsers() {
+        // Read from ...
+        return new Object[][] { 
+            { UserRepository.getInvalid() },
+            };
+    }
+
+    @Test(dataProvider = "invalidUsers")
+    public void checkFailedLogin(IUser invalidUser) {
+        /*
+        //
+        // Precondition
+        // Steps
+        UnsuccessfulLoginPage unsuccessfulLoginPage = loadApplication()
+                .gotoLogin()
+                .unsuccessfullLogin(invalidUser);
+        //
+        // Check
+        Assert.assertTrue(unsuccessfulLoginPage.getAlertMessageText()
+                .contains(UnsuccessfulLoginPage.EXPECTED_WARNING_LOGIN));
+        //
+        // Steps
+        for (int i = 0; i < 5; i++) {
+            unsuccessfulLoginPage = unsuccessfulLoginPage
+                    .unsuccessfullLogin(invalidUser);
+        }
+        // Check
+        Assert.assertTrue(unsuccessfulLoginPage.getAlertMessageText()
+                .contains(UnsuccessfulLoginPage.EXPECTED_WARNING_LOCK));
+        */
+        //
+        // Return to previous state
+        LoginService loginService = new LoginService();
+        System.out.println("TOTTAL: " + loginService.getLoginAttemptCount(invalidUser));
+        //
+        loginService.unlockBannedUser(invalidUser);
+        /*
+        //
+        // Steps
+        unsuccessfulLoginPage = unsuccessfulLoginPage
+                    .unsuccessfullLogin(invalidUser);
+        //
+        // Check
+        Assert.assertTrue(unsuccessfulLoginPage.getAlertMessageText()
+                .contains(UnsuccessfulLoginPage.EXPECTED_WARNING_LOGIN));
+        //
+        // Steps
+        HomePage homePage = unsuccessfulLoginPage
+                .gotoHomePage();
+        //
+        // Check
+        Assert.assertTrue(homePage
+                .getSlideshow0FirstImageAttributeSrcText()
+                .contains(HomePage.IPHONE_IMAGE));
+        //
+        // Return to previous state
+        */
+    }
+
     //@Test(dataProvider = "validUsers")
     public void examiteLogin(IUser validUser) {
         //
