@@ -119,7 +119,6 @@ public class LoginTest extends TestRunner {
 
     @Test(dataProvider = "invalidUsers")
     public void checkFailedLogin(IUser invalidUser) {
-        /*
         //
         // Precondition
         // Steps
@@ -139,14 +138,12 @@ public class LoginTest extends TestRunner {
         // Check
         Assert.assertTrue(unsuccessfulLoginPage.getAlertMessageText()
                 .contains(UnsuccessfulLoginPage.EXPECTED_WARNING_LOCK));
-        */
         //
         // Return to previous state
         LoginService loginService = new LoginService();
         System.out.println("TOTTAL: " + loginService.getLoginAttemptCount(invalidUser));
         //
         loginService.unlockBannedUser(invalidUser);
-        /*
         //
         // Steps
         unsuccessfulLoginPage = unsuccessfulLoginPage
@@ -166,7 +163,6 @@ public class LoginTest extends TestRunner {
                 .contains(HomePage.IPHONE_IMAGE));
         //
         // Return to previous state
-        */
     }
 
     //@Test(dataProvider = "validUsers")
