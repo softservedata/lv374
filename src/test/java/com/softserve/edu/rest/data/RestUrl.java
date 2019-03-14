@@ -2,15 +2,15 @@ package com.softserve.edu.rest.data;
 
 public class RestUrl {
 
-	private String urlBase;
+	private String urlServer;
 	private String uriGet;
 	private String uriPost;
 	private String uriPut;
 	private String uriDelete;
 	
-	public RestUrl(String urlBase, String uriGet, String uriPost,
+	public RestUrl(String urlServer, String uriGet, String uriPost,
 			String uriPut, String uriDelete) {
-		this.urlBase = urlBase;
+		this.urlServer = urlServer;
 		this.uriGet = uriGet;
 		this.uriPost = uriPost;
 		this.uriPut = uriPut;
@@ -18,47 +18,47 @@ public class RestUrl {
 	}
 	
 	public RestUrl() {
-		urlBase = null;
+		urlServer = null;
 		uriGet = null;
 		uriPost = null;
 		uriPut = null;
 		uriDelete = null;
 	}
 	
-	public RestUrl addUriBase(String uri)
+	public RestUrl addUrlServer(String urlServer)
     {
-		uriGet = uri;
+		this.urlServer = urlServer;
         return this;
     }
 	
-	public RestUrl addUriGet(String uri)
+	public RestUrl addUriGet(String uriGet)
     {
-		uriGet = uri;
+		this.uriGet = uriGet;
         return this;
     }
 	
-	public RestUrl addUriPost(String uri)
+	public RestUrl addUriPost(String uriPost)
     {
-		uriPost = uri;
+		this.uriPost = uriPost;
         return this;
     }
 
-	public RestUrl addUriPut(String uri)
+	public RestUrl addUriPut(String uriPut)
     {
-		uriPut = uri;
+		this.uriPut = uriPut;
         return this;
     }
 
-	public RestUrl addUriDelete(String uri)
+	public RestUrl addUriDelete(String uriDelete)
     {
-		uriDelete = uri;
+		this.uriDelete = uriDelete;
         return this;
     }
 
 	// getters
 	
-	public String getUrlBase() {
-		return urlBase;
+	public String getUrlServer() {
+		return urlServer;
 	}
 
 	public String getUriGet() {
@@ -78,19 +78,19 @@ public class RestUrl {
 	}
 
 	public String getUrlGet() {
-		return getUrlBase() + getUriGet();
+		return getUrlServer() + getUriGet();
 	}
 
 	public String getUrlPost() {
-		return getUrlBase() + getUriPost();
+		return getUrlServer() + getUriPost();
 	}
 
 	public String getUrlPut() {
-		return getUrlBase() + getUriPut();
+		return getUrlServer() + getUriPut();
 	}
 
 	public String getUrlDelete() {
-		return getUrlBase() + getUriDelete();
+		return getUrlServer() + getUriDelete();
 	}
 
 }
