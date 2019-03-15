@@ -1,20 +1,23 @@
 package com.softserve.edu.rest.engine;
 
+import com.google.gson.Gson;
 import com.softserve.edu.rest.data.RestUrl;
 import com.softserve.edu.rest.entity.RestParameters;
 
 public abstract class RestQueries<T> extends RestCRUD {
 
-	// private JsonDeserializer jsonDeserializer;
+	private Class<T> clazz;
+	private Gson gson;
 
-	protected RestQueries(RestUrl restUrl) {
+	protected RestQueries(RestUrl restUrl, Class<T> clazz) {
 		super(restUrl);
-		// jsonDeserializer =
+		this.clazz = clazz;
+		gson = new Gson();
 	}
 
 	private T ConvertToEntity(String json) {
-		// TODO ++++++++++++++++++++++++++++++++++++
-		return null;
+		System.out.println("json: " + json + " clazz: " + clazz.getName());
+		return gson.fromJson(json, clazz);
 	}
 
 	public T httpGetAsEntity(RestParameters pathVariables, RestParameters urlParameters) {

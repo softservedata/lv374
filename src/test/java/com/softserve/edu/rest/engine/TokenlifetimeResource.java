@@ -6,7 +6,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class TokenlifetimeResource extends RestQueries<SimpleEntity> {
 
 	public TokenlifetimeResource() {
-		super(RestUrlRepository.getTokenLifetime());
+		super(RestUrlRepository.getTokenLifetime(), SimpleEntity.class);
 	}
 
 }

@@ -1,20 +1,34 @@
 package com.softserve.edu.rest.service;
 
 import com.softserve.edu.rest.data.Lifetime;
+import com.softserve.edu.rest.data.User;
 import com.softserve.edu.rest.engine.LoginResource;
 import com.softserve.edu.rest.engine.TokenlifetimeResource;
+import com.softserve.edu.rest.entity.RestParameters;
 import com.softserve.edu.rest.entity.SimpleEntity;
 
 public class GuestService {
 
-	private LoginResource loginResource;
-	private TokenlifetimeResource tokenlifetimeResource;
+	protected LoginResource loginResource;
+	protected TokenlifetimeResource tokenlifetimeResource;
 	
 	public GuestService() {
 		loginResource = new LoginResource();
 		tokenlifetimeResource = new TokenlifetimeResource();
 	}
 
+	protected void throwCustomException(SimpleEntity simpleEntity, String message)
+    {
+		//if (!simpleEntity.getContent().toLowerCase().equals("true"))
+		if ((simpleEntity.getContent() == null)
+				|| (simpleEntity.getContent().isEmpty())
+				|| (simpleEntity.getContent().toLowerCase().equals("false")))
+        {
+        	// TODO Develop Custom Exception
+            throw new RuntimeException(message);
+        }
+    }
+	
 	public GuestService(LoginResource loginResource,
 			TokenlifetimeResource tokenlifetimeResource) {
 		this.loginResource = loginResource;
@@ -35,13 +49,15 @@ public class GuestService {
 //    {
 //    }
 
-//	public AdminBLL SuccessfulAdminLogin(User adminUser)
-//    {
-//        RestParameters bodyParameters = new RestParameters()
-//            .AddParameters("name", adminUser.Name)
-//            .AddParameters("password", adminUser.Password);
-//        SimpleEntity simpleEntity = loginCRUD.HttpPostAsObject(bodyParameters, null, null);
-//        adminUser.Token = simpleEntity.content;
-//        return new AdminBLL(adminUser);
-//    }
+	public AdminService SuccessfulAdminLogin(User adminUser)
+    {
+		RestParameters bodyParameters = new RestParameters()
+	            .addParameter("name", adminUser.getName())
+	            .addParameter("password", adminUser.getPassword());
+        SimpleEntity simpleEntity = loginResource.httpPostAsEntity(null, null, bodyParameters);
+        throwCustomException(simpleEntity, "Error Login");
+        adminUser.setToken(simpleEntity.getContent());
+        return new AdminService(adminUser);
+    }
+
 }

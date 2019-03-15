@@ -6,7 +6,7 @@ import com.softserve.edu.rest.entity.SimpleEntity;
 public class LoginResource extends RestQueries<SimpleEntity> {
 	
 	public LoginResource() {
-		super(RestUrlRepository.getLogin());
+		super(RestUrlRepository.getLogin(), SimpleEntity.class);
 	}
 	
 }
