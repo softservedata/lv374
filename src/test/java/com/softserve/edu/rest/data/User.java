@@ -47,4 +47,11 @@ public class User {
 		return items;
 	}
 
+    @Override
+    public String toString() {
+        return "User [name=" + name 
+                + ", password=" + password 
+                + ", token=" + token + "]";
+    }
+	
 }

@@ -21,12 +21,12 @@ public class AdminService extends UserService {
 
 	public AdminService UpdateTokenlifetime(Lifetime lifetime)
     {
-        System.out.println("lifetime = " + lifetime.getTimeAsString() + "   User = " + user);
+        //System.out.println("lifetime = " + lifetime.getTimeAsString() + "   User = " + user);
         RestParameters bodyParameters = new RestParameters()
                 .addParameter("token", user.getToken())
                 .addParameter("time", lifetime.getTimeAsString());
         SimpleEntity simpleEntity = tokenlifetimeResource.httpPutAsEntity(null, null, bodyParameters);
-        throwCustomException(simpleEntity, "Error Update Tokenlifetime");
+        checkEntity(simpleEntity, "Error Update Tokenlifetime");
         return this;
     }
 
