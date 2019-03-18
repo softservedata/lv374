@@ -15,7 +15,9 @@ public class LifeTimeTest {
 
     @DataProvider // (parallel = true)
     public Object[][] updateLifeTime() {
-        return new Object[][] { { UserRepository.getAdmin(), LifetimeRepository.GetLongTime() }, };
+        return new Object[][] {
+            { UserRepository.getAdmin(), LifetimeRepository.GetLongTime() },
+        };
     }
 
     @Test(dataProvider = "updateLifeTime")
