@@ -24,11 +24,12 @@ public class AppTest {
         Assert.assertTrue(true);
     }
 
-    // @Test
+    @Test
     public void testApp1() throws Exception {
         System.out.println("surefire.reports.directory = " + System.getProperty("surefire.reports.directory"));
         System.out.println("selenium.version = " + System.getProperty("selenium.version"));
         System.out.println("System.getenv().database.password = " + System.getenv().get("DATABASE_PASSWORD"));
+        System.out.println("System.getenv().database.password = " + System.getenv().get("IS_CONTINUES_INTEGRATION"));
     }
 
 //	@DataProvider(parallel = true)
@@ -74,7 +75,7 @@ public class AppTest {
         driver.quit();
     }
 
-    @Test
+    //@Test
     public void checkMoveMouse() throws Exception {
         System.setProperty("webdriver.chrome.driver",
                 this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath().substring(1));
