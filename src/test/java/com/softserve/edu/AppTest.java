@@ -29,7 +29,7 @@ public class AppTest {
         System.out.println("surefire.reports.directory = " + System.getProperty("surefire.reports.directory"));
         System.out.println("selenium.version = " + System.getProperty("selenium.version"));
         System.out.println("System.getenv().database.password = " + System.getenv().get("DATABASE_PASSWORD"));
-        System.out.println("System.getenv().database.password = " + System.getenv().get("IS_CONTINUES_INTEGRATION"));
+        System.out.println("is_continues_integration = " + System.getenv().get("IS_CONTINUES_INTEGRATION"));
     }
 
 //	@DataProvider(parallel = true)
